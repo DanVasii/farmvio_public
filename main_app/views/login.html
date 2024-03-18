@@ -1,0 +1,289 @@
+
+<html>
+    <head>
+        <link rel="icon" 
+      type="image/png" 
+      href="/assets/images/apppictures/Logo FARMVIO14.png">
+        <title>Farmvio login</title>
+        <script src="https://kit.fontawesome.com/d0ededd6f1.js" crossorigin="anonymous" ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/assets/scripts/login.js"></script>
+        <script src = '/assets/scripts/tractor.js'></script>
+    <style>
+        
+    .login_container
+        {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+            margin-left: 3%;
+            justify-content: center;
+            box-shadow: 0px 0px 5px black;
+            border-radius: 10px;
+            flex-direction: row;
+            overflow: hidden;
+            position: relative;
+        }
+        button
+        {
+        background-color: transparent;
+        padding: 8px 0px;
+        border: 3px solid #00b712;
+        border-radius: 42px;
+        width: 40% ;
+        font-size: 16px;
+        margin: 10px 0px;
+        overflow: hidden;
+        position: relative;
+        min-width: 140px;
+        background-image: linear-gradient(to right ,rgb(0,250,0),rgb(0,180,0));
+        background-repeat: no-repeat;
+        background-size: 0% 100%;
+        cursor: pointer;
+        transition: all .3s;
+        }
+        button span 
+        {
+            opacity: 0;
+            position: absolute;
+            left: 60%;
+            overflow: hidden;
+            height: 100%;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+            transition: all .2s;
+        }
+        button:hover span{
+           opacity: 1;
+           left: 71%;
+        }
+        button:hover{
+            text-shadow: 0px 0px 3px black;
+            background-size: 100% 100%;
+            color: white;
+            
+        }
+        .field
+        {
+            width: 70%;
+            position: relative;
+            margin-top: 10px;
+            padding-top: 18px;
+        }
+        input:not(.code)
+        {
+            border: none;
+    width: 100%;
+    padding: 5px 0px;
+    margin: 5px 0px;
+    position: relative;
+    border-bottom: 2px solid black;
+        }
+    
+        input:focus{
+            outline: none;;
+        }
+        .links
+        {
+            display: flex;
+            flex-direction: row;
+           width: 100%;
+        }
+        .links a
+        {
+            flex: 1;
+            text-align: center;
+        }
+        body 
+        {
+            display: flex;
+            align-items: center;
+        }
+        .left
+        {
+            flex: 1;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0px;
+        }
+
+        .left img 
+        {
+            width: 128px;
+            height: 128px;
+            margin-bottom: 20px;
+        }
+
+ 
+
+
+        .live_back
+        {
+            display: flex;
+            justify-content: flex-end;
+            width: 77%;
+            height: 100%;
+            align-items: flex-end;
+        }
+        .err
+        {
+            margin: 0px;
+            margin-top: 5px;
+            font-size: 14px;
+            color: red;
+            font-weight: lighter;
+    
+        }
+        .vis
+        {
+            display: initial;
+        }
+        .invis
+        {
+            display: none;
+        }
+
+        label 
+        {
+            position: absolute;
+    z-index: 100;
+    bottom: 8px;
+    transition: all .4s;
+}
+        .label_ac
+        {
+            color: #2D9DC6;
+            bottom: calc(100% - 17px);
+            font-size: 14px;
+        }
+      .line{
+          width: 0%;
+          height: 3px;
+          z-index: 100;
+          position: absolute;
+          bottom: 5px;
+          background-color: #2D9DC6;
+          left: 0px;
+          transition: width .4s;
+      }
+      .on{
+          width: 100%;
+      }
+      .code
+      {
+          width: 30px;
+          font-size: 30px;
+          text-align: center;
+      }
+      .code::selection
+      {
+          background-color: rgba(255,0,0,0.3);
+      }
+      .middle_line
+      {
+          background-image: linear-gradient(lightgray,lightgray);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 100% 4px;
+          width: 25px;
+          height: 16px;
+          display: inline-block ;
+      }
+      .cover 
+      {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0px;
+          top: 0px;
+          flex-direction: column;
+          background-color: white;
+          z-index: 1000;
+
+         
+      }
+      #close
+      {
+          color: rgba(255,0,0,0.6);
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          cursor: pointer;
+          transition: color .2s;
+      }
+      #close:hover{
+        color: rgba(255,0,0,1);
+      }
+      .cover a{
+          color: blue;
+          text-decoration: none;
+          margin-top: 5px;
+      }
+
+    </style>
+    
+    </head>
+    
+    <body>
+        <div class = 'login_container'>
+            <div class = 'cover'>
+                <i class="fas fa-times" id = 'close' onclick="close_2fa()"></i>
+                    <h3>2FA authentication</h3>
+                <div class = 'field' id = 'code'>
+                    <input type = 'text' maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" class = 'code'/>
+                    <input type = 'text' maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" class = 'code'/>
+                    <input type = 'text' maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" class = 'code'/>
+                    <span class = 'middle_line'></span>
+                    <input type = 'text' maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" class = 'code'/>
+                    <input type = 'text' maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" class = 'code'/>
+                    <input type = 'text' maxlength="1" size="1" min="0" max="9" pattern="[0-9]{1}" class = 'code'/>
+                </div>
+                <p class = 'err' id = '2fa'></p>
+                <a href = '/'>No access to your code?</a>
+                <button onclick="send()">Verify code</button>
+            </div>
+            <div class = 'left'>
+                <img src = '/assets/images/apppictures/farmer.png'/>
+    <input type = 'hidden' id = 'csrf' value = {{ csrf_token}}/>
+
+
+
+
+
+    <div class = 'field'>
+        <label for = 'name'>Username</label>
+     <input type = 'text' id = 'name' />
+    <span class = 'line'></span>
+    </div>
+
+    <div class = 'field'>
+        <label for = 'pass'>Password</label>
+    <input type = 'text' id = 'pass' />
+    <span class = 'line'></span>
+    </div>
+
+
+
+
+    <p class = 'err invis'>Error is here</p>
+    <button onclick = 'send()'>Log In <span><i class="fas fa-sign-in-alt"></i></span></button>
+            <div class = 'links'>
+    
+                <a href = '/forgot'>Forgot paassword</a>
+                </div>
+            </div>
+        
+          </div>
+          <div class = 'live_back'>
+        <object data="/assets/images/apppictures/tractor.svg"></object>
+        </div>
+    </body>
+    </html>
+    

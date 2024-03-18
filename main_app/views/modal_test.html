@@ -1,0 +1,401 @@
+<html>
+    <head>
+        <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <script src = '/assets/scripts/anime.js'></script>  
+        <link rel = 'stylesheet' href = '/assets/css/jquery-waves.min.css'>
+        <script src = '/assets/scripts/jquery-waves.js'></script>
+      
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                background-color: gray;
+            }
+            .modal_background{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0px;
+                left: 0px;
+                z-index: 9999;
+                background-color: rgba(0,0,0,.3);
+                transform: scale(0);
+                transition: transform .4s;
+            }
+         
+            .modal_window
+            {
+                position: fixed;
+                height: 90%;
+                width: 600px;
+                background-color: white;
+                left: calc((100% - 700px)/2);
+                margin: 40px 0px;
+                z-index: 10000;
+                border-radius: 5px;;
+                transform: scale(0);
+                transition-delay: .2s;
+                transition-property: transform;
+                transition-duration: .4s;
+            }
+            
+            .modal_header{
+                display: grid;
+                grid-template-columns: auto 1fr;
+                margin-top: 10px;
+                border-bottom: 1px solid black;
+                padding-bottom: 10px;
+            }
+            .close_icon{
+                z-index: 9;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                justify-content: center;
+                padding: 5px 9px;
+                margin-left: 10px;;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color .4s;
+            }
+            .close_icon:hover{
+                background-color:rgba(0,0,0,.2);
+            }
+            .modal_title{
+                font-family: 'Sora', sans-serif;
+                font-size: 20px;
+                display: flex;
+                margin-left: -30px;
+                justify-content: center;
+                align-items: center;
+                font-weight: 500;
+            }   
+            .modal_body
+            {
+                padding: 20px 20px;
+            }
+            .modal_subtitle{
+                font-family: 'Sora', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                display: flex;
+                align-items: center;;
+            }
+            .modal_subtitle i {
+                margin-right: 5px;;
+                font-size: 30px;
+            }
+
+            .categories{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 10px;
+                grid-row-gap: 15px;
+            }
+            .category_parent
+            {
+                display: grid;
+                grid-template-columns: 70px 1fr;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 3px;
+                cursor: pointer;
+                transition: all .4s;
+            }
+            .category_parent:hover{
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                background-color: #F9F9F9;
+            }
+            .category_parent img{
+                width: 70px;
+                height: 70px;
+            }
+            .category_infos{
+                display: grid;
+                grid-template-rows: max-content max-content;
+                align-items: center;
+                padding-left: 10px;
+                margin: auto 0px;
+            }
+            .category_infos span{
+                font-family: 'Sora', sans-serif;
+            }
+            .category_infos span:first-child{
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .category_infos span:last-child{
+                font-size: 13px;
+                font-weight: 300;
+                color: gray;
+            }
+
+            .city_search{
+                display: flex;
+                flex-direction: row;
+            }
+            .city_search input{
+                font-size: 16px;
+                border: none;
+                outline: none;
+                padding: 10px 0px;
+                padding-left: 5px;
+                width: 300px;
+               
+            }
+
+            .modal_input_holder
+            {
+                display: flex;
+                flex-direction: row;
+                border: 1px solid gray;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+                overflow: hidden;
+                border-radius: 5px;
+                width: fit-content;
+                padding: 5px 0px;
+                
+            }
+            .button_like{
+                background-color: rgba(123, 173, 117,0.4);
+                display: flex;
+                height: 40px;
+                border-radius: 5px;
+                width: 40px;
+                justify-content: center;
+                font-size: 25px;
+                align-items: center;
+                cursor: pointer;
+                transition: background-color .4s;
+                margin: auto 5px;
+            }
+            .button_like:hover{
+                background-color: rgba(123, 173, 117,0.6);
+
+            }
+
+            .my_loc_btn
+            {
+        
+                font-family: "Sora", sans-serif;
+                font-weight: 300;
+                text-transform: none;
+                -webkit-appearance: button;
+                font-weight: 400;
+                text-align: center;
+                border-radius: 5px;
+                border: 1px solid transparent;
+                line-height: inherit;
+                font-size: 16px;
+                overflow: hidden;
+                user-select: none;
+                -webkit-tap-highlight-color: transparent;
+                vertical-align: middle;
+                z-index: 1;
+                cursor: pointer;
+                background-color: rgb(202,222,200);
+                color: #2D8821;
+                margin-left: 10px;
+                height: 40px;
+                margin: auto 0px;
+                margin-left: 10px;
+                transition: background-color .4s,color .2s;
+            }
+            .my_loc_btn i{
+                font-size: 20px;
+            }
+            .my_loc_btn:hover{
+                background-color: #2D8821;
+                color: white;
+            }
+            .search_rads{
+                display: flex;
+                flex-direction: row;
+            }
+            .search_rad{
+                font-family: "Sora",sans-serif;
+                font-weight: 400;
+                width: max-content;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid black;
+                margin: 0px 10px 10px 0px;
+                cursor: pointer;
+            }
+            .search_rad:hover:not(.active_rad){
+                background-color: #F9F9F9;
+            }
+            .active_rad{
+                background-color: #2D8821;
+                color: white;
+            }
+            .modal_footer{
+                font-family: "Sora",sans-serif;
+                position: absolute;
+                bottom: 0px;
+                width: calc(100% - 20px);
+                padding: 0px 10px;
+                height: 60px;
+                border-top: 1px solid black;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .del_filters
+            {
+                text-decoration: underline;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                ;
+            }
+            .del_filters:hover{
+                background-color: #e8e8e8;
+            }
+
+            .opened_modal{
+                transform: scale(1);
+            }
+        </style>
+                <script src="https://kit.fontawesome.com/1f64c6c9ca.js" crossorigin="anonymous"></script>
+
+        <script>
+           
+            document.addEventListener("keydown",function(key){
+                console.log(key);
+                if (key.code == "Space")
+                {
+                    document.querySelector(".modal_background").classList.add("opened_modal");
+                    document.querySelector(".modal_window").classList.add("opened_modal");
+
+                }   
+                if (key.code == "Escape")
+                {
+                    document.querySelector(".modal_background").classList.remove("opened_modal");
+                    document.querySelector(".modal_window").classList.remove("opened_modal");
+
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <div class = 'modal_background'>
+
+        </div>
+
+        <div class = 'modal_window'>
+            <div class = 'modal_header'>
+
+                <span class = 'close_icon'>
+                <i class="fa-regular fa-xmark"></i>
+            </span>
+
+                <div class = 'modal_title'>
+
+                    Titlu fereastra filtre
+
+                </div>
+            </div>
+
+            <div class = 'modal_body'>
+                <div class = 'modal_subtitle'>
+                    <i class="fa-duotone fa-tomato" style="--fa-primary-color: rgb(44,136,34); --fa-secondary-color: red"></i>   Categorii 
+                
+                </div>
+
+                <div class = 'categories'>
+
+                    <div class = 'category_parent'>
+                        <img src = '/assets/images/icons/carne.png'/>
+                            <div class = 'category_infos'>
+                                    <span>Legume</span>
+                                     <span>Rosii, Catraveti</span>
+                             </div>
+                    </div>
+
+                    <div class = 'category_parent'>
+                        <img src = '/assets/images/icons/carne.png'/>
+                            <div class = 'category_infos'>
+                                    <span>Carne</span>
+                                     <span>Carne de pui, Carne de porc,Carne de vita </span>
+                             </div>
+                    </div>
+
+                    <div class = 'category_parent'>
+                        <img src = '/assets/images/icons/carne.png'/>
+                            <div class = 'category_infos'>
+                                    <span>Carne</span>
+                                     <span>Carne de pui, Carne de porc,Carne de vita </span>
+                             </div>
+                    </div>
+
+                    <div class = 'category_parent'>
+                        <img src = '/assets/images/icons/carne.png'/>
+                            <div class = 'category_infos'>
+                                    <span>Carne</span>
+                                     <span>Carne de pui, Carne de porc,Carne de vita </span>
+                             </div>
+                    </div>
+                </div>
+
+
+                <div class = 'modal_subtitle'>
+                    <i class="fa-duotone fa-location-dot" style="--fa-secondary-color: rgb(44,136,34);--fa-primary-color: rgb(44,136,34); --fa-primary-opacity: .6; --fa-secondary-opacity: .8"></i> Locatie
+                </div>
+
+                <div class = 'city_search'>
+                        <div class = 'modal_input_holder'>    
+                    <input type = 'text' placeholder="Cauta locatia"/>
+
+                    <div class = 'button_like waves-effect waves-light'>
+                        <i class="fa-regular fa-magnifying-glass-location" style="color: #2D8821; --fa-secondary-color: white"></i>
+                    </div>
+                    </div>
+                    <button class="my_loc_btn waves-effect waves-light"> <i class="fa-regular fa-location-crosshairs"></i> Locatia mea</button>
+                </div>
+
+                <div class = 'modal_subtitle'>
+                    <i class="fa-duotone fa-radar" style="--fa-secondary-color: rgb(44,136,34);--fa-primary-color: rgb(44,136,34); --fa-primary-opacity: .6; --fa-secondary-opacity: .8"></i> Raza de cautare
+                </div>
+
+                <div class = 'search_rads'>
+                    <div class = 'search_rad waves-effect' >
+                        50 KM
+                    </div>
+                    <div class = 'search_rad waves-effect' >
+                        50 KM
+                    </div>
+                    <div class = 'search_rad waves-effect' >
+                        50 KM
+                    </div>
+                    <div class = 'search_rad waves-effect' >
+                        50 KM
+                    </div>
+
+                </div>
+
+             
+
+            </div>
+
+            <div class = 'modal_footer'>
+                <span class = 'del_filters'>Sterge filtre</span>
+                
+                <button class = 'my_loc_btn waves-effect waves-light'  >
+                    <i class="fa-regular fa-check"></i> Aplica Filtre
+                </button>
+            </div>
+        </div>
+
+    </body>
+    </html>

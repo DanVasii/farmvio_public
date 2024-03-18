@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<style>
+		.pop_window
+		{
+			position: fixed;
+			top: calc((100% - 450px)/2);
+			left: calc((100% - 800px)/2);
+			z-index: 9999;
+			width: 800px;
+			height: 450px;
+			background-color: white;
+			border-radius: 20px;
+			display: none;
+			justify-content: center;
+			flex-direction: column;
+			box-shadow: 0px 0px 10px black;
+			padding-left: 10px;
+		}
+		.hidden_row
+		{
+			max-height: 0px;
+			overflow: hidden;
+			transition: max-height .5s;
+		}
+		.close_btn
+		{
+			
+			font-size: 30px;
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			color: red;
+			cursor: pointer;
+		}
+
+		.err
+		{
+			max-height: 0px;
+			color: red;
+			font-size: 16px;
+			transition: max-height .4s;
+			text-align: center;
+			overflow: hidden;
+		}
+	</style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src = '/assets/scripts/cart.js'></script>
+    <link rel = 'stylesheet' href=  '/assets/css/cart.css'>
+
+    <script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-HLL969JFNJ');
+	</script>
+
+    <title>FarmVio - Comenzile mele </title>
+
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = '/assets/scripts/orders_farmer.js'></script>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+
+	<script src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.min.js'></script>
+
+	<script src='/assets/scripts/client_chat.js'></script>
+
+	<link rel = 'stylesheet' href = '/assets/css/chat.css'>
+
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Add images</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Change color</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+				<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+			</a>	
+			<div class="app-menu">
+				<ul class="header-megamenu nav">
+					<li class="btn-group nav-item d-md-none">
+						<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+							<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						</a>
+					</li>
+			  
+				</ul> 
+			  </div>
+			<!-- Logo -->
+			<a href="/index" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+				
+			  </div>
+			</a>	
+		</div>  
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="/index">
+			<button type="button" class="waves-effect waves-light btn btn-outline btn-secondary mb-5">Înapoi în site</button>
+		  </a>
+			<div class="navbar-custom-menu r-side">
+			  <ul class="nav navbar-nav">	
+				<li class="btn-group nav-item d-lg-inline-flex cart-btn phone"  onmouseover="show_cart()">
+					<a   class="waves-effect waves-light nav-link full-screen btn-info-light" >
+					  <i class="fas fa-shopping-cart"></i>
+					  </a>
+				  </li>	
+
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-info-light" title="Full Screen">
+						  <i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="/logout" class="waves-effect waves-light  full-screen btn-info-light" title="Logout">
+						  <i class="fas fa-sign-out-alt" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				<!-- Notifications -->
+				<li class="dropdown notifications-menu">
+				  <span class="label label-primary">5</span>
+				  <a href="#" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications" aria-expanded="false">
+					<i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
+				  </a>
+				  <ul class="dropdown-menu animated bounceIn">
+	  
+					<li class="header">
+					  <div class="p-20">
+						  <div class="flexbox">
+							  <div>
+								  <h4 class="mb-0 mt-0">Notifications</h4>
+							  </div>
+							  <div>
+								  <a href="#" class="text-danger">Clear All</a>
+							  </div>
+						  </div>
+					  </div>
+					</li>
+	  
+					<li>
+					  <!-- inner menu: contains the actual data -->
+					  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><ul class="menu sm-scrol" style="overflow: hidden; width: auto; height: 250px;">
+					  
+					  </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+					</li>
+					<li class="footer">
+						<a href="#">View all</a>
+					</li>
+				  </ul>
+				</li>	
+	  
+				  
+			  </ul>
+			</div>
+		  </nav>
+	  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/dashboard">
+					<i class="icon-Home"></i>
+					<span>Panou de administrare</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="fas fa-cog"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+					<span>Setări</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/personal_data"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări date personale </a></li>
+					<li><a href="/security_settings"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări securitate</a></li>
+				  </ul>
+				</li>
+		
+				<li class="treeview">
+					<a href="#">
+						<i class="fas fa-truck"><span class="path1"></span><span class="path2"></span></i>
+						<span>Puncte de lucru</span>
+						<span class="pull-right-container">
+						  <i class="fa fa-angle-right pull-right"></i>
+						</span>
+					  </a>
+					  <ul class="treeview-menu">
+						<li><a href="/view_points"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi puncte de lucru</a></li>
+						<li><a href="/wpoints"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă punct de lucru</a></li>
+					  </ul>
+				</li>
+				<li>
+				  <a href="/orders">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Comenzi</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Cart"><span class="path1"></span><span class="path2"></span></i>
+					<span>Produse</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/view_prods"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi produse</a></li>
+					<li><a href="/add_prod"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă produs</a></li>
+				  </ul>
+				</li>				
+				<li>
+			
+						<a href="/offer_requests">
+						  <i class="fas fa-percent"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Cereri de ofertă</span>
+						</a>
+				  </li>
+				  <li>
+					  <a href = '/cereri_rezervare'>
+						<i class="fas fa-calendar-week"></i>
+						<span>Cereri de rezervare</span>
+
+					  </a>
+				  </li>
+				  <li>
+			
+					<a href="/date_proforma">
+					  <i class="fas fa-file-contract"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Date proforma</span>
+					</a>
+			  </li>
+				  <li>
+					<li class = 'bg-info-light '>
+			
+						<a href="/profile/{{slug}}" class = 'text-primary'>
+						  <i class="far fa-id-badge text-primary"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Vezi profilul tău</span>
+						</a>
+				  </li>
+
+				  <li class = 'bg-success-light'>
+			
+					<a href="/add_prod" class = 'text-primary'>
+					  <i class="fas fa-plus text-primary"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Adaugă produs</span>
+					</a>
+			  </li>
+
+				</li>
+			  </ul>	
+	
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+			
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content">
+			<div class = 'row row-cols-2 row-cols-lg-5 g-2 mb-3 justify-content-between'>
+				<div class = 'col pb-3 mb-3' style = 'background-color: white;border-radius: 20px;text-align: center;'>
+					<span id = 'money' class = 'widget_value'>0</span><br>
+					<span class = 'breadcrumb_text_widged'>Bani în cont</span>
+				</div>
+					<div class = 'col mb-3' style = 'background-color: white;border-radius: 20px;text-align: center;'>
+						<span id = 'pending_orders' class = 'widget_value'>0</span><br>
+						<span class = 'breadcrumb_text_widged'>Comenzi care necesită chemarea curierului</span>
+					</div>
+						<div class = 'col mb-3' style = 'background-color: white;border-radius: 20px;text-align: center;'>
+							<span id = 'sent_orders' class = 'widget_value'>0</span><br>
+							<span class = 'breadcrumb_text_widged'>Comenzi noi</span>
+						</div>
+						<div class = 'col mb-3' style = 'background-color: white;border-radius: 20px;text-align: center;'>
+							<span id = 'completed_orders' class = 'widget_value'>0</span><br>
+							<span class = 'breadcrumb_text_widged'>Comenzi finalizate</span>
+						</div>
+						
+			</div>
+
+         <div id = 'orders' class = 'row'>
+
+      
+
+         </div>
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+   
+    </div>
+	&copy; 2021 Farmvio. Toate drepturile rezervate.
+  </footer>
+
+  
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<div class = 'chat_container'>
+
+          
+	<i class="far fa-comment-alt"></i>
+
+	<div class = 'body_content'>
+	<div class = 'chat_body'>
+		<i class="far fa-times-circle" onclick="close_chat()"></i>
+   
+
+		<div style ='margin-top: 45px;' class = 'chat_conv'>
+
+			
+		</div>
+
+
+	</div>
+
+	<div class = 'conv_body'>
+		<div class = 'top_conv'>
+			<i class="fas fa-chevron-left" onclick="back_to_chat()"></i> <span class = 'username'>  </span>
+		</div>
+		<div class = 'middle_conv'>
+			
+		</div>
+		<div class = 'bottom_conv'>
+			<input type = 'text' id = 'message' placeholder="Mesaj"/>
+			<i class="far fa-image"></i>
+			<i class="far fa-paper-plane" onclick="send_msg()"></i>
+		</div>
+	</div>
+</div>
+</div>
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	<script src="../assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+	<script src="../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+	<script src="../assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+	<script src="../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+	<script src="../assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
+	<script src="../assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+	<script src="../assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+	<script src="../assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="../assets/vendor_plugins/iCheck/icheck.min.js"></script>
+	
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	
+	<script src="js/pages/advanced-form-element.js"></script>
+	<script src="js/pages/timeline.js"></script>
+
+
+	<template id = 'chat_message_image'>
+		<div class = 'message_wraper'>
+			<div class = 'message_received image'>
+				<div class = 'message_content'>
+					<img src = ''/>
+				</div>
+			</div>
+			<div class = 'sns'>
+				Trimis <i class="fas fa-check"></i>
+			</div>
+		</div>
+	</template>
+	<template id = 'chat_message'>
+		<div class = 'message_wraper'>
+			<div class = 'message_received'>
+				<div class = 'message_content'>
+				</div>
+		
+			</div>
+			<div class = "sns">
+				Trimis <i class="fas fa-check"></i>
+			</div>
+		</div>
+	</template>
+
+	<template id = 'chat_conv'>
+		<div class = 'conversation'>
+			<p class = 'user_from'></p>
+			<span class = 'last_message'></span>
+		</div>
+	</template>
+
+	<template id = 'order_temp'>
+        <div class = 'col-12 mb-3 pt-3 pb-3 order_item' style="background-color: white;border-radius: 20px;">
+            <strong>ID comandă: </strong> <span class = 'nr_cmd'></span><br>
+            <strong>Status: </strong> <span class = 'status'></span><br>
+            <strong>Metodă livrare: </strong><span class = 'courier'></span><br>
+            <button type="button" class="waves-effect waves-light btn btn-info btn-sm contact_user_btn">Contactează utilizatorul</button>
+			<button type="button" class="waves-effect waves-light btn btn-warning btn-sm message_user">Trimite mesaj</button>
+			<ul class = 'user_contact_infos' style="max-height: 0px;list-style-type: none;transition: max-height .4s; margin-top: 10px; overflow: hidden;">
+
+			</ul>
+            <p>Produse: </p>
+            <ul class = 'prods'>
+
+            </ul>
+			<button type="button" class="waves-effect waves-light btn btn-primary mb-5 action_btn"></button>
+			<div class = 'row hidden_row'>
+				<div class = 'col-auto'>
+					<div class="input-group flex-nowrap">
+				
+						<span class="input-group-text" id="addon-wrapping">RON</span>
+						  <input  type="number" class="form-control price_trans" aria-describedby="addon-wrapping" placeholder="Preț transport">
+				
+					  </div>
+				</div>
+				<div class = 'col-auto'>
+					<div class="input-group">
+						<div class="input-group-addon">
+						  <i class="fa fa-calendar"></i>
+						</div>
+						<input type="text" class="form-control pull-right date_est">
+					  </div>
+				</div>
+				<div class = 'col-12'>
+					<p class = 'err data_error'></p> 
+				</div>
+			</div>
+         </div>
+    </template>
+
+	<div class ="pop_window">
+		<i class="fas fa-times-circle close_btn" onclick="close_pop()"></i>
+
+		<div class = 'row mb-3'>
+		<strong>Estimare preț pentru comanda: </strong><span id ='order_id'></span>
+	</div>
+		<div class='row justify-content-around mb-2'>
+			<div class = 'col-5'>
+				<div class="input-group flex-nowrap">
+					<span class="input-group-text" id="addon-wrapping"><i class="fas fa-text-width"></i></span>
+					<input type="text" class="form-control" placeholder="Package Width" id='width' aria-label="Width" aria-describedby="addon-wrapping">
+				  </div>
+			</div>
+
+			<div class = 'col-5'>
+				<div class="input-group flex-nowrap">
+					<span class="input-group-text" id="addon-wrapping"><i class="fas fa-text-height"></i></span>
+					<input type="text" class="form-control" placeholder="Package Height" id='height' aria-label="Height" aria-describedby="addon-wrapping">
+				  </div>
+			</div>
+		</div>
+
+		<div class='row justify-content-around'>
+			<div class = 'col-5'>
+				<div class="input-group flex-nowrap">
+					<span class="input-group-text" id="addon-wrapping"><i class="fas fa-ruler-vertical"></i></span>
+					<input type="text" class="form-control" placeholder="Package Length" id = 'len' aria-label="Length" aria-describedby="addon-wrapping">
+				  </div>
+			</div>
+
+			<div class = 'col-5'>
+				<div class="input-group flex-nowrap">
+					<span class="input-group-text" id="addon-wrapping"><i class="fas fa-weight-hanging"></i></span>
+					<input type="text" class="form-control" placeholder="Package Weight" id = 'weight' aria-label="Weight" aria-describedby="addon-wrapping">
+				  </div>
+			</div>
+		</div>
+
+		<div class = 'row justify-content-center mt-4'>
+			<p class = 'err' id = 'dlv_est'></p>
+			<button type="button" class="waves-effect waves-light btn mb-5 bg-gradient-success" style="width: max-content;">Trimite estimare cost</button>
+		</div>
+	</div>
+    <template id = 'button_temp'>
+        <div class = 'row'>
+            <div class = 'col-7'>
+                <div class = 'row'>
+                <div class = 'col-3'>
+                    <button type="button" class="waves-effect waves-light btn btn-success mb-5 acc">Acceptă </button>
+                </div>
+                <div class = 'col-3'>
+                    <button type="button" class="waves-effect waves-light btn btn-danger mb-5 dec">Refuză</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </template>
+	<template id = 'proposal'>
+		<strong>Metoda propusă de client: </strong><span class = 'proposed_method'></span><br>
+		<strong>Detalii: </strong><span class = 'proposed_coms'></span>
+	</template>
+
+	<div class = 'cart_container'>
+		<div class = 'up_arrow'>
+			
+		</div>
+		<div class = 'cart_content'>
+			
+		</div>
+		<div class = 'bottom'>
+			<button class = 'btn btn-primary' onclick="window.location.href = '/order'">Detalii coș</button>
+		</div>
+	  </div>
+</body>
+</html>

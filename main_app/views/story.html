@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <base href="/views/">
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <!-- FontAwesome Min CSS -->
+        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <!-- FlatIcon CSS -->
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <!-- Popup CSS -->
+        <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+        <!-- Owl Carousel Min CSS -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <!-- Image LightBox Min CSS -->
+        <link rel="stylesheet" href="assets/css/imagelightbox.min.css">
+        <!-- Nice Select Min CSS -->
+        <link rel="stylesheet" href="assets/css/nice-select.min.css">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!-- Odometer CSS -->
+        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <!-- Notify css - made by Dan -->
+        <link rel = 'stylesheet' href = '/notify/index.css'>
+        <script src = '/notify/index.js'></script>
+
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-HLL969JFNJ');
+        </script>
+
+        <title>Farmvio - Povestea</title>
+
+        <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    </head>
+
+    <body>
+
+        <!-- Start Preloader Area -->
+		<div class="preloader">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+        <!-- End Preloader Area --> 
+
+  <!-- Start Navbar Area -->
+  <div class="navbar-area-three">
+    <div class="trifles-responsive-nav">
+        <div class="container">
+            <div class="trifles-responsive-menu">
+                <div class="logo">
+                    <a href="/index">
+                        <img src="assets/img/Logo+FARMVIO12.png" width="200px" alt="logo">
+                    </a>
+                    <div class="cart-btn phone">
+                        <a  onmouseover="show_cart()">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trifles-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="/index">
+                    <img src="assets/img/Logo+FARMVIO12.png" alt="logo">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/index" class="nav-link ">
+                                Home 
+                            </a>
+                            
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/story" class="nav-link active">
+                                Povestea
+                            </a>
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/marketplace" class="nav-link">
+                                Marketplace 
+                            </a>
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/b2b" class="nav-link">
+                                B2B 
+                            </a>
+                            
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/contact" class="nav-link">
+                                Contact 
+                            </a>
+                        </li>
+  
+                        <li class="nav-item">
+                            {{#login}}
+                            <a href="/login" class="nav-link">
+                                Login
+                            </a>
+                            {{/login}}
+                            {{^login}}
+                            <a href="/dashboard" class="nav-link">
+                              Contul meu
+                          </a>
+                            {{/login}}
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">
+                                Creează cont
+                            </a>
+                        </li>
+                    </ul>
+  
+
+                    <div class="others-options">
+                
+
+                        <div class="cart-btn">
+                            <a  onmouseover="show_cart()">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>2</span>
+                            </a>
+                        </div>
+
+                 
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End Navbar Area -->
+
+
+
+        <!-- Sidebar Modal -->
+        <div class="sidebar-modal">
+            <div class="sidebar-modal-inner">
+                <div class="sidebar-about-area">
+                    <div class="title">
+                        <h2>About Us</h2>
+                        <p>We believe brand interaction is key in communication. Real innovations and a positive customer experience are the heart of successful communication. No fake products and services. The customer is king, their lives and needs are the inspiration.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-instagram-feed">
+                    <h2>Instagram</h2>
+                    <ul>
+                        <li><a href="#">
+                            <img src="assets/img/instagram-image/1.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/2.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/3.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/4.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/5.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/6.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/7.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/8.jpg" alt="image">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-contact-area">
+                    <div class="contact-info">
+                        <div class="contact-info-content">
+                            <h2>
+                                <a href="tel:+0881306298615">
+                                    +088 130 629 8615
+                                </a>
+                                <span>OR</span>
+                                <a href="mailto:trifles@gmail.com">
+                                    trifles@gmail.com
+                                </a>
+                            </h2>
+    
+                            <ul class="social">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="close-btn sidebar-modal-close-btn">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+        <!-- End Sidebar Modal -->
+
+        <!-- Start Page Title Area -->
+        <div class="page-title-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-title-content">
+                            <h2>Povestea Farmvio</h2>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Title Area -->
+
+        <section class = 'content-section'>
+            <div class = 'container'>
+           
+                <div class = 'col-12 mt-3' style="padding-left: 20px;padding-right: 20px;">
+                    <p>
+                        În general, poveștile încep cu „A fost odată ca niciodată...”. Povestea noastră este puțin diferită. Povestea noastră începe cu „A fost odată o pasiune ...”. <br>
+                        A fost odată o pasiune, că de nu ar fi fost, nu am fi share-uit, a unui fermier, pe numele lui Farmvio, care, pe măsură ce învăța tainele legumelor, fructelor și a produselor tradiționale de origine animală, pasiunea lui pentru a le produce încolțea din ce în ce mai mult. Astfel, într-un timp relativ scurt, de la a produce câteva produse în propria curte, a ajuns să dețină o adevărată fermă. <br>
+                        Din acel moment, a apărut un mic semn de întrebare legat de pasiunea lui: cui va distribui toate produsele create de el cu atâta dragoste? <br>
+                        Vorbind și cu alți prieteni ce împărtășeau aceeași pasiune ca și el, și-a dat seama că fiecare dintre ei avea aceeași mică problemă: produsele creșteau frumos și sănătos, dar cumpărătorii erau puțini. <br>
+                        Atunci, Farmvio s-a gândit: singura soluție era ca lumea să afle de pasiunea lor, să le cunoască podusele, iar cumpărătorii urmau să apară. <br>
+                        Deoarece era destul de dificil să ajungă cu produsele către toate magazinele, iar acest proces viza doar cumpărătorii locali și, în același timp, fiind un fermier modern și la curent cu oportunitățile noilor tehnologii, Farmvio a decis că cea mai bună soluție este o platformă online în jurul căreia să poată construi o adevărată comunitate de fermieri și, implicit, de consumatori finali. <br>
+                        În acest fel, a luat naștere platforma online farmvio.com. Aici, fiecare fermier își poate construi propriul magazin, punând în evidență produsele create cu atât de multă dragoste și pasiune, construindu-și propria rețea de consumatori, chiar și din orașele limitrofe locului în care se află. <br>
+                        
+
+                    </p>
+                    <b>Cui se adresează platforma Farmvio?</b>
+                    <ul>
+                        <li>fermierilor ce își doresc să își promoveze produsele</li>
+                        <li>persoanelor fizice ce își doresc calitate în stilul alimentar</li>
+                        <li>persoanelor juridice din domeniul HoReCa ce își doresc să ofere clienților calitate</li>
+                    </ul>
+                    <p>
+                        Platforma Farmvio oferă fiecărui fermier posibilitatea de a își promova propriile produse, de a le descrie clienților în propriu mod și de a își face pasiunea vizibilă pentru cât mai mulți potențiali clienți. 
+                    </p>
+                    <b>Ești fermieri și ești pasionat de ceea ce faci?</b>
+                    <p>
+                  
+                        Farmvio îți vine în ajutor! Tot ceea ce trebuie să faci este să îți creezi cont pe platformă, să îți încarci produsele și să ți legătura cu clienții tăi. <br>
+Farmvio îți promite că vei face parte din cea mai frumoasă comunitate de fermieri existentă până acum!
+
+
+                    </p>
+                </div>  
+            </div>
+        </section>
+     
+   <!-- Start Footer Section -->
+   <section class="footer-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Despre farmvio</h3>
+                    </div>
+
+                    <p>Povestea Farmvio a luat naștere din dorința de a crea o adevărată comunitate de fermieri, dar și din dorința de a revoluționa modul în care îți faci cumpărăturile, astfel încât să ai toate produsele preferate la doar un click distanță, în secțiunea Marketplace.
+</p>
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.facebook.com/Farmvio/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+
+
+                        <!-- <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Link-uri utile</h3>
+                    </div>
+
+                    <ul class="footer-quick-links">
+                        <li>
+                            <a href = '/index'>
+                            Home
+                            </a>
+                        </li>
+                        <li>
+                           <a href = '/marketplace'>
+                            Marketplace    
+                        </a>
+                        </li>
+                        <li>
+                            <a href = '/register'>
+                                Creează cont
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/login">
+                               Login
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+     
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Contact</h3>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-pin"></i>
+                        <h3>Locație</h3>
+                        <span>Strada Splaiul Unirii nr. 313, <br> București</span>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-call"></i>
+                        <h3>Telefon</h3>
+                        <span><a href="tel:0771-189-311">0771-189-311</a></span>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-envelope"></i>
+                        <h3>Email</h3>
+                        <span><a href="mailto:office@farmvio.com">office@farmvio.com</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copyright-area-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <p>
+                            <i class="far fa-copyright"></i> 
+                            2021 Farmvio. Toate drepturile rezervate
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <ul>
+          
+                            <li>
+                                <a href="/privacy">Politică de confidențialitate</a>
+                            </li>
+                            <li>
+                                <a href="/cookies">Politică de cookie-uri</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Footer Section -->
+                <div class = 'cart_container'>
+                    <div class = 'up_arrow'>
+                        
+                    </div>
+                    <div class = 'cart_content'>
+                        
+                    </div>
+                    <div class = 'bottom'>
+                        <button class = 'special2' onclick="window.location.href = '/order'">Detalii coș</button>
+                    </div>
+                </div>
+        <!-- Start Go Top Section -->
+        <div class="go-top">
+            <i class="fas fa-chevron-up"></i>
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <!-- End Go Top Section -->
+
+        <!-- jQuery Min JS -->
+        <script src="assets/js/jquery.min.js"></script>
+        <!-- Popper Min JS -->
+        <script src="assets/js/popper.min.js"></script>
+        <!-- Bootstrap Min JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Owl Carousel Min JS -->
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <!-- MeanMenu JS -->
+        <script src="assets/js/jquery.meanmenu.js"></script>
+        <!-- Popup JS -->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <!-- Appear JS -->
+        <script src="assets/js/jquery.appear.min.js"></script>
+        <!-- Odometer JS -->
+        <script src="assets/js/odometer.min.js"></script>
+        <!-- Image LightBox Min JS -->
+        <script src="assets/js/imagelightbox.min.js"></script>
+        <!-- Nice Selects Min JS -->
+        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <!-- AjaxChimp Min JS -->
+        <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+        <!-- Form Validator Min JS -->
+        <script src="assets/js/form-validator.min.js"></script>
+        <!-- Contact Form Min JS -->
+        <script src="assets/js/contact-form-script.js"></script>
+        <!-- Main JS -->
+        <script src="assets/js/main.js"></script>
+
+        {{#b2b}}
+        <script src = '/assets/scripts/b2b_cart.js'></script>
+        <link rel = 'stylesheet' href = '/assets/css/b2b_cart.css'>
+        <template id = 'cart_temp'>
+            <div class = 'b2b_item'>
+                <img src = '/assets/images/icons/no_image.png'/>
+                <span class = 'name'></span>
+                <input type = 'number' min = 1 max= 999>
+                <p class = 'sold_by'><strong>Vandut de: </strong></p>
+                <p class="del_from"><Strong>Livrat din: </Strong></p>
+            </div>
+        </template>
+
+
+        <template id = 'cart_temp_special'>
+            <div class = 'b2b_item'>
+                <h6 style="width: 100%">Special order</h6><br>
+                <div class = 'old_tags' style="width: 100%;padding-left: 5px;">
+               
+            </div>
+                <input type = 'number' value = '2' style="margin: 10px auto;">
+            </div>
+        </template>
+        {{/b2b}}
+        {{^b2b}}
+        <script src = '/assets/scripts/cart.js'></script>
+        <link rel = 'stylesheet' href = '/assets/css/cart.css'>
+        {{/b2b}}
+    </body>
+</html>

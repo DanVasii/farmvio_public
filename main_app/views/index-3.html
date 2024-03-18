@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <link rel="icon" 
+        type="image/png" 
+        href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+        <base href="/views/">   
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <script src = '/assets/scripts/jquery.js'></script>
+        <script rel=preconnect async src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+       
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="/assets/css/page_index_bootstrap.css" media="print" onload="this.media='all'">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="assets/css/meanmenu.css" media="print" onload="this.media='all'">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="/assets/css/page_index.css" >
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="assets/css/responsive.css" media="print" onload="this.media='all'">
+
+        <script rel=preconnect async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-HLL969JFNJ');
+        </script>
+        
+        <title>Farmvio - Direct din ferme</title>
+
+    </head>
+
+    <body>
+
+        <!-- End Preloader Area --> 
+
+        <!-- Start Navbar Area -->
+        <div class="navbar-area-three">
+            <div class="trifles-responsive-nav">
+                <div class="container">
+                    <div class="trifles-responsive-menu">
+                        <div class="logo">
+                            <a href="/index">
+                                <img src="assets/img/Logo+FARMVIO12.png" width="200px" alt="logo">
+                            </a>
+                            <div class="cart-btn phone">
+                                <a  onmouseover="show_cart()">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>0</span>
+                                </a>
+                            </div>
+                        </div>
+                     
+                    </div>
+                
+                </div>
+            </div>
+
+            <div class="trifles-nav">
+                <div class="container">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <a class="navbar-brand" href="/index">
+                            <img src="assets/img/Logo+FARMVIO12.png" alt="logo">
+                        </a>
+
+                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="/index" class="nav-link active">
+                                        Home 
+                                    </a>
+                                    
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/story" class="nav-link">
+                                        Povestea
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/marketplace" class="nav-link">
+                                        Marketplace 
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/b2b" class="nav-link">
+                                        B2B 
+                                    </a>
+                                    
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/contact" class="nav-link">
+                                        Contact 
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    {{#login}}
+                                    <a href="/login" class="nav-link">
+                                        Login
+                                    </a>
+                                    {{/login}}
+                                    
+                                    {{^login}}
+                                    <a href="/dashboard" class="nav-link">
+                                      Contul meu
+                                  </a>
+                                    {{/login}}
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/register" class="nav-link">
+                                        Creează cont
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="others-options">
+                           
+
+                                <div class="cart-btn">
+                                    <a onmouseover="show_cart()">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- End Navbar Area -->
+
+        <!-- Sidebar Modal -->
+        <div class="sidebar-modal">
+            <div class="sidebar-modal-inner">
+                <div class="sidebar-about-area">
+                    <div class="title">
+                        <h2>About Us</h2>
+                        <p>We believe brand interaction is key in communication. Real innovations and a positive customer experience are the heart of successful communication. No fake products and services. The customer is king, their lives and needs are the inspiration.</p>
+                    </div>
+                </div>
+
+   
+
+          
+
+                <span class="close-btn sidebar-modal-close-btn">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+        <!-- End Sidebar Modal -->
+
+        <!-- Start Home Banner Three Area -->
+        <div class="home-banner-three">
+            <div class="home-slides">
+                <div class="home-item item-bg">
+                    <div class="d-table">
+                        <div class="d-table-cell">
+                            <div class="container-fluid">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <div class="main-banner-content">
+                                           
+                                            <h1>FARMVIO, direct din ferme</h1>
+                                            <p>Aici este locul unde cei mai pasionați fermieri și cei mai fideli clienți devin cei mai buni parteneri. Unde pasiunea pentru cultivare a fermierului și dorința pentru calitate a clientului sunt „remunerate” pe măsură. </p>
+    
+                                            <div class="banner-btn">
+                                                <a href="/marketplace" class="default-btn">
+                                                    Marketplace
+                                                    <i class="fas fa-plus"></i>
+                                                    <span></span>
+                                                </a>
+                                                <a class="optional-btn" href="/register">
+                                                    Cont fermier
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="banner-image" style = 'top: -34px;position: relative;'>
+                                           <a href = '/marketplace'>
+                                            <img src="assets/img/home-three/1.webp" alt="image">
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div> 
+
+            <div class="creative-shape">
+                <img src="assets/img/home-three/shape.png" alt="image">
+            </div>
+        </div>
+        <!-- End Home Banner Three Area -->
+
+        <!-- Start Triple Section -->
+        <section class="triple-section pb-100">
+            <div class="container">
+                <div class="section-title">
+                   
+                    <h3>Povestea Farmvio</h3>
+                    <p>a luat naștere din dorința de a crea o adevărată comunitate de fermieri, dar și din dorința de a revoluționa modul în care îți faci cumpărăturile, astfel încât să ai toate produsele preferate la doar un click distanță, în secțiunea Marketplace. </p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="triple-item">
+                            <div class="triple-image">
+                                <img src="assets/img/triple/delivery.webp" alt="image">
+                            </div>
+                            <div class="triple-content">
+                                <h3>Marketplace live</h3>
+                                <div class="triple-btn">
+                                    <a href="/marketplace" class="triple-btn-one">
+                                        Vizitează sector
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="triple-shape">
+                                <img src="assets/img/triple/shape-1.webp" alt="image">
+                                <img src="assets/img/triple/shape-2.webp" alt="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="triple-item">
+                            <div class="triple-image">
+                                <img src="assets/img/triple/romania-min.webp" alt="image">
+                            </div>
+                            <div class="triple-content">
+                                <h3>Comunitate fermieri</h3>
+                                <div class="triple-btn">
+                                    <a href="/marketplace" class="triple-btn-one">
+                                        Vizitează sector
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="triple-shape">
+                                <img src="assets/img/triple/shape-1.webp" alt="image">
+                                <img src="assets/img/triple/shape-2.webp" alt="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-md-3 offset-sm-3">
+                        <div class="triple-item">
+                            <div class="triple-image">
+                                <img src="assets/img/triple/profit-min.webp" alt="image">
+                            </div>
+                            <div class="triple-content">
+                                <h3>B2B</h3>
+                                <div class="triple-btn">
+                                    <a href="/b2b" class="triple-btn-one">
+                                        Vizitează sector
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="triple-shape">
+                                <img src="assets/img/triple/shape-1.webp" alt="image">
+                                <img src="assets/img/triple/shape-2.webp" alt="image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Triple Section -->
+
+        <!-- Start About Section -->
+        <section class="about-section bg-f4faf4 ptb-100">
+            <div class="container">
+                <div class="about-title-area">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-12">
+                            <div class="about-title">
+                                <span>Pentru clienții noștri</span>
+                                <h2>La Farmvio găsești muuulte produse sănătoase de la fermierii din apropierea ta</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-md-12">
+                            <div class="about-text">
+                                <p>La noi, nu îți faci griji cu privire la calitatea produselor. Toți fermierii din comunitatea Farmvio sunt verificați și dețin certificat de producător, principalul nostru obiectiv fiind să urmărim trasabilitatea tuturor produselor comercializate pe platforma noastră.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                     
+
+                        <div class="about-content-area">
+                            <div class="about-content">
+                                <h3>De ce să alegi produse direct de la fermier?</h3>
+                                <p>În conformitate cu proverbul românesc „A mânca nu e rușine, când mănânci ce se cuvine”, alegând podusele noastre, beneficiezi de o serie de avantaje, precum: </p>
+                            </div>
+
+                            <ul class="about-list">
+                                <li>
+                                    <i class="fas fa-check"></i>
+                                    un nivel de calitate garantată 
+                                </li>
+
+                                <li>
+                                    <i class="fas fa-check"></i>
+                                    dacă deții o afacere în domeniul HoReCa, beneficiezi de posibilitatea de a face comenzi centralizate dintr-un singur loc
+                                </li>
+
+                                <li>
+                                    <i class="fas fa-check"></i>
+                                    alimentație sănătoasă
+                                </li>
+
+                                <li>
+                                    <i class="fas fa-check"></i>
+                                    un nivel de energie ridicat pentru întreaga zi
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="about-image top-image">
+                            <img src="assets/img/about/familie_adobespark-min.webp" loading=lazy alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="default-shape">
+                <div class="default-shape-one">
+                    <img src="assets/img/default-shape/shape.png" alt="image">
+                </div>
+
+                <div class="default-shape-two">
+                    <img src="assets/img/default-shape/shape-2.png" alt="image">
+                </div>
+            </div>
+        </section>
+        <!-- End About Section -->
+
+        <!-- Start Country Area -->
+        <!-- <section class="country-area ptb-100">
+            <div class="container">
+                <div class="row align-items-center">
+                <div class = 'col-12' id = 'svg_container'>
+
+                </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- End Country Area -->
+    
+        <!-- Start Subscribe Area -->
+        <section class="subscribe-area ptb-100">
+            <div class="container">
+                <div class="section-title">
+                    <h3>Abonare newsletter </h3>
+                    <p>Pentru a avea acces mai rapid la promoțiile fermierilor, știri din agro-business, precum și diferite oferte personalizate, introdu adresa ta de e-mail în căsuța de mai jos.</p>
+                </div>
+
+                <form class="newsletter-form" onsubmit="return false">
+                    <input type="email" class="input-newsletter" placeholder="Adresa de e-mail" name="EMAIL"  >
+                    <button type="submit">
+                        Abonare
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div id="validator-newsletter" class="form-result"></div>
+                </form>
+            </div>
+
+            <div class="default-shape">
+                <div class="default-shape-one">
+                    <img src="assets/img/default-shape/shape.png" alt="image">
+                </div>
+
+                <div class="default-shape-two">
+                    <img src="assets/img/default-shape/shape-2.png" alt="image">
+                </div>
+            </div>
+        </section>
+        <!-- End Subscribe Area -->
+
+        <!-- Start Footer Section -->
+        <section class="footer-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12 col-12">
+                        <div class="single-footer-widget">
+                            <div class="footer-heading">
+                                <h3>Despre farmvio</h3>
+                            </div>
+
+                            <p>Povestea Farmvio
+                                a luat naștere din dorința de a crea o adevărată comunitate de fermieri. Produsele tale ajungând în timp real la clienți, beneficiind astfel de vizibilitatea dorită și dezvoltându-ți afacerea în mod eficient
+                                
+                                
+                                
+                                 </p>
+                            <ul class="footer-social">
+                                <li>
+                                    <a href="https://www.facebook.com/Farmvio/">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-heading">
+                                <h3>Link-uri utile</h3>
+                            </div>
+
+                            <ul class="footer-quick-links">
+                                <li>
+                                    <a href = '/index'>
+                                    Home
+                                    </a>
+                                </li>
+                                <li>
+                                   <a href = '/marketplace'>
+                                    Marketplace    
+                                </a>
+                                </li>
+                                <li>
+                                    <a href = '/register'>
+                                        Creează cont
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/login">
+                                       Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/fermier-farmvio">
+                                   Fermier Farmvio
+                                </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+             
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-heading">
+                                <h3>Contact</h3>
+                            </div>
+
+                            <div class="footer-info-contact">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>Locație</h3>
+                                <span>Strada Splaiul Unirii nr. 313, <br> București</span>
+                            </div>
+
+                            <div class="footer-info-contact">
+                                <i class="fas fa-phone-alt"></i>
+                                <h3>Telefon</h3>
+                                <span><a href="tel:0771-189-311">0771-189-311</a></span>
+                            </div>
+
+                            <div class="footer-info-contact">
+                                <i class="fas fa-envelope"></i>
+                                <h3>Email</h3>
+                                <span><a href="mailto:office@farmvio.com">office@farmvio.com</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright-area">
+                <div class="container">
+                    <div class="copyright-area-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <p>
+                                    <i class="far fa-copyright"></i> 
+                                    2021 Farmvio. Toate drepturile rezervate
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <ul>
+                                  
+                                    <li>
+                                        <a href="/privacy">Politica de confidențialitate</a>                                    </li>
+                                        <li>
+                                            <a href="/cookies">Politică de cookie-uri</a>
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Footer Section -->
+
+        <!-- Start Go Top Section -->
+        <div class="go-top">
+            <i class="fas fa-chevron-up"></i>
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <div class = 'cart_container' style="visibility: hidden;">
+            <div class = 'up_arrow'>
+                
+            </div>
+            <div class = 'cart_content'>
+                
+            </div>
+            <div class = 'bottom'>
+                <button class = 'special2' onclick="window.location.href = '/order'">Detalii coș</button>
+            </div>
+        </div>
+
+        <!-- End Go Top Section -->
+
+        <link rel = "stylesheet" href = '/notify/index.css' media="print" onload="this.media='all'">
+        <script async src = '/notify/index.js' ></script>
+
+        <!-- MeanMenu JS -->
+        <script defer  src="assets/js/jquery.meanmenu.js"></script>
+        <!-- Main JS -->
+        <script defer  src="/assets/scripts/page_index.js"></script>
+
+
+
+
+        {{#b2b}}
+        <script async src = '/assets/scripts/b2b_cart.js'></script>
+        <link rel = 'stylesheet' href = '/assets/css/b2b_cart.css' media="print" onload="this.media='all'">
+        <template id = 'cart_temp'>
+            <div class = 'b2b_item'>
+                <img src = '/assets/images/icons/no_image.png'/>
+                <span class = 'name'></span>
+                <input type = 'number' min = 1 max= 999>
+                <p class = 'sold_by'><strong>Vandut de: </strong></p>
+                <p class="del_from"><Strong>Livrat din: </Strong></p>
+            </div>
+        </template>
+
+
+        <template id = 'cart_temp_special'>
+            <div class = 'b2b_item'>
+                <h6 style="width: 100%">Special order</h6><br>
+                <div class = 'old_tags' style="width: 100%;padding-left: 5px;">
+               
+            </div>
+                <input type = 'number' value = '2' style="margin: 10px auto;">
+            </div>
+        </template>
+        {{/b2b}}
+        {{^b2b}}
+        <script async src = '/assets/scripts/cart.js'></script>
+        <link rel = 'stylesheet' href = '/assets/css/cart.css' media="print" onload="this.media='all'">
+        {{/b2b}}
+    </body>
+</html>

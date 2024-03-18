@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>FarmVio - Categorii</title>
+      <!-- Notify made by dan -->
+      <link rel = 'stylesheet' href = '/notify/index.css'></link>
+      <script src = '/notify/index.js'></script>
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	<script src="../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+	<script src = '/assets/scripts/admin_cats.js'></script>
+
+<style>
+  .content-wrapper
+  {
+    width: 100% !important;
+  }
+    section{
+        overflow: auto;
+    }
+    .cats_holder
+    {
+        width: max-content;
+        
+    }
+    .cat_level
+    {
+        width: fit-content;
+        background-color: white;
+        font-size: 16px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-image: linear-gradient(black,black);
+        background-position: 0px 10px;
+        background-size: 2px calc(100% - 20px);
+    background-repeat: no-repeat;
+    margin-right: 20px;
+    display: inline-grid;
+    position: relative;
+    }
+    .main_cat{
+        position: relative;
+        padding-left: 5px;
+    }
+    .main_cat::before
+    {
+        content: '';
+    position: absolute;
+    left: -10px;
+    width: 10px;
+    height: 2px;
+    top: 9px;
+    background-color: black;
+    }
+    .add_cat
+    {
+        display: block;
+        margin-top: 10px;
+        position: relative;
+    }
+    .add_cat::before{
+        content: '';
+        position: absolute;
+        top: 9px;
+        left: -10px;
+        height: 2px;
+        width: 8px;
+        background-color: black;
+    }
+    .cat_level .fa-times
+    {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        display: none;
+    }
+    .cat_level .fa-times:hover{
+        color: red;
+    }
+</style>
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+<div class="wrapper">
+	<div id="loader"></div>
+
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+			<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+		</a>	
+		<!-- Logo -->
+		<a href="/index" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+
+		
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/admin_b2b_orders">
+					<i class="icon-Home"></i>
+					<span>Comenzi b2b</span>
+				  </a>
+				</li>
+				<li>
+				  <a href="/avize">
+					<i class="fas fa-shield-alt"><span class="path1"></span><span class="path2"></span></i>
+					<span>Avize</span>
+				  </a>
+				</li>	
+
+				<li>
+				  <a href="/farmer_requests">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Cereri fermieri </span>
+				  </a>
+				</li>	
+
+        <li>
+				  <a href="/b2b_requests">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Cereri B2B </span>
+				  </a>
+				</li>	
+        <li>
+				  <a href="/admin_users">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Useri </span>
+				  </a>
+				</li>	
+			  </ul>	
+
+
+
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content" id = 'main_content' >
+                <div class = 'cats_holder'>
+                    
+
+                    <button type = 'button' class = 'btn btn-success' onclick="insert_main_cat()">Adauga categorie principala</button>
+                </div>
+        </section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  <li class="nav-item">
+			<a class="nav-link" href="javascript:void(0)">FAQ</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Purchase Now</a>
+		  </li>
+		</ul>
+    </div>
+	  &copy; 2021 <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+  </footer>
+
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+	
+	<!-- Vendor JS -->
+
+
+
+  <script src="../assets/vendor_components/datatable/datatables.min.js"></script>
+
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	
+	<script src="js/pages/timeline.js"></script>
+
+	<script src="js/pages/data-table.js"></script>
+ 
+
+</body>
+</html>

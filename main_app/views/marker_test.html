@@ -1,0 +1,52 @@
+<html>
+<head>
+        <style>
+   #map
+      {
+        width: 100%;
+        height: 100%;
+      }
+      .marker{
+          width: 30px;
+          height: 30px;
+          background-color: red;
+      }
+        </style>
+    <script>
+            var f,map;
+     function initMap() {
+  
+         f = new google.maps.LatLng(16.7666, -3.0026);
+         map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 11,
+    center: { lat: 16.7666, lng: -3.0026 },
+    mapTypeId: "satellite",
+  });
+  
+
+  var fileref=document.createElement('script')
+    fileref.setAttribute("type","text/javascript")
+    fileref.setAttribute("src", "/assets/scripts/marker_main.js")
+
+    document.getElementsByTagName("head")[0].appendChild(fileref);
+
+
+}
+
+
+    </script>
+       
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsulFOxSCM7O7uc72Sxff6xSuztTkUXhA&callback=initMap&libraries=drawing&v=weekly"
+async
+></script>
+
+
+
+
+</head>
+<body>
+
+    <div id = 'map'></div>
+</body>
+</html>

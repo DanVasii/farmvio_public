@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <link rel="icon" 
+        type="image/png" 
+        href="/assets/images/apppictures/Logo FARMVIO14.png">
+        <base href="/views/">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       
+        <script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <!-- FontAwesome Min CSS -->
+        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <!-- FlatIcon CSS -->
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <!-- Popup CSS -->
+        <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+        <!-- Owl Carousel Min CSS -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <!-- Image LightBox Min CSS -->
+        <link rel="stylesheet" href="assets/css/imagelightbox.min.css">
+        <!-- Nice Select Min CSS -->
+        <link rel="stylesheet" href="assets/css/nice-select.min.css">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!-- Odometer CSS -->
+        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-HLL969JFNJ');
+        </script>
+
+        <title>Produse - FarmVio</title>
+
+        <link rel="icon" type="image/png" href="assets/img/favicon.png">
+
+
+        <style>
+            .select2-container .select2-selection--single
+            {
+                height: 48px !important;
+            }
+            .select2-container .select2-selection--single .select2-selection__rendered
+            {
+                padding-top: 10px !important;
+            }
+            </style>
+    </head>
+
+    <body>
+
+        <!-- Start Preloader Area -->
+		<div class="preloader">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+        <!-- End Preloader Area --> 
+
+        <!-- Start Navbar Area -->
+        <div class="navbar-area">
+            <div class="trifles-responsive-nav">
+                <div class="container">
+                    <div class="trifles-responsive-menu">
+                        <div class="logo">
+                            <a href="/index">
+                                <img src="assets/img/logo-two.png" alt="logo">
+                            </a>
+                            <div class="cart-btn phone">
+                                <a  onmouseover="show_cart()">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>0</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trifles-nav">
+                <div class="container">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <a class="navbar-brand" href="/index">
+                            <img src="assets/img/logo-two.png" alt="logo">
+                        </a>
+
+                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="/index" class="nav-link">
+                                        Home 
+                                    </a>
+                                    
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/story" class="nav-link">
+                                        Povestea
+                                    </a>
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/marketplace" class="nav-link">
+                                        Marketplace 
+                                    </a>
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/b2b" class="nav-link">
+                                        B2B 
+                                    </a>
+                                    
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/contact" class="nav-link">
+                                        Contact 
+                                    </a>
+                                </li>
+          
+                                <li class="nav-item">
+                                    {{#login}}
+                                    <a href="/login" class="nav-link">
+                                        Login
+                                    </a>
+                                    {{/login}}
+                                    {{^login}}
+                                    <a href="/dashboard" class="nav-link">
+                                      Contul meu
+                                  </a>
+                                    {{/login}}
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/register" class="nav-link">
+                                        Creează cont
+                                    </a>
+                                </li>
+                            </ul>
+          
+
+                            <div class="others-options">
+                           
+
+                                <div class="cart-btn">
+                                    <a  onmouseover = "show_cart()">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+
+                               
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- End Navbar Area -->
+        <div class = 'filters_bg'></div>
+        <div class = 'filters_container' id = 'finish_atc'>
+
+          <i class="far fa-times-circle close_window" onclick="close_atc()"></i>
+          <h4 class = 'ms-3 mt-2'>Finalizează comanda</h4>
+          <div class = 'row overflow-auto' style="width: 100%;padding-left: 15px;margin-top: 45px; max-height: calc(100% - 100px);">
+  
+        </div>
+        <div class = 'row justify-content-end' style="width: 100%;padding-left: 15px;margin-top: 45px;">
+            <div class = 'col-auto'>
+                <button class = 'special2' onclick="close_atc()">Continuă cumpărăturile</button>
+            </div>
+            <div class = 'col-auto'>
+            <button class="dan" onclick="window.location.href = '/delivery_info'">Către plată</button>
+        </div>
+    </div>
+
+      
+
+        </div>
+        <!-- Sidebar Modal -->
+        <div class="sidebar-modal">
+            <div class="sidebar-modal-inner">
+                <div class="sidebar-about-area">
+                    <div class="title">
+                        <h2>About Us</h2>
+                        <p>We believe brand interaction is key in communication. Real innovations and a positive customer experience are the heart of successful communication. No fake products and services. The customer is king, their lives and needs are the inspiration.</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-instagram-feed">
+                    <h2>Instagram</h2>
+                    <ul>
+                        <li><a href="#">
+                            <img src="assets/img/instagram-image/1.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/2.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/3.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/4.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/5.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/6.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/7.jpg" alt="image">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="assets/img/instagram-image/8.jpg" alt="image">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-contact-area">
+                    <div class="contact-info">
+                        <div class="contact-info-content">
+                            <h2>
+                                <a href="tel:+0881306298615">
+                                    +088 130 629 8615
+                                </a>
+                                <span>OR</span>
+                                <a href="mailto:trifles@gmail.com">
+                                    trifles@gmail.com
+                                </a>
+                            </h2>
+    
+                            <ul class="social">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="close-btn sidebar-modal-close-btn">
+                    <i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+        <!-- End Sidebar Modal -->
+
+        <!-- Start Page Title Area -->
+        <div class="page-title-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-title-content">
+                            <h2>{{farmer_name}}</h2>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Title Area -->
+        <input type = 'hidden' value="{{ prod_id }}" id = 'prod_id'>
+        <input type = 'hidden' value="{{ farmer_id }}" id = 'farmer_id'>
+        <!-- Start Product Details Area -->
+        <section class="product-details-area ptb-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12">
+                   <!-- Carousel wrapper -->
+                   <div class="outer">
+                    <div id="big" class="owl-carousel owl-theme">
+
+                     {{#image}}
+                     <div class = 'item'>  
+                     <img src = '{{.}}'>
+                    </div>
+             
+                     {{/image}}
+                    </div>
+                    <div id="thumbs" class="owl-carousel owl-theme">
+                        {{#image}}
+
+                     <div class = 'item'>  
+                     <img src = '{{.}}'>
+                    </div>
+              
+                     {{/image}}
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="product-details-desc">
+                            <h3>{{ prod_name }}</h3>
+                            <div class="price">
+                                <span class="new-price">{{price}} / {{unit}}</span>
+                                {{#price_per_kg}}
+                                <br>
+                                <span class="new-price" style="font-size: 12px;font-weight: normal;margin-top: -5px;">{{price_per_kg}} RON / Kilogram</span>
+                                {{/price_per_kg}}
+                            </div>
+                            <div class="product-review">
+                                <div class="rating">
+                                    {{{rating}}}
+                                </div>
+                                <a href="#" class="rating-count">{{rating_count}} reviews</a>
+                            </div>
+                            <p> {{desc}}</p>
+                            <div class="product-add-to-cart">
+                                <div class="input-counter">
+                                    <span class="minus-btn">
+                                        <i class="fas fa-minus"></i>
+                                    </span>
+                                    {{#cart_qty}}
+                                    <input type="text" min="1" value="{{ cart_qty }} " id = 'qty' onchange="update_cart_qty({{prod_id}},this,null,{{farmer_id}})">
+                                    {{/cart_qty}}
+
+                                    {{^cart_qty}}
+                                    <input type="text" min="1" value="1" id = 'qty'>
+                                    {{/cart_qty}}
+                                    <span class="plus-btn">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                </div>
+                            {{^only_res}}
+                                {{^cart_qty}}
+                                <button type="submit" class="default-btn" onclick="atc()">
+                                    <i class="fas fa-cart-plus"></i> 
+                                    Adaugă în coș
+                                </button>
+                                {{/cart_qty}}
+
+                                {{#cart_qty}}
+                                <button type="submit" class="default-btn" onclick="remove_item()">
+                                    <i class="far fa-trash-alt"></i> 
+                                    Șterge din coș
+                                </button>
+                                {{/cart_qty}}
+                            {{/only_res}}
+
+                            {{#only_res}}
+                            <button type="submit" class="default-btn" onclick="show_pre_order_form()">
+                                <i class="fas fa-cart-plus"></i> 
+                                Pre-comandă
+                            </button>
+                            {{/only_res}}
+
+                            </div>
+
+                            {{^only_res}}
+                            <div class = 'form-group'>
+                            <label for = 'select_del_point' class = 'mt-3'>Selectează punctul de livrare</label>
+                            <select class="form-control  select2 " style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value = "">Selecteză punct de livrare</option>
+                                {{#wpoints}}
+                                    {{#active}}
+                                    <option selected = "true" value = '{{link}}'>{{judet}}, {{oras}}, {{adresa}}</option>
+                                    {{/active}}
+
+                                    {{^active}}
+                                    <option value = '{{link}}'>{{judet}}, {{oras}}, {{adresa}}</option>
+                                    {{/active}}
+                                {{/wpoints}}
+                              </select>
+                            </div>
+
+                            {{/only_res}}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="tab products-details-tab">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <ul class="tabs">
+                                        <li>
+                                            <a href="#">
+                                                <div class="dot"></div> 
+                                                Descriere produs
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="dot"></div> 
+                                                Despre fermier
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="dot"></div> 
+                                                Reviews
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="tab_content">
+                                        <div class="tabs_item">
+                                            <div class="products-details-tab-content">
+                                                <p>{{ desc }}.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="tabs_item">
+                                            <div class="products-details-tab-content">
+                                                <ul class="additional-information">
+                                                    <li>
+                                                        <span>Brand:</span> 
+                                                        ThemeForest
+                                                    </li>
+                                                    <li>
+                                                        <span>Color:</span> 
+                                                        Brown
+                                                    </li>
+                                                    <li>
+                                                        <span>Size:</span> 
+                                                        Large, Medium
+                                                    </li>
+                                                    <li>
+                                                        <span>Weight:</span> 
+                                                        27 kg
+                                                    </li>
+                                                    <li>
+                                                        <span>Dimensions:</span> 
+                                                        22 x 123 cm
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="tabs_item">
+                                            <div class="products-details-tab-content">
+                                                <div class="product-review-form">
+                                                
+                                                    <div class="review-comments">
+                     
+                                                </div>
+
+
+                                                {{#rating_eligible}}
+                                                    
+                                                <div class="review-form">
+                                                    <h3>Write a Review</h3>
+                                                    <form >
+                                                        <div class="row">
+                                                         
+                                                         <div class ='col-12 mb-3'>
+
+                                                             <div class = 'rating' id = 'user_rating'>
+                                                                <i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i>
+                                                                <div class="invalid-feedback rating_err">
+                                                                    Please choose a rating.
+                                                                  </div>
+                                                            </div>
+
+                                                         </div>
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <div class="form-group">
+                                                                    <input type="text" id="review-title" name="review-title" placeholder="Enter your review a title" class="form-control">
+                                                                    <div class="invalid-feedback title_err">
+                                                                        Please choose a title.
+                                                                      </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <div class="form-group">
+                                                                    <textarea name="review-body" id="review-body" cols="30" rows="7" placeholder="Write your comments here" class="form-control"></textarea>
+                                                                    <div class="invalid-feedback comm_err">
+                                                                        Please choose a comments.
+                                                                      </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <button type="button" class="default-btn" onclick="submit_review()">Submit Review</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                {{/rating_eligible}}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Product Details Area -->
+
+ 
+   <!-- Start Footer Section -->
+   <section class="footer-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Despre farmvio</h3>
+                    </div>
+
+                    <p>Povestea Farmvio a luat naștere din dorința de a crea o adevărată comunitate de fermieri, dar și din dorința de a revoluționa modul în care îți faci cumpărăturile, astfel încât să ai toate produsele preferate la doar un click distanță, în secțiunea Marketplace.
+                    </p>
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.facebook.com/Farmvio/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+
+
+                        <!-- <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Link-uri utile</h3>
+                    </div>
+
+                    <ul class="footer-quick-links">
+                        <li>
+                            <a href = '/index'>
+                            Home
+                            </a>
+                        </li>
+                        <li>
+                           <a href = '/marketplace'>
+                            Marketplace    
+                        </a>
+                        </li>
+                        <li>
+                            <a href = '/register'>
+                                Creează cont
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/login">
+                               Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/fermier-farmvio">
+                           Fermier Farmvio
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+     
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Contact</h3>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-pin"></i>
+                        <h3>Locație</h3>
+                        <span>Strada Splaiul Unirii nr. 313, <br> București</span>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-call"></i>
+                        <h3>Telefon</h3>
+                        <span><a href="tel:0771-189-311">0771-189-311</a></span>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-envelope"></i>
+                        <h3>Email</h3>
+                        <span><a href="mailto:office@farmvio.com">office@farmvio.com</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copyright-area-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <p>
+                            <i class="far fa-copyright"></i> 
+                            2021 Farmvio. Toate drepturile rezervate
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <ul>
+                       
+                            <li>
+                                <a href="/privacy">Politică de confidențialitate</a>                          
+                              </li>
+                              <li>
+                                <a href="/cookies">Politică de cookie-uri</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Footer Section -->
+
+        <div class = 'cart_container'>
+            <div class = 'up_arrow'>
+                
+            </div>
+            <div class = 'cart_content'>
+                
+            </div>
+            <div class = 'bottom'>
+                <button class = 'special2' onclick="window.location.href = '/order'">Detalii coș</button>
+            </div>
+        </div>
+
+        <!-- Start Go Top Section -->
+        <div class="go-top">
+            <i class="fas fa-chevron-up"></i>
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <!-- End Go Top Section -->
+
+        <!-- jQuery Min JS -->
+        <script src="assets/js/jquery.min.js"></script>
+        <!-- Popper Min JS -->
+        <script src="assets/js/popper.min.js"></script>
+        <!-- Bootstra Min JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Owl Carousel Min JS -->
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <!-- MeanMenu JS -->
+        <script src="assets/js/jquery.meanmenu.js"></script>
+        <!-- Popup JS -->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <!-- Appear JS -->
+        <script src="assets/js/jquery.appear.min.js"></script>
+        <!-- Odometer JS -->
+        <script src="assets/js/odometer.min.js"></script>
+        <!-- Image LightBox Min JS -->
+        <script src="assets/js/imagelightbox.min.js"></script>
+        <!-- Nice Selects Min JS -->
+        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <!-- AjaxChimp Min JS -->
+        <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script>
+
+            $(document).ready(function(){
+                
+    var bigimage = $("#big");
+    var thumbs = $("#thumbs");
+  
+    //var totalslides = 10;
+    var syncedSecondary = true;
+  
+    bigimage
+      .owlCarousel({
+      items: 1,
+      slideSpeed: 2000,
+      nav: true,
+      autoHeight: true,
+      autoplay: false,
+      dots: false,
+      loop: true,
+      responsiveRefreshRate: 200,
+      navText: [
+        '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+        '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
+      ]
+    })
+      .on("changed.owl.carousel", syncPosition);
+  
+    thumbs
+      .on("initialized.owl.carousel", function() {
+      thumbs
+        .find(".owl-item")
+        .eq(0)
+        .addClass("current");
+    })
+      .owlCarousel({
+      items: 4,
+      smartSpeed: 200,
+      slideSpeed: 500,
+      slideBy: 4,
+      responsiveRefreshRate: 100
+    })
+      .on("changed.owl.carousel", syncPosition2);
+  
+    function syncPosition(el) {
+      //if loop is set to false, then you have to uncomment the next line
+      //var current = el.item.index;
+  
+      //to disable loop, comment this block
+      var count = el.item.count - 1;
+      var current = Math.round(el.item.index - el.item.count / 2 - 0.5);
+  
+      if (current < 0) {
+        current = count;
+      }
+      if (current > count) {
+        current = 0;
+      }
+      //to this
+      thumbs
+        .find(".owl-item")
+        .removeClass("current")
+        .eq(current)
+        .addClass("current");
+      var onscreen = thumbs.find(".owl-item.active").length - 1;
+      var start = thumbs
+      .find(".owl-item.active")
+      .first()
+      .index();
+      var end = thumbs
+      .find(".owl-item.active")
+      .last()
+      .index();
+  
+      if (current > end) {
+        thumbs.data("owl.carousel").to(current, 100, true);
+      }
+      if (current < start) {
+        thumbs.data("owl.carousel").to(current - onscreen, 100, true);
+      }
+    }
+  
+    function syncPosition2(el) {
+      if (syncedSecondary) {
+        var number = el.item.index;
+        bigimage.data("owl.carousel").to(number, 100, true);
+      }
+    }
+  
+    thumbs.on("click", ".owl-item", function(e) {
+      e.preventDefault();
+      var number = $(this).index();
+      bigimage.data("owl.carousel").to(number, 300, true);
+    });
+  });
+            
+
+            (function($) {
+
+var Defaults = $.fn.select2.amd.require('select2/defaults');
+
+$.extend(Defaults.defaults, {
+  dropdownPosition: 'auto'
+});
+
+ var AttachBody = $.fn.select2.amd.require('select2/dropdown/attachBody');
+
+var _positionDropdown = AttachBody.prototype._positionDropdown;
+
+AttachBody.prototype._positionDropdown = function() {
+
+var $window = $(window);
+
+    var isCurrentlyAbove = this.$dropdown.hasClass('select2-dropdown--above');
+    var isCurrentlyBelow = this.$dropdown.hasClass('select2-dropdown--below');
+
+    var newDirection = null;
+
+    var offset = this.$container.offset();
+
+    offset.bottom = offset.top + this.$container.outerHeight(false);
+    
+    var container = {
+        height: this.$container.outerHeight(false)
+    };
+
+container.top = offset.top;
+container.bottom = offset.top + container.height;
+
+var dropdown = {
+  height: this.$dropdown.outerHeight(false)
+};
+
+var viewport = {
+  top: $window.scrollTop(),
+  bottom: $window.scrollTop() + $window.height()
+};
+
+var enoughRoomAbove = viewport.top < (offset.top - dropdown.height);
+var enoughRoomBelow = viewport.bottom > (offset.bottom + dropdown.height);
+
+var css = {
+  left: offset.left,
+  top: container.bottom
+};
+
+// Determine what the parent element is to use for calciulating the offset
+var $offsetParent = this.$dropdownParent;
+
+// For statically positoned elements, we need to get the element
+// that is determining the offset
+if ($offsetParent.css('position') === 'static') {
+  $offsetParent = $offsetParent.offsetParent();
+}
+
+var parentOffset = $offsetParent.offset();
+
+css.top -= parentOffset.top
+css.left -= parentOffset.left;
+
+var dropdownPositionOption = this.options.get('dropdownPosition');
+
+    if (dropdownPositionOption === 'above' || dropdownPositionOption === 'below') {
+
+        newDirection = dropdownPositionOption;
+
+} else {
+        
+    if (!isCurrentlyAbove && !isCurrentlyBelow) {
+              newDirection = 'below';
+        }
+
+        if (!enoughRoomBelow && enoughRoomAbove && !isCurrentlyAbove) {
+          newDirection = 'above';
+        } else if (!enoughRoomAbove && enoughRoomBelow && isCurrentlyAbove) {
+          newDirection = 'below';
+        }
+
+}
+
+if (newDirection == 'above' ||
+    (isCurrentlyAbove && newDirection !== 'below')) {
+  css.top = container.top - parentOffset.top - dropdown.height;
+}
+
+if (newDirection != null) {
+  this.$dropdown
+    .removeClass('select2-dropdown--below select2-dropdown--above')
+    .addClass('select2-dropdown--' + newDirection);
+  this.$container
+    .removeClass('select2-container--below select2-container--above')
+    .addClass('select2-container--' + newDirection);
+}
+
+this.$dropdownContainer.css(css);
+
+};
+
+})(window.jQuery);
+
+
+$(document).ready(function() {
+$(".js-source-states").select2({
+  dropdownPosition: 'below'
+});
+});
+
+        </script>
+        <!-- Main JS -->
+        <script src="assets/js/main.js"></script>
+        <link rel = 'stylesheet' href = '/notify/index.css'>
+        <script src = '/notify/index.js'></script>
+    
+     
+        
+        <template id = 'review'>
+            <div class="review-item">
+                <div class="rating">
+                </div>
+                <h3></h3>
+                <span><strong class='user_by'></strong> on <strong class = 'date_review'></strong></span>
+                <p></p>
+                <button class = 'btn edit_review' type = 'button'>Editeaza review-ul</button>
+                <button class = 'btn finish_edit' type = 'button'>Finalizeaza editarea</button>
+            </div>
+        </template>
+
+        <template id = 'finish_atc_temp'>
+            <div class = 'col-12 mb-3'>
+                <div class = 'row align-items-center'>
+                    <div class = 'col-auto'>
+                        <img src = '/assets/images/icons/no_image.png' style="max-width: 150px;max-height: 150px;"/>
+                    </div>
+                    <div class = 'col-auto'>
+                        
+                    </div>
+                    <div class = 'col-auto'>
+                        
+                    </div>
+                    <div class = 'col-auto'>
+                         
+                    </div>
+                    <div class = 'col-auto'>
+                        
+                    </div>
+                    <div class = 'col-auto'>
+                        
+                    </div>
+                </div>
+            </div>
+        </template>
+        <link rel = 'stylesheet' href = '/assets/css/cart.css'>
+        <script src = '/assets/scripts/cart.js'></script>
+
+        <link rel = 'stylesheet' href='/assets/css/pre_order.css'>
+        <script src='/assets/scripts/pre_order.js'></script>
+
+       
+
+
+    </body>
+</html>

@@ -1,0 +1,204 @@
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+      #map
+      {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <script>
+      var frec=[];
+      var circles = [];
+      function initMap() {
+    
+    map = new google.maps.Map(document.getElementById("map"), {
+      panControl: false,
+      center: { 
+        lat: 44.106670, lng: 24.995426
+      },
+      zoom: 12,
+      disableDefaultUI: true,
+      mapTypeId: "roadmap",
+      maxZoom: 17
+    });
+    //draw circle 
+    new google.maps.Circle({
+            strokeColor: "#0F00FF",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#00F0FF",
+            fillOpacity: 0.35,
+            map,
+            center: {lat: 44.106670,lng: 24.995426},
+            radius: 3000,
+          });
+    recursive_draw(44.106670,24.995426,500,"#0000FF");
+    frec = [];
+    recursive_draw(44.106670,24.995426,100,"#FFA500");
+    
+    //remove unnecessary 
+    remove_intersection();
+
+        //calc
+        calc_efficient();
+
+        show();
+
+
+
+      }
+
+      function show()
+      {
+        let res = [];
+        let i;
+        for (i=1;i<circles.length;i++)
+        {
+          if (circles[i].getMap()!=null)
+          res.push({"lat":circles[i].center.lat(),"lng":circles[i].center.lng(),"radius":circles[i].radius});
+        }
+        console.log(res);
+      }
+      var big_sum = 0;
+      function calc_efficient()
+      {
+        let i;
+        for (i=1;i<circles.length;i++)
+        {
+          if(circles[i].getMap()!=null)
+          big_sum += Math.PI * (circles[i].radius * circles[i].radius);
+        }
+      }
+
+      function remove_intersection()
+      {
+        let i,j;
+        for (i=1;i<circles.length;i++)
+        {
+
+          for (j=1;j<circles.length;j++)
+          {
+            if (circles[i].radius < circles[j].radius)
+            {
+            //  console.log(distance({lat: circles[i].center.lat(),lng: circles[i].center.lng()},{lat: circles[j].center.lat(),lng: circles[j].center.lng()})*1000);
+              //check the distance 
+              if (distance({lat: circles[i].center.lat(),lng: circles[i].center.lng()},{lat: circles[j].center.lat(),lng: circles[j].center.lng()})*1000<circles[i].radius+circles[j].radius - 150)
+              {
+                console.log("gasit")
+                //remove 
+                circles[i].setMap(null);
+              }
+            }
+          }
+        }
+      }
+
+      var max_calls = 0;
+      function is_already(lat,lng,rad)
+      {
+        let i;
+        for (i=0;i<frec.length;i++)
+        {
+          if(distance({lat,lng},{lat: frec[i].lat,lng: frec[i].lng})*1000<rad)
+          {
+            return true;
+          }
+        }
+        return false;
+      }
+    async  function recursive_draw(lat,lng,radius,color)
+      {
+        
+      // console.log(distance({lat,lng},{lat: 44.106670, lng: 24.995426}))
+        if (distance({lat,lng},{lat: 44.106670, lng: 24.995426})<3 && !is_already(lat,lng,radius)){
+         // console.log(lng);
+          frec.push({lat,lng});
+          
+            let circle = new google.maps.Circle({
+            strokeColor: color,
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: color,
+            fillOpacity: 0.35,
+            map,
+            center: {lat,lng},
+            radius,
+          });
+          max_calls++;
+          circles[max_calls] = circle;
+          //draw to the bottom 
+          recursive_draw(calc_lat(lat,-radius*2),lng,radius,color);
+          //draw tot the upper
+          recursive_draw(calc_lat(lat,radius*2),lng,radius,color);
+         // 
+          //draw right
+         recursive_draw(lat,calc_lng(lng,lat,radius*2),radius,color);
+
+          //draw left 
+         recursive_draw(lat,calc_lng(lng,lat,-radius*2),radius,color);
+        }
+      }
+
+      function distance(small_center_coords,big_center_coords)
+      {
+          var R = 6371; // km
+        var dLat = toRad(small_center_coords.lat-big_center_coords.lat);
+       
+        var dLon = toRad(small_center_coords.lng-big_center_coords.lng);
+        var lat1 = toRad(big_center_coords.lat);
+        var lat2 = toRad(small_center_coords.lat);
+
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c;
+        return d;
+      }
+
+      function calc_lat(lat,meters)
+      {
+        var earth = 6378.137,  //radius of the earth in kilometer
+        pi = Math.PI,
+        m = (1 / ((2 * pi / 360) * earth)) / 1000;  //1 meter in degree
+
+    var new_latitude = lat + (meters * m);
+        return new_latitude;
+      }
+
+      function calc_lng(lng,lat,meters)
+      {
+            var earth = 6378.137,  //radius of the earth in kilometer
+        pi = Math.PI,
+        cos = Math.cos,
+        m = (1 / ((2 * pi / 360) * earth)) / 1000;  //1 meter in degree
+
+    var new_longitude = lng + (meters * m) / cos(lat * (pi / 180));
+        return new_longitude;
+      }
+
+      function toRad(value)
+{
+    return Math.PI * value/180;
+}
+
+    </script>
+    
+    <script src = '/assets/scripts/marker_main.js'></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsulFOxSCM7O7uc72Sxff6xSuztTkUXhA&callback=initMap&libraries=drawing&v=weekly"
+    async
+  ></script>
+  </head>
+<body>
+
+
+
+<div id = 'map'></div>
+</body>
+  </html>

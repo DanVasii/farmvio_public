@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" 
+  type="image/png" 
+  href="/assets/images/apppictures/Logo FARMVIO14.png">
+  <title>Marketplace - FarmVio</title>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-HLL969JFNJ');
+  </script>
+
+<script>
+    const global_remove = "Șterge din comandă";
+    const global_add = "Adaugă la comandă";
+  </script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Owl Carousel Min CSS -->
+      <link rel="stylesheet" href="/views/assets/css/owl.carousel.min.css">
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="/views/assets/css/bootstrap.min.css">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="/views/assets/css/meanmenu.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="/views/assets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="/views/assets/css/responsive.css">
+
+        <style>
+          .full-height
+          {
+            clear: both;
+          }
+          .button-filters
+          {
+            width: auto !important;
+            padding-right: 20px !important;
+          }
+          .prom
+          {
+            padding: 2px 15px;
+            box-shadow: 0px 0px 2px black;
+            margin-left: 20px;
+            background-color: white;
+            transition: background-color .3s;
+          }
+          .prom:hover{
+            background-color: #e4e6ef;
+          }
+          .prom img{
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+          #promovati
+          {
+            background-color: #e3defe !important;
+    width: 100%;
+    margin-left: 0px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+          
+        </style>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<link rel = 'stylesheet' href = '/notify/index.css'>
+<script src = '/notify/index.js'></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src = '/assets/scripts/MathUtils.js'></script>
+<script src = '/assets/scripts/MapUtils.js'></script>
+<script src="/assets/scripts/topmenu.js"></script>
+<script src="/assets/scripts/index.js"></script>
+<script src = '/views/assets/js/main_b2b.js'></script>
+
+<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+<script>
+  let map, infoWindow;
+var map_utils,live_sc_timeout;
+function initMap() {
+  
+  map = new google.maps.Map(document.getElementById("map"), {
+    panControl: false,
+    center: { 
+      lat: 44.933334, lng: 26.033333
+    },
+    zoom: 12,
+    disableDefaultUI: true,
+    mapTypeId: "roadmap",
+    maxZoom: 17
+  });
+  //we have the map, now init mapUtils 
+  map_utils = new mapUtils(map);
+        
+     
+
+
+  google.maps.event.addListener(map, 'bounds_changed', function(){
+    
+   map_utils.update_bounds(this.getBounds());
+   //we should update the raidus to if we are live searching 
+   if ($("#live_chb").prop("checked"))
+   {
+     map_utils.update_radius(map_utils.calc_radius())
+     
+     if (live_sc_timeout)
+    clearTimeout(live_sc_timeout)
+    live_sc_timeout = setTimeout(function(){
+        //update the center 
+        map_utils.update_center(map.getCenter());
+
+        map_utils.load_farms();
+    },500)
+   }
+    
+});
+
+  map.addListener("drag",function(){
+    //only if live sc is enabled 
+    if ($("#live_chb").prop("checked")){
+    if (live_sc_timeout)
+    clearTimeout(live_sc_timeout)
+    live_sc_timeout = setTimeout(function(){
+        //update the center 
+        map_utils.update_center(map.getCenter());
+
+        map_utils.load_farms();
+    },500)
+  }
+  })
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          
+          map.setCenter(pos);
+
+          map_utils.update_center(map.getCenter());
+  
+          map_utils.update_radius(20);
+          map_utils.circle("20KM");
+          map_utils.load_farms();
+        },
+        () => {
+          handleLocationError(true, infoWindow, map.getCenter());
+          map_utils.update_center(map.getCenter());
+  
+          map_utils.update_radius(20);
+          map_utils.circle("20KM");
+          map_utils.load_farms();
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+
+
+      map_utils.update_center(map.getCenter());
+  
+      map_utils.update_radius(20);
+      map_utils.circle("20KM");
+      map_utils.load_farms();
+    }
+
+
+  
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+
+}
+
+</script>
+</head>
+<body>
+
+
+  <div class = 'show_map_phone' onclick = 'show_map()'>
+    <i class="fas fa-map-marked-alt"></i> Arată harta
+  </div>
+
+<div class="navbar-area-three">
+  <div class="trifles-responsive-nav">
+      <div class="container">
+          <div class="trifles-responsive-menu">
+              <div class="logo">
+                  <a href="/index">
+                      <img src="/views/assets/img/logo-two.png" alt="logo">
+                  </a>
+                  <div class="cart-btn phone">
+                    <a  onmouseover="show_cart()">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>0</span>
+                    </a>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="trifles-nav">
+      <div class="container">
+          <nav class="navbar navbar-expand-md navbar-light">
+              <a class="navbar-brand" href="/index">
+                  <img src="/views/assets/img/logo-two.png" alt="logo">
+              </a>
+
+              <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a href="/index" class="nav-link ">
+                              Home 
+                          </a>
+                          
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/story" class="nav-link">
+                              Povestea
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/marketplace" class="nav-link active">
+                              Marketplace 
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/b2b" class="nav-link">
+                              B2B 
+                          </a>
+                          
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="/contact" class="nav-link">
+                          Contact 
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                        {{#login}}
+                          <a href="/login" class="nav-link">
+                              Login
+                          </a>
+                          {{/login}}
+                          {{^login}}
+                          <a href="/dashboard" class="nav-link">
+                            Contul meu
+                        </a>
+                          {{/login}}
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/register" class="nav-link">
+                              Creează cont
+                          </a>
+                      </li>
+                  </ul>
+
+                  <div class="others-options">
+               
+
+                      <div class="cart-btn">
+                        <a  onmouseover = "show_cart()">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>0</span>
+                        </a>
+                    </div>
+
+ 
+                  </div>
+              </div>
+          </nav>
+      </div>
+  
+</div>
+</div>
+
+<div class = 'cart_container'>
+  <div class = 'up_arrow'>
+      
+  </div>
+  <div class = 'cart_content'>
+      
+  </div>
+  <div class = 'bottom'>
+      <button class = 'special2' onclick="window.location.href = '/order'">Detalii comandă</button>
+  </div>
+</div>
+
+<!-- End Navbar Area -->
+<div class = 'filters_bg'></div>
+<div class = 'filters_container' id = 'filtre'>
+  <i class="far fa-times-circle close_window" onclick="close_filters()"></i>
+  <div class = 'row justify-content-center' style="width: 100%;padding-left: 15px;">
+    <div class = 'col-12 mt-5' id = 'cats_list'>
+      <h3>Categorii</h3>
+      <button class = 'btn btn-primary mb-3'  id = 'back_cat' onclick = "back_cat()" disabled><i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Înapoi</button><br>
+      
+    </div>
+
+    <div class = 'col-xl-6 col-lg-6 col-md-12 mt-5' style="position: relative;" >
+      <h3>Locație</h3>
+      <input type = 'text' id = 'city_input' placeholder="Caută oraș"/>
+      <div class = 'list' id = 'city_list'>
+
+      </div>
+    </div>
+
+    <div class = 'col-xl-6 col-lg-6 col-md-12 mt-5'>
+      <h3>Rază</h3>
+      <select class="form-select" id = 'radius' style="width: 90%;">
+        <option selected value="20">20 KM</option>
+        <option value="50">50 KM</option>
+  
+      </select>
+    </div>
+
+    <div class = 'col-12'>
+      <h3>Caută fermier</h3>
+      <input type = 'text' id = 'farmer_search' placeholder="Caută fermier"/>
+      <div class = 'list' id = 'farmer_search'>
+
+      </div>
+    </div>
+
+    <div class = 'col-auto mt-3'>
+      <button class = 'special2' onclick="close_filters()">Confirmă</button>
+    </div>
+
+</div>
+
+</div>
+
+
+<div class = 'filters_container' id = 'custom_atc'>
+  <i class="far fa-times-circle close_window" onclick="close_custom_atc()" ></i>
+  <div class = 'row' style="width: 100%;padding-left: 15px;margin-top: 45px;">
+    <section class="product-details-area ptb-20">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+               <!-- Carousel wrapper -->
+               <div class="outer">
+                <div id="big" class="owl-carousel owl-theme">
+
+                 
+         
+         
+                </div>
+                <div id="thumbs" class="owl-carousel owl-theme">
+
+          
+                </div>
+                </div>
+
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="product-details-desc">
+                        <h3> </h3>
+                        <div class="price">
+                            <span class="new-price"></span>
+                            
+                        </div>
+               
+                        <p> </p>
+                        <div class="product-add-to-cart">
+                            <div class="input-counter">
+                                <span class="minus-btn">
+                                    <i class="fas fa-minus"></i>
+                                </span>
+
+
+                                <input type="text" min="1" value="1" id = 'qty'>
+
+                                <span class="plus-btn">
+                                    <i class="fas fa-plus"></i>
+                                </span>
+                            </div>
+                            <button type="submit" class="default-btn mt-3" onclick="atc()">
+                                <i class="fas fa-cart-plus"></i> 
+                                Adaugă la comandă
+                            </button>
+                         
+                        </div>
+                        <div class = 'form-group'>
+                        <label for = 'select_wpoint' class = 'mt-3'>Selectează punctul de livrare</label>
+                        <select class="form-control select_wpoint" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <option value = "">Selecteză punct de livrare</option>
+                           
+                          </select>
+                        </div>
+                    </div>
+                </div>
+
+ </div>
+</div>
+</section>
+</div>
+</div>
+
+
+
+     <div class="full-height">
+      <div class="column left" >
+        <div class="grid-container-left">
+
+                
+          <div >
+            <div class = 'filters_test'>
+            <!-- <input type = 'text' id = 'city_input' placeholder="Search location"/> -->
+           <input type = 'text' id = 'prod_search' placeholder="Caută produs"/>
+            <div class = 'filters' onclick="open_filters()">
+              Filtre
+            </div>
+
+            <div class = 'list' id = 'city_list'>
+              
+            </div>
+            <div class = 'list' id = 'radius_list'>
+              <div class = 'item'>1 KM</div>
+              <div class = 'item'>2 KM</div>
+              <div class = 'item'>5 KM</div>
+              <div class = 'item'>10 KM</div>
+              <div class = 'item'>20 KM</div>
+            </div>
+          </div>
+        </div>
+       
+        <div class = 'row' id = 'promovati'>
+          <h3>Fermieri promovați</h3>
+          {{#prom}}
+          <div class = 'col-auto prom mb-3 mt-2'>
+            {{#image_name}}
+            <img src = '/profile_uploads/{{image_name}}' style="margin-right: 10px;">
+            {{/image_name}}
+
+            {{^image_name}}
+            <img src = '/assets/images/apppictures/3.jpg' style="margin-right: 10px;">
+            {{/image_name}}
+            <a href = '/profile/{{slug}}'>
+              {{bis_name}}
+            </a>
+            </div>
+          {{/prom}}
+        </div>
+        {{#prom}}
+  
+        <div class = 'point promovat' style="background-color: #e3defe !important">
+
+          <div class = 'left'>
+            <div class = 'left_arrow' onclick="move_left(this)">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+              {{#prods}}
+            <div class="slide_element invis" >
+              {{#prod_image}}
+              <img src="/uploads/{{prod_image}}">
+              {{/prod_image}}
+
+              {{^prod_image}}
+              <img src="/assets/images/icons/no_image.png">
+              {{/prod_image}}
+              <a href="/products/{{user_slug}}/{{name}}" style="display: block;">{{name}}</a>
+
+              <button type="submit" class="default-btn mp_atc" onclick="open_custom_atc({{prod_id}})"><i class="fas fa-cart-plus" aria-hidden="true"></i>Adaugă la comandă</button>
+
+              </div>
+              {{/prods}}
+
+              {{^prods}}
+                <p> Fermierul urmează să își adauge produsele</p>
+              {{/prods}}
+            <div class = 'right_arrow' onclick="move_right(this)">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+
+       
+          </div>
+
+          <div class = 'right_c'>
+            <div class = 'top'>
+              <div class = 'left'>
+                {{#image_name}}
+                <img src = '/profile_uploads/{{image_name}}' style="background-color: white;"/>
+                {{/image_name}}
+
+                {{^image_name}}
+                <img src = '/assets/images/apppictures/3.jpg' style="background-color: white;"/>
+                {{/image_name}}
+              </div>
+              <div class = 'right'>
+                <span id = 'point_name'><a href = '/profile/{{slug}}'>{{bis_name}}</a></span>
+                <span id = 'pers_name'></span>
+                <span id = 'phone_number'></span>
+              </div>
+          </div>
+          <span class = 'desc'>
+            {{ descc }}
+          </span>
+           
+        </div>     
+        </div>
+        {{/prom}}
+
+   
+        <div class = 'data_farms' style="margin-top: 10px;">
+
+        </div>
+        <div class = 'navigation_pages '>
+          <button class = 'nav_arrow' id = 'left_nav'  onclick="prev_page()" disabled>
+            <i class="fas fa-chevron-left" ></i>
+          </button>
+          <span>Sunt afișate 0 din 0</span>
+          <button class = 'nav_arrow' id = 'right_nav' onclick="next_page()" disabled>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+        </div>
+      </div>
+      </div>
+      <div class="column right" >
+        <div class = 'live_search'>
+          <input type = 'checkbox' id = 'live_chb'>
+           <label for = 'live_chb'>Live search</label>
+          
+        </div>
+        <div class = 'map_header'>
+          <i class="fas fa-times" onclick = 'hide_map()'></i>
+        </div>
+
+        <div id = 'map'></div>
+      </div>
+    </div>
+    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsulFOxSCM7O7uc72Sxff6xSuztTkUXhA&callback=initMap&libraries=drawing&v=weekly"
+      async
+    ></script>
+    <script>
+      function headerMenuResponsive() {
+        var x = document.getElementById("header-menu");
+        if (x.className === "header-right") {
+          x.className += " responsive";
+        } else {
+          x.className = "header-right";
+        }
+      }
+      </script>
+
+      <template id = 'no_cat'>
+        
+        <div class = 'point'>
+
+          <div class = 'left_cats'>
+            <p>Acest fermier nu are produse.</p>
+          </div>
+
+          <div class = 'right_c'>
+            <div class = 'top'>
+              <div class = 'left'>
+                <img src = '' style="background-color: white;"/>
+              </div>
+              <div class = 'right'>
+                <span id = 'point_name'><a href = ''></a></span>
+                <span id = 'pers_name'></span>
+                <span id = 'phone_number'></span>
+              </div>
+          </div>
+          <span class = 'desc'>
+
+          </span>
+           
+        </div>     
+        </div>
+      </template>
+
+
+      <template id = 'with_cat'>
+        
+        <div class = 'point'>
+
+          <div class = 'left'>
+            <div class = 'left_arrow'>
+              <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <div class = 'right_arrow' >
+              <i class="fas fa-chevron-right"></i>
+            </div>
+
+       
+          </div>
+
+          <div class = 'right_c'>
+            <div class = 'top'>
+              <div class = 'left'>
+                <img src = ''/>
+              </div>
+              <div class = 'right'>
+                <span id = 'point_name'><a href = ''></a></span>
+                <span id = 'pers_name'></span>
+                <span id = 'phone_number'></span>
+
+              </div>
+          </div>
+          <span class = 'desc'>
+
+          </span> 
+        </div>     
+        </div>
+      </template>
+       <!-- Start Footer Section -->
+       <section class="footer-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <div class="footer-heading">
+                            <h3>Despre farmvio</h3>
+                        </div>
+
+                        <p>Povestea Farmvio a luat naștere din dorința de a crea o adevărată comunitate de fermieri, dar și din dorința de a revoluționa modul în care îți faci cumpărăturile, astfel încât să ai toate produsele preferate la doar un click distanță, în secțiunea Marketplace.
+                        </p>
+                        <ul class="footer-social">
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+
+
+                            <!-- <li>
+                                <a href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li> -->
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <div class="footer-heading">
+                            <h3>Link-uri utile</h3>
+                        </div>
+
+                        <ul class="footer-quick-links">
+                            <li>
+                                <a href = '/index'>
+                                Home
+                                </a>
+                            </li>
+                            <li>
+                               <a href = '/marketplace'>
+                                Marketplace    
+                            </a>
+                            </li>
+                            <li>
+                                <a href = '/register'>
+                                    Creează cont
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/login">
+                                   Login
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                
+         
+
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <div class="footer-heading">
+                            <h3>Contact</h3>
+                        </div>
+
+                        <div class="footer-info-contact">
+                            <i class="flaticon-pin"></i>
+                            <h3>Locație</h3>
+                            <span>Strada Splaiul Unirii nr. 313, <br> București</span>
+                        </div>
+
+                        <div class="footer-info-contact">
+                            <i class="flaticon-call"></i>
+                            <h3>Telefon</h3>
+                            <span><a href="tel:0771-189-311">0771-189-311</a></span>
+                        </div>
+
+                        <div class="footer-info-contact">
+                            <i class="flaticon-envelope"></i>
+                            <h3>Email</h3>
+                            <span><a href="mailto:office@farmvio.com">office@farmvio.com</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <div class="container">
+                <div class="copyright-area-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <p>
+                                <i class="far fa-copyright"></i> 
+                                2021 Farmvio. Toate drepturile rezervate
+                            </p>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <ul>
+                              
+                                <li>
+                                    <a href="/privacy">Politica de confidențialitate</a>                                    </li>
+                                    <li>
+                                        <a href="/cookies">Politică de cookie-uri</a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer Section -->
+      <script>
+        function move_left(elem){
+          //search for the vis element 
+          let $all_slides = $(elem).parent().find(".slide_element");
+          let vis_elem = 0;
+          $all_slides.each((elem)=>{
+            let slide = $all_slides.eq(elem);
+            if (slide.hasClass("vis"))
+            {
+              vis_elem = elem;
+            }
+          })
+          //now that we have this vis_elem, we should go backwards
+          //so this vis elem will definetly be invis 
+          $all_slides.eq(vis_elem).removeClass("vis").addClass("invis");
+          //now the prev elem
+          if (vis_elem-1 <0){
+            //we then vis the last 
+            $all_slides.eq($all_slides.length-1).removeClass("invis").addClass("vis");
+          }
+          else{
+            $all_slides.eq(vis_elem-1).removeClass("invis").addClass("vis");
+
+          }
+        }
+        function move_right(elem){
+                    //search for the vis element 
+                    let $all_slides = $(elem).parent().find(".slide_element");
+          let vis_elem = 0;
+          $all_slides.each((elem)=>{
+            let slide = $all_slides.eq(elem);
+            if (slide.hasClass("vis"))
+            {
+              vis_elem = elem;
+            }
+          })
+          //now that we have this vis_elem, we should go backwards
+          //so this vis elem will definetly be invis 
+          $all_slides.eq(vis_elem).removeClass("vis").addClass("invis");
+          //now the prev elem
+          if (vis_elem+1 >= $all_slides.length){
+            //we then vis the first 
+            $all_slides.eq(0).removeClass("invis").addClass("vis");
+          }
+          else{
+            $all_slides.eq(vis_elem+1).removeClass("invis").addClass("vis");
+
+          }
+        }
+      </script>
+          <template id = 'cart_temp_special'>
+            <div class = 'b2b_item'>
+                <h6 style="width: 100%">Special order</h6><br>
+                <div class = 'old_tags' style="width: 100%;padding-left: 5px;">
+               
+            </div>
+                <input type = 'number' value = '2' style="margin: 10px auto;">
+            </div>
+        </template>
+    
+        <template id = 'cart_temp'>
+            <div class = 'b2b_item'>
+                <img src = '/assets/images/icons/no_image.png'/>
+                <span class = 'name'></span>
+                <input type = 'number' min = 1 max= 999>
+                <p class = 'sold_by'><strong>Vandut de: </strong></p>
+                <p class="del_from"><Strong>Livrat din: </Strong></p>
+            </div>
+        </template>
+      <!-- jQuery Min JS -->
+      <script src="/views/assets/js/jquery.min.js"></script>
+      <!-- Popper Min JS -->
+      <script src="/views/assets/js/popper.min.js"></script>
+      <!-- Bootstrap Min JS -->
+      <script src="/views/assets/js/bootstrap.min.js"></script>
+      <!-- Owl Carousel Min JS -->
+      <script src="/views/assets/js/owl.carousel.min.js"></script>
+      <!-- MeanMenu JS -->
+      <script src="/views/assets/js/jquery.meanmenu.js"></script>
+      <!-- Popup JS -->
+      <script src="/views/assets/js/jquery.magnific-popup.min.js"></script>
+      <!-- Appear JS -->
+      <script src="/views/assets/js/jquery.appear.min.js"></script>
+      <!-- Odometer JS -->
+      <script src="/views/assets/js/odometer.min.js"></script>
+      <!-- Image LightBox Min JS -->
+      <script src="/views/assets/js/imagelightbox.min.js"></script>
+      <!-- Nice Selects Min JS -->
+      <script src="/views/assets/js/jquery.nice-select.min.js"></script>
+      <!-- AjaxChimp Min JS -->
+      <script src="/views/assets/js/jquery.ajaxchimp.min.js"></script>
+      <!-- Form Validator Min JS -->
+      <script src="/views/assets/js/form-validator.min.js"></script>
+      <!-- Contact Form Min JS -->
+      <script src="/views/assets/js/contact-form-script.js"></script>
+    </body>
+    </html>

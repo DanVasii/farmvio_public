@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+  
+  <base href = '/farmVio-node'>
+
+  <style>
+	  
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.info-msg {
+  color: #059;
+  background-color: #BEF;
+}
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+.warning-msg {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+
+  </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-HLL969JFNJ');
+	</script>
+
+    <title>FarmVio - Adaugă produs </title>
+  
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+     <!-- Notify css - made by Dan -->
+	 <link rel = 'stylesheet' href = '/notify/index.css'> 
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src = '/assets/scripts/cart.js'></script>
+    <link rel = 'stylesheet' href=  '/assets/css/cart.css'>
+
+	
+
+    <script src ='/assets/scripts/proforma.js'></script>
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+	<style>
+		.big{
+			font-size: 20px !important;
+			display: flex !important;
+			align-items: center;
+			height: 36px !important;
+			padding-left: 40px !important;
+		}
+		.big::before{
+			width: 30px !important;
+			height: 30px !important;
+		}
+		.big::after{
+			width: 30px !important;
+			height: 30px !important;
+		}
+.cover{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    flex-direction: column;
+    display: none;
+}
+	</style>
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Add images</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Change color</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+				<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+			</a>	
+			<div class="app-menu">
+				<ul class="header-megamenu nav">
+					<li class="btn-group nav-item d-md-none">
+						<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+							<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						</a>
+					</li>
+			  
+				</ul> 
+			  </div>
+			<!-- Logo -->
+			<a href="/index" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+				
+			  </div>
+			</a>	
+		</div>  
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="/index">
+			<button type="button" class="waves-effect waves-light btn btn-outline btn-secondary mb-5">Înapoi în site</button>
+		  </a>
+			<div class="navbar-custom-menu r-side">
+			  <ul class="nav navbar-nav">
+				<li class="btn-group nav-item d-lg-inline-flex cart-btn phone"  onmouseover="show_cart()">
+					<a   class="waves-effect waves-light nav-link full-screen btn-info-light" >
+					  <i class="fas fa-shopping-cart"></i>
+					  </a>
+				  </li>		
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-info-light" title="Full Screen">
+						  <i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="/logout" class="waves-effect waves-light  full-screen btn-info-light" title="Logout">
+						  <i class="fas fa-sign-out-alt" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				<!-- Notifications -->
+				<li class="dropdown notifications-menu">
+				  <span class="label label-primary">5</span>
+				  <a href="#" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications" aria-expanded="false">
+					<i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
+				  </a>
+				  <ul class="dropdown-menu animated bounceIn">
+	  
+					<li class="header">
+					  <div class="p-20">
+						  <div class="flexbox">
+							  <div>
+								  <h4 class="mb-0 mt-0">Notifications</h4>
+							  </div>
+							  <div>
+								  <a href="#" class="text-danger">Clear All</a>
+							  </div>
+						  </div>
+					  </div>
+					</li>
+	  
+					<li>
+					  <!-- inner menu: contains the actual data -->
+					  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><ul class="menu sm-scrol" style="overflow: hidden; width: auto; height: 250px;">
+					  
+					  </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+					</li>
+					<li class="footer">
+						<a href="#">View all</a>
+					</li>
+				  </ul>
+				</li>	
+	  
+				  
+			  </ul>
+			</div>
+		  </nav>
+	  </header>
+  
+   <!-- Left side column. contains the logo and sidebar -->
+   <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/dashboard">
+					<i class="icon-Home"></i>
+					<span>Panou de administrare</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="fas fa-cog"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+					<span>Setări</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/personal_data"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări date personale </a></li>
+					<li><a href="/security_settings"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări securitate</a></li>
+				  </ul>
+				</li>
+		
+				<li class="treeview">
+					<a href="#">
+						<i class="fas fa-truck"><span class="path1"></span><span class="path2"></span></i>
+						<span>Puncte de lucru</span>
+						<span class="pull-right-container">
+						  <i class="fa fa-angle-right pull-right"></i>
+						</span>
+					  </a>
+					  <ul class="treeview-menu">
+						<li><a href="/view_points"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi puncte de lucru</a></li>
+						<li><a href="/wpoints"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă punct de lucru</a></li>
+					  </ul>
+				</li>
+				<li>
+				  <a href="/orders">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Comenzi</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Cart"><span class="path1"></span><span class="path2"></span></i>
+					<span>Produse</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/view_prods"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi produse</a></li>
+					<li><a href="/add_prod"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă produs</a></li>
+				  </ul>
+				</li>				
+				<li>
+			
+						<a href="/offer_requests">
+						  <i class="fas fa-percent"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Cereri de ofertă</span>
+						</a>
+				  </li>
+				  <li>
+					  <a href = '/cereri_rezervare'>
+						<i class="fas fa-calendar-week"></i>
+						<span>Cereri de rezervare</span>
+
+					  </a>
+				  </li>
+				  <li>
+			
+					<a href="/date_proforma">
+					  <i class="fas fa-file-contract"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Date proforma</span>
+					</a>
+			  </li>
+				  <li>
+					<li class = 'bg-info-light '>
+			
+						<a href="/profile/{{slug}}" class = 'text-primary'>
+						  <i class="far fa-id-badge text-primary"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Vezi profilul tău</span>
+						</a>
+				  </li>
+
+				  <li class = 'bg-success-light'>
+			
+					<a href="/add_prod" class = 'text-primary'>
+					  <i class="fas fa-plus text-primary"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Adaugă produs</span>
+					</a>
+			  </li>
+
+				</li>
+			  </ul>	
+	
+			</div>
+		</div>
+    </section>
+  </aside> 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+			
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content" style="position: relative;" >
+            <div class = 'row'>
+                <div class = 'col-auto'>
+                    <button type="button" class="waves-effect waves-light btn btn-primary mb-5" data-toggle="modal" data-target='#my_modal'><i class="fa fa-plus"></i> Adaugă proformă</button>
+                </div>
+            </div>
+            <div class = 'row' id = 'forms_done' style="margin-top: 3rem;">
+        
+            </div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+   
+    </div>
+	&copy; 2021 Farmvio. Toate drepturile rezervate.
+  </footer>
+
+  
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+
+	<script src="../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+
+	<script src = '/notify/index.js'></script>
+	<script src = '/assets/scripts/month_picker.js'></script>
+	<link rel = 'stylesheet' href = '/assets/css/month_picker.css'>
+
+	<div class = 'cart_container'>
+		<div class = 'up_arrow'>
+			
+		</div>
+		<div class = 'cart_content'>
+			
+		</div>
+		<div class = 'bottom'>
+			<button class = 'btn btn-primary' onclick="window.location.href = '/order'">Detalii coș</button>
+		</div>
+	  </div>
+
+	  <link href="https://cdn.jsdelivr.net/bootstrap.timepicker/0.2.6/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+	  <script src="https://cdn.jsdelivr.net/bootstrap.timepicker/0.2.6/js/bootstrap-timepicker.min.js"></script>
+
+	  <link rel="stylesheet" href ='/assets/css/bootstrap-datepicker.css'>
+	  <script src = '/assets/scripts/bootstrap-datepicker.min.js'></script>
+
+      <div class="modal center-modal" tabindex="-1" id = 'my_modal' data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Date proformă</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             <div class = 'row'>
+                <div class = 'col-6'>
+                    <input type="text" class="form-control" placeholder="Judet" id ='judet'>
+                </div>
+                <div class = 'col-6'>
+                    <input type="text" class="form-control" placeholder="Oras" id='oras'>
+                </div>
+                <div class = 'col-12 mt-2'>
+                    <input type="text" class="form-control" placeholder="Adresa" id='adresa'>
+                </div>
+                <div class = 'col-6 mt-2'>
+                    <input type="text" class="form-control" placeholder="CUI" id='cui'>
+                </div>
+                <div class = 'col-6 mt-2'>
+                    <input type="text" class="form-control" placeholder="Denumire firma" id='firma'>
+                </div>
+                <div class = 'col-12 mt-2'>
+                    <input type="text" class="form-control" placeholder="Cont bancar" id='cont'>
+                </div>
+             </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Anulează</button>
+              <button type="button" class="btn btn-success" onclick="send_data()">Finalizează</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template id = 'proforma_temp'>
+          <div class = 'col-4 bg-white pt-2 pb-2' style="border-radius: 10px;">
+              <h4>Date proforma</h4>
+              <div class = 'row'>
+                  <div class = 'col-6'>
+                      <b>Judet: </b><span></span>
+                  </div>
+                  <div class ='col-6'>
+                      <b>Oras: </b><span></span>
+                  </div>
+                  <div class = 'col-12'>
+                      <b>Adresa: </b><span></span>
+                  </div>
+                  <div class = 'col-6'>
+                      <b>Nume firma: </b><span></span>
+                  </div>
+                  <div class = 'col-6'>
+                      <b>CUI: </b><span></span>
+                  </div>
+                  <div class ='col-12'>
+                      <b>Cont bancar: </b><span></span>
+                  </div>
+              </div>
+          </div>
+      </template>
+</body>
+</html>

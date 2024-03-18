@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    
+
+    <title>FarmVio - Formulare trimise</title>
+      <!-- Notify made by dan -->
+      <link rel = 'stylesheet' href = '/notify/index.css'></link>
+      <script src = '/notify/index.js'></script>
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="js/vendors.min.js"></script>
+
+	<script src="../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        .form-label
+        {
+            font-size: 17px !important;
+        }
+        .auto_complete
+{
+  width: 100%;
+  position: relative;
+  margin-top: 5px;
+  z-index: 9999999;
+}
+.ac_data
+{
+  position: relative;
+  width: 100%;
+  background-color: antiquewhite;
+  box-shadow: 0px 0px 5px black;
+  overflow: auto;
+  max-height: 0px;
+  transition: max-height .4s;
+}
+
+.ac_data ul{
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.ac_data li{
+  padding: 5px 0px 5px 10px;
+  background-color: white;
+  border-top: 2px solid rgba(0,0,0,0.2);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  margin-top: 5px;
+}
+
+.ac_data li {
+  list-style: none;
+}
+.ac_data li:hover{
+  border-top: 2px solid #4c95dd;
+  border-bottom: 2px solid #4c95dd;
+  box-shadow: inset 0px 0px 5px lightgray;
+}
+
+.ac_data::-webkit-scrollbar{
+  width: 7px;
+  ;
+}
+.ac_data::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius: 20px;
+		}
+    .upload_id
+		{
+		height: 400px;
+		width: 100%;
+		background-color: lightgray;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		}
+		.upload_id p{
+			font-size: 18px;
+			text-align: center;
+			position: absolute;
+		}
+		.upload_id img{
+			max-height: 100%;
+		}
+		.upload_id label
+		{
+			position: absolute;
+			bottom: 0px;
+		}
+
+    .add_aviz
+		{
+			width: 250px;
+			height: 300px;
+			background-color: lightgray;
+			display: flex;
+			border-radius: 20px;
+			transition: box-shadow .4s;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			cursor: pointer;
+		}
+		.add_aviz:hover{
+			box-shadow: inset 0px 0px 5px white;
+		}
+		.add_aviz p{
+			font-size: 18px;
+   			 font-weight: bold;
+		}
+		.add_aviz i{
+			color: white;
+			font-size: 50px;
+			text-shadow: 0px 0px 2px black;
+		}
+		.image_holder
+		{
+			margin-top: 10px;
+			height: 210px;
+			width: 250px;
+			display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+		}
+		#avize .col-auto
+		{
+			position: relative;
+			height: 300px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		#avize button{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			opacity: 0.4;
+			transition: opacity .4s;
+		}
+		#avize textarea{
+			min-height: 75px;
+		}
+		#avize button:hover
+		{
+			opacity: 1;;
+		}
+		.image_holder img{
+			max-height: 100%;
+		}
+		.cover
+		{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;;
+			background-color: #ffb500 !important;
+			--bs-gutter-x: 0px !important;
+			transform: translateX(0px);
+			transition: transform 1s;
+		}
+
+		.slide_to_left
+			{
+				transform: translateX(-100%);
+			}
+			.err
+			{
+				display: none;
+				font-size: 15px;
+				color: red;
+			}
+
+      .main-header
+      {
+        width: 0px !important;
+      }
+      table button{
+          width: 100%;
+      }
+      table i{
+          font-size: 30px;;
+      }
+      table td:nth-child(2)
+      {
+          text-align: center;
+      }
+      .table-responsive::-webkit-scrollbar{
+          height: 10px;
+      }
+    </style>
+
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+
+
+<div class="wrapper">
+	<div id="loader"></div>
+
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+			<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+		</a>	
+		<!-- Logo -->
+		<a href="/index" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+
+		
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/user_form">
+                    <i class="fas fa-poll-h"></i>
+					<span>Formular user</span>
+				  </a>
+				</li>
+
+                <li>
+                    <a href="/agent_sent">
+                        <i class="fas fa-tasks"></i>
+                      <span>Formulare trimise</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/agent_drafts">
+                        <i class="fas fa-tasks"></i>
+                      <span>Formulare draft</span>
+                    </a>
+                  </li>
+
+			  </ul>	
+
+
+
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="width: calc(100% - 270px);">
+	  <div class="container-full" style="width: 100%;" >
+
+
+
+		<!-- Main content -->
+		<section class="content" id = 'main_content' >
+            <div class = 'row justify-content-center' style="background-color: white;max-width: 100%;">
+                <div class="col-12">
+
+                    <div class="box">
+                       <div class="box-header with-border">
+                         <h3 class="box-title">Formulare trimise</h3>
+                       </div>
+                       <!-- /.box-header -->
+                       <div class="box-body">
+                           <div class="table-responsive">
+                                <div id="example5_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                   <div class="row">
+                                       <div class="col-sm-12">
+                                       <table id="example5" class="table table-bordered table-striped dataTable" style="width: 1850px" role="grid" aria-describedby="example5_info">
+                               <thead>
+                                   <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 120px;">Control</th>
+                                    
+                                    <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 120px;">Status</th>
+
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 120px;">ID</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 171px;">Username</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 149px;">Nume</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Email</th>
+
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Telefon</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Judet</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Oras</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Adresa</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Cui</th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Nume firma </th>
+                                       <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 149px;">Trimis de </th>
+
+
+
+                                      </tr>
+                                    </thead>
+                               <tbody>
+                                </tbody>
+                               <tfoot>
+                                   <tr>
+                                    <th rowspan="1" colspan="1"></th>
+                                    <th rowspan="1" colspan="1"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search id"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search username"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search nume"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search email"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search telefon"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search judet"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search oras"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search adresa"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search cui"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search nume firma"></th>
+                                    <th rowspan="1" colspan="1"><input type="text" placeholder="Search trimis de"></th>
+
+                                  </tr>
+                               </tfoot>
+                           </table>
+                        </div>
+                        </div>
+                    </div>
+                           </div>
+                       </div>
+                       <!-- /.box-body -->
+                     </div>
+                     <!-- /.box -->      
+                   </div>
+            </div>
+		</section>
+		<!-- /.content -->
+
+
+
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  <li class="nav-item">
+			<a class="nav-link" href="javascript:void(0)">FAQ</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Purchase Now</a>
+		  </li>
+		</ul>
+    </div>
+	  &copy; 2021 <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+  </footer>
+
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+
+<script src="../assets/vendor_components/datatable/datatables.min.js"></script>
+
+ 
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	<script src="../assets/vendor_plugins/bootstrap-slider/bootstrap-slider.js"></script>
+
+    <script src = '/assets/scripts/agent_sent.js'></script>
+</body>
+</html>

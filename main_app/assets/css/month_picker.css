@@ -1,0 +1,37 @@
+.month_picker_temp{
+    position: absolute;
+    width: 300px;
+
+    background-color: white;
+    z-index:  999;
+    display: none;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    box-shadow: 0px 0px 5px black;
+    padding-left: 5px;
+}
+
+.month{
+    padding: 2px 5px;
+    background-color: rgba(0,0,0,0.02);
+    width: 30%;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.month:hover{
+    background-color: #cde3f9 ;
+}
+
+.month_picker{
+    outline: none;
+    border: 1px solid black;
+    position: relative;
+}
+
+.month_picker:focus{
+    border: 1px solid #4c95dd;
+}

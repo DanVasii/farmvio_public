@@ -1,0 +1,239 @@
+
+.line
+{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 0%;
+    height: 2px;
+    background-color: #339AF0;
+    transition: width .4s;
+}
+.input_holder{
+    
+    position: relative;
+    padding-bottom: 5px;;
+    width: 300px;
+    margin-bottom: 20px;
+    height: max-content;
+}
+label 
+{
+    display: block;
+    font-size: 15px;
+    position: absolute;
+    top: 10px;
+    cursor: auto;
+    transition: all .4s;
+}
+input{
+    
+    padding: 5px 0px;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+input:focus{
+    outline: none;
+}
+.err
+{
+    color: red;
+    font-size: 14px;
+    margin-bottom: 0px;
+    max-height: 0px;
+    transition: max-height .4s;
+    overflow: hidden;
+}
+.auto_complete
+{
+    position: absolute;
+    left: 0px;
+    background-color: red;
+    width: 100%;
+    margin-top: 3px;
+    overflow: hidden;
+    background-color: whitesmoke;;
+    z-index: 9999;
+    display: none;
+}
+.country
+{
+    display: flex;
+    display: flex;
+    align-items: center;
+}
+.add_img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+.add_img i{
+    font-size: 50px;
+}
+.add_img span 
+{
+    font-size: 18px;
+}
+input[type='file']
+{
+    position: absolute;
+    z-index: -1;
+}
+.uploaded_images{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 600px;
+    margin-left: -50px;
+}
+.uploaded_image
+{
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 15px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: 1px solid black;
+}
+.uploaded_image img{
+    height: 90%;
+    overflow: hidden;
+}
+.uploaded_image i{
+    background-color: white;
+    position: absolute;
+    font-size: 20px;
+    top: -9px;
+    right: -9px;
+    transition: color .2s;
+}
+.uploaded_image i:hover 
+{
+    color: red;
+    cursor: pointer;
+}
+.holder
+{
+    width: 500px;
+    height: 300px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: none;;
+    top: 0px;
+    
+}
+.holder:hover{
+    background-color: rgba(0,0,0,0.25);
+}
+textarea{
+    resize: none;
+    width: 400px;
+    height: 200px;
+}
+textarea:focus{
+    outline-color: #339AF0;
+}
+input[type='radio']{
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+    margin: 0px;
+    margin-right: 10px;
+}
+.qty_opt{
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+#qty{
+    width: 175px;;
+}
+select{
+    width: 75px;
+    height: 33px;
+    border: 2px solid;
+    margin-left: 8px;
+    text-align: center;
+}
+button{
+    background-color: #00A170;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    text-shadow: 0px 0px 3px black;
+    margin-bottom: 10px;
+}
+.point
+{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.point:not(:first-child){
+    border-top: 2px solid ;
+}
+.left,.right{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.right{
+    margin-left: 20px;
+}
+.round {
+    position: relative;
+    width: 30px;
+    height: 30px;;
+  }
+  
+  .round label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 28px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 28px;
+  }
+  
+  .round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 7px;
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+  
+  .round input[type="checkbox"] {
+    visibility: hidden;
+  }
+  
+  .round input[type="checkbox"]:checked + label {
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+  }
+  
+  .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }

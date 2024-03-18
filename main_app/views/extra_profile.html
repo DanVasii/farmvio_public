@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-HLL969JFNJ');
+	</script>
+
+    <title>FarmVio - Panou de administrare fermier</title>
+	
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src = '/assets/scripts/cart.js'></script>
+    <link rel = 'stylesheet' href=  '/assets/css/cart.css'>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+	<script src = '/assets/scripts/profilepage.js'></script>
+
+
+	<link rel = 'stylesheet' href = '/notify/index.css'>
+	<script src = '/notify/index.js'></script>
+
+	<style>
+		.warning
+		{
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+		}
+		.image_tray_element
+		{
+			display: flex;
+			flex-direction: column;
+			height: 250px;
+			padding: 7px 0px;
+			border-radius: 10px;
+		}
+		.prgr_step{
+			cursor: pointer;
+			padding: 10px 5px;
+			border-radius: 10px;
+			transition: box-shadow .4s;
+		}
+		.prgr_step:hover
+		{
+			background-color: #f3f6f9 !important;
+			box-shadow: rgba(45,155,218, 0.4) -5px 5px, rgba(45,155,218, 0.3) -10px 10px, rgba(45,155,218, 0.2) -15px 15px, rgba(45,155,218, 0.1) -20px 20px, rgba(45,155,218, 0.05) -25px 25px;
+		}
+		.show_more
+		{
+			text-decoration: underline;
+			font-size: 12px;
+			display: block;
+		}
+		.long_desc
+		{
+			max-height: 0px;
+			overflow: hidden;
+			display: block;
+			padding-left: 3px;
+			transition: max-height .8s;
+		}
+		.show_more *
+		{
+			user-select: none;
+		}
+		.show_more i{
+			transform: rotate(0deg);
+			margin-left: 5px;
+			transition: transform 0.8s;
+		}
+		button:disabled{
+			color: black !important;
+		}
+	</style>
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+
+	<div class="modal modal-success" id="modal-success">
+		<div class="modal-dialog">
+		  <div class="modal-content bg-success">
+			<div class="modal-header">
+			  <h4 class="modal-title">Felicitări!</h4>
+			</div>
+			<div class="modal-body">
+			  <p>Profilul tău urmează să fie validat de către echipa Farmvio! O să primești un email/sms de confirmare! &hellip;</p>
+			</div>
+			<div class="modal-footer">
+		
+			</div>
+		  </div>
+		  <!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Adaugă imagini</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Schimbă culoarea</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+			<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+		</a>	
+		<div class="app-menu">
+			<ul class="header-megamenu nav">
+				<li class="btn-group nav-item d-md-none">
+					<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+						<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+					</a>
+				</li>
+		  
+			</ul> 
+		  </div>
+		<!-- Logo -->
+		<a href="/index" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+			
+		  </div>
+		</a>	
+	</div>  
+
+	<nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <a href = '/index'>
+	  <button type="button" class="waves-effect waves-light btn btn-outline btn-secondary mb-5">Înapoi în site</button>
+	</a>
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+			<li class="btn-group nav-item d-lg-inline-flex cart-btn phone"  onmouseover="show_cart()">
+				<a   class="waves-effect waves-light nav-link full-screen btn-info-light" >
+				  <i class="fas fa-shopping-cart"></i>
+				  </a>
+			  </li>	
+			<li class="btn-group nav-item d-lg-inline-flex ">
+				<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-info-light" title="Full Screen">
+					<i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
+			    </a>
+			</li>	
+			<li class="btn-group nav-item d-lg-inline-flex ">
+				<a href="/logout" class="waves-effect waves-light  full-screen btn-info-light" title="Logout">
+					<i class="fas fa-sign-out-alt"><span class="path1"></span><span class="path2"></span></i>
+			    </a>
+			</li>	
+		  <!-- Notifications -->
+		  <li class="dropdown notifications-menu">
+		    <span class="label label-primary">5</span>
+			<a href="#" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications" aria-expanded="false">
+			  <i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
+			</a>
+			<ul class="dropdown-menu animated bounceIn">
+
+			  <li class="header">
+				<div class="p-20">
+					<div class="flexbox">
+						<div>
+							<h4 class="mb-0 mt-0">Notifications</h4>
+						</div>
+						<div>
+							<a href="#" class="text-danger">Clear All</a>
+						</div>
+					</div>
+				</div>
+			  </li>
+
+			  <li>
+				<!-- inner menu: contains the actual data -->
+				<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><ul class="menu sm-scrol" style="overflow: hidden; width: auto; height: 250px;">
+				
+				</ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+			  </li>
+			  <li class="footer">
+				  <a href="#">View all</a>
+			  </li>
+			</ul>
+		  </li>	
+
+			
+        </ul>
+      </div>
+    </nav>
+
+  </header>
+
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/dashboard">
+					<i class="icon-Home"></i>
+					<span>Panou de administrare</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="fas fa-cog"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+					<span>Setări</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/personal_data"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări date personale </a></li>
+					<li><a href="/security_settings"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări securitate</a></li>
+				  </ul>
+				</li>
+		
+				<li class="treeview">
+					<a href="#">
+						<i class="fas fa-truck"><span class="path1"></span><span class="path2"></span></i>
+						<span>Puncte de lucru</span>
+						<span class="pull-right-container">
+						  <i class="fa fa-angle-right pull-right"></i>
+						</span>
+					  </a>
+					  <ul class="treeview-menu">
+						<li><a href="/view_points"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi puncte de lucru</a></li>
+						<li><a href="/wpoints"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă punct de lucru</a></li>
+					  </ul>
+				</li>
+				<li>
+				  <a href="/orders">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Comenzi</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Cart"><span class="path1"></span><span class="path2"></span></i>
+					<span>Produse</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/view_prods"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi produse</a></li>
+					<li><a href="/add_prod"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă produs</a></li>
+				  </ul>
+				</li>				
+				<li>
+			
+						<a href="/offer_requests">
+						  <i class="fas fa-percent"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Cereri de ofertă</span>
+						</a>
+				  </li>
+				  <li>
+					  <a href = '/cereri_rezervare'>
+						<i class="fas fa-calendar-week"></i>
+						<span>Cereri de rezervare</span>
+
+					  </a>
+				  </li>
+				  <li>
+			
+					<a href="/date_proforma">
+					  <i class="fas fa-file-contract"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Date proforma</span>
+					</a>
+			  </li>
+				  <li>
+					<li class = 'bg-info-light '>
+			
+						<a href="/profile/{{slug}}" class = 'text-primary'>
+						  <i class="far fa-id-badge text-primary"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Vezi profilul tău</span>
+						</a>
+				  </li>
+
+				  <li class = 'bg-success-light'>
+			
+					<a href="/add_prod" class = 'text-primary'>
+					  <i class="fas fa-plus text-primary"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Adaugă produs</span>
+					</a>
+			  </li>
+
+				</li>
+			  </ul>	
+	
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profil</h3>
+					<div class="d-inline-block align-items-center">
+			
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content">
+
+		  <div class="row">
+
+			<div class = 'col-12'>
+				<div class="box box-widget widget-user">
+					<div class = 'edit' onclick="edit('user_bg_images')">
+						<span>Schimbă imaginea</span><i class="fas fa-pen"></i>
+						</div>
+					<!-- Add the bg color to the header using any of the bg-* classes -->
+					<div class="widget-user-header bg-black" style= '{{ bg-image }}' id='user_bg_images'>
+					  <h3 class="widget-user-username">{{user_name}}</h3>
+					  <h6 class="widget-user-desc">Fermier</h6>
+					</div>
+					<div class="widget-user-image">
+					  <img class="rounded-circle" src='{{ small_profile }} ' style="height: 130px;" id = 'user_profile_images' alt="User Avatar">
+					</div>
+					<div class = 'box-footer'>
+						<div class = 'row justify-content-center'>
+							<div class = 'col-auto'>
+							<span class = 'link_type' onclick="edit('user_profile_images')">Schimbă poza de profil</span>
+						</div>
+					</div>
+					</div>
+				  </div>
+			</div>
+
+
+			<div class="col-8">
+				
+			  <div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li><a href="/wpoints" >1. Adauga punct de lucru</a></li>
+					<li><a href="/add_prod" >2. Adauga produs</a></li>
+				  <li><a class="active" href="#farm_pics" data-toggle="tab">3. Poze ferma </a></li>
+				  <li><a href="#settings" data-toggle="tab">4. Descrierea fermei</a></li>
+				</ul>
+
+				<div class="tab-content">
+
+				  <div class="active tab-pane" id="farm_pics">	
+
+					<div class="box-body">
+						<a class="popup-with-form btn btn-success" href="#test-form">Adaugă poze</a>
+		
+						<!-- form itself -->
+						<div id="test-form" class="white-popup-block mfp-hide">
+							
+							<div class = 'images'>
+							
+							<label for = 'farm_image'>
+							<div class = 'add_photo'>
+								<input type = 'file' id = 'farm_image'>
+									<h3>Adaugă poza</h3>
+							</div>	
+						</label>
+					</div>
+						<button type="button" class="waves-effect waves-light btn btn-success-light mb-5" onclick="finish_upload()">Finalizează</button>
+
+
+						</div>
+					</div>
+
+						<div class = 'row justify-content-around' id = 'farm_pics_tray'>
+							
+						</div>
+				
+
+				  </div>
+				  <!-- /.tab-pane -->
+
+				  <div class="tab-pane" id="settings">		
+					<div class = 'box-body'>
+						<label>Descrierea fermei</label>
+					<textarea class = 'form-control' rows = '10' ></textarea>
+					<button type="button" class="waves-effect waves-light btn btn-success mt-5" onclick="upload_desc()">Finalizeaza</button>
+				</div>
+				  <!-- /.tab-pane -->
+				</div>
+				<!-- /.tab-content -->
+			  </div>
+			  <!-- /.nav-tabs-custom -->
+			</div>
+			<!-- /.col -->		
+
+
+		  </div>
+
+		  <div class = 'col-4' >
+			<div class = 'row bg-warning-light text-dark pt-3 pb-3 mb-2' id = 'warning_docs' style="width: 100%;overflow: hidden; border-radius: 10px;border: 1px solid rgba(72, 94, 144, 0.16)">
+				<div class = 'col-auto'>
+					<i class="fas fa-exclamation-triangle" style="font-size: 25px; color: #a17f1a"></i>
+				</div>
+				<div class = 'col'>
+					Este important să te diferențiezi de restul. Te rugăm să ne trimiți certificatul de producător
+				</div>
+				<div class = 'col-12 mt-2' style="text-align: center;">
+					<button type="button" class="waves-effect waves-light btn btn-primary btn-sm" onclick="location.href = '/upload_docs'">Încarcă documentele</button>
+				</div>
+			  </div>
+
+			  	<div class = 'row bg-white p-3 text-dark' id ='progress_handler' style="width: 100%;overflow: hidden; border-radius: 10px;border: 1px solid rgba(72, 94, 144, 0.16)">
+					<div class = 'col-12'>
+					<div class="progress">
+						<div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+						  <span class="sr"></span>
+						</div>
+					  </div>
+
+					</div>
+
+
+				  </div>
+		  </div>
+		  <!-- /.row -->
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+ 
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+    
+    </div>
+	&copy; 2021 Farmvio. Toate drepturile rezervate.
+  </footer>
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+
+		<script src="../assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js"></script>
+    <script src="../assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js"></script>
+
+
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	
+	<script src="js/pages/timeline.js"></script>
+	<template id = 'uploaded'>
+		
+		<div class = 'uploaded'>
+			<img src = ''/>
+			<textarea 	 class="form-control" placeholder="Descriere"></textarea>
+		</div>
+	</template>
+
+	<template id = 'image_tray_temp'>
+		<div class = 'image_tray_element'>
+		<img src = ''/>
+		<button type="button" class="waves-effect waves-light btn btn-danger mt-3 del_img"><i class="fas fa-trash"></i> Șterge imaginea</button>
+		<button type="button" class="waves-effect waves-light btn btn-success mt-5 set_img"><i class="fa fa-check"></i> Alege imaginea</button>
+		
+	</div>
+	</template>
+	
+
+	<template id = 'color_tray_temp'>
+		<div class = 'image_tray_element'>
+		<div class = 'colored_part' style="width: 80%;margin-left: 10%;height: 150px;border: 2px solid black"></div>
+		<button type="button" class="waves-effect waves-light btn btn-danger mt-3 del_img"><i class="fas fa-trash"></i> Șterge imaginea</button>
+		<button type="button" class="waves-effect waves-light btn btn-success mt-5 set_img"><i class="fa fa-check"></i> Alege imaginea</button>
+	</div>
+	</template>
+
+	<template id = 'uploading_image'>
+		<div class = 'image_tray_element'>
+			<img src = ''/>
+			<div class="progress">
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+				  <span class="sr-only">0%</span>
+				</div>
+			  </div>
+	</template>
+
+
+	<template id = 'uploaded_tray'>
+		<div class = 'col img-col'>
+			<div class = 'image_holder' >
+				<img src = '' />
+			</div>
+			<textarea class = 'form-control mt-3' rows = "4" disabled></textarea>
+			<label class = 'text-danger'></label>
+			<button type="button" class="waves-effect waves-light btn btn-xs btn-primary mb-2 mt-2 edit_cov pt-2 pb-2"><i class="fas fa-edit"></i> Editeză descrierea</button>
+			<button type="button"  class="waves-effect waves-light btn btn-xs btn-success mb-2 set_cov pt-2 pb-2">Seteaza principala</button>
+			<button type="button"  class="waves-effect waves-light btn btn-xs btn-danger mb-2 del_cov pt-2 pb-2">Sterge poza</button>
+		</div>
+	</template>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<div class = 'cart_container'>
+		<div class = 'up_arrow'>
+			
+		</div>
+		<div class = 'cart_content'>
+			
+		</div>
+		<div class = 'bottom'>
+			<button class = 'btn btn-primary' onclick="window.location.href = '/order'">Detalii coș</button>
+		</div>
+	  </div>
+
+	  <template id = "progress_item">
+		<div class = 'col-12 mt-3 prgr_step'>
+			<div class = 'row'>
+					<div class = 'col-8'>
+						<span style="font-weight: bold;"></span>
+						<br>
+						<span class = 'long_desc'></span>
+						<span class = 'show_more' > <span>Arată mai mult</span> <i class="fas fa-angle-down"></i></span>
+				
+					</div>
+					<div class = 'col-4'>
+						<button type="button" class="waves-effect waves-light btn btn-success btn-sm"></button>
+					</div>
+			</div>
+	</div>
+	  </template>
+</body>
+</html>

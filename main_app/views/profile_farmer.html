@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <link rel="icon" 
+        type="image/png" 
+        href="/assets/images/apppictures/Logo FARMVIO14.png">
+        <base href="/views/" >
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <!-- FontAwesome Min CSS -->
+        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <!-- FlatIcon CSS -->
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <!-- Popup CSS -->
+        <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+        <!-- Owl Carousel Min CSS -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <!-- Image LightBox Min CSS -->
+        <link rel="stylesheet" href="assets/css/imagelightbox.min.css">
+        <!-- Nice Select Min CSS -->
+        <link rel="stylesheet" href="assets/css/nice-select.min.css">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!-- Odometer CSS -->
+        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <script>
+            const global_add = "Adaugă în coș";
+            const global_remove = "Șterge din coș";
+          </script>
+        
+        
+        <!-- Notify css - made by Dan -->
+        <link rel = 'stylesheet' href = '/notify/index.css'>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-HLL969JFNJ');
+        </script>
+        
+        <title>Farmvio - {{bis_name}} - {{cui}}</title>
+
+        <style>
+
+            .accordion-title{
+              cursor: pointer;
+            }
+            .custom_list{
+              list-style-type: none;
+              font-size: 16px;
+            }
+            
+            .custom_list li:before {
+              content: "\f00c"; /* FontAwesome Unicode */
+              font-family: FontAwesome;
+              display: inline-block;
+              margin-left: -1.3em; /* same as padding-left set on li */
+              width: 1.3em; /* same as padding-left set on li */
+              color: #2C8B23;
+            }
+            
+                    </style>
+                    
+        <style>
+            .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.wave {
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(45deg, cyan, black);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+            
+.filters_test input{
+  width: 60%;
+  border-radius: 20px;
+outline: none;
+display: inline-block;
+}
+.filters_test input:focus{
+  outline: none;
+  border: 2px solid #0072B5;
+}
+.filters{
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.filters:hover
+{
+  border: 1px solid #0072B5;
+}
+
+.filters_bg
+{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 99999;
+  display: none;
+}
+.filters_container
+{
+  overflow: auto;
+  width: 60%;
+  position: fixed;
+  height: 80%;
+  top: 10%;
+  left: 20%;
+  background-color: white;
+  z-index: 999999;
+  border-radius: 20px;
+  transform: scale(0);
+  transition: transform .7s;
+}
+.close_window 
+{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color .4s;
+}
+.close_window:hover{
+  color: red;
+}
+   .shop-item a:hover{
+        color: white !important;
+
+    }
+    .info_nimp
+    {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 20px !important;
+    }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Start Preloader Area -->
+		<div class="preloader">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+        <!-- End Preloader Area --> 
+        
+        <!-- Start Navbar Area -->
+        <div class="navbar-area">
+            <div class="trifles-responsive-nav">
+                <div class="container">
+                    <div class="trifles-responsive-menu">
+                        <div class="logo">
+                            <a href="/index">
+                                <img src="/views/assets/img/Logo+FARMVIO12.png " width="200px" alt="logo">
+                            </a>
+                            <div class="cart-btn phone">
+                                <a  onmouseover="show_cart()">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>0</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trifles-nav">
+                <div class="container">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <a class="navbar-brand" href="/index">
+                            <img src="/views/assets/img/Logo+FARMVIO12.png" alt="logo">
+                        </a>
+
+                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="/index" class="nav-link active">
+                                        Home 
+                                    </a>
+                                    
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/story" class="nav-link">
+                                        Povestea
+                                    </a>
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/marketplace" class="nav-link">
+                                        Marketplace 
+                                    </a>
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/b2b" class="nav-link">
+                                        B2B 
+                                    </a>
+                                    
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/contact" class="nav-link">
+                                        Contact 
+                                    </a>
+                                </li>
+          
+                                <li class="nav-item">
+                                    {{#login}}
+                                    <a href="/login" class="nav-link">
+                                        Login
+                                    </a>
+                                    {{/login}}
+                                    {{^login}}
+                                    <a href="/dashboard" class="nav-link">
+                                      Contul meu
+                                  </a>
+                                    {{/login}}
+                                </li>
+          
+                                <li class="nav-item">
+                                    <a href="/register" class="nav-link">
+                                        Creează cont
+                                    </a>
+                                </li>
+                            </ul>
+          
+
+                            <div class="others-options">
+                     
+
+
+                                
+
+                                <div class="cart-btn">
+                                    <a  onmouseover = "show_cart()">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>0</span>
+                                    </a>
+                                </div>
+
+                      
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Navbar Area -->
+        <div class = 'filters_bg'></div>
+        <div class = 'filters_container' id = 'custom_atc'>
+          <i class="far fa-times-circle close_window" onclick="close_window()"></i>
+          <div class = 'row' style="width: 100%;padding-left: 15px;margin-top: 45px;">
+            <section class="product-details-area ptb-20">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-lg-6 col-md-12">
+                       <!-- Carousel wrapper -->
+                       <div class="outer">
+                        <div id="big" class="owl-carousel owl-theme">
+    
+                         
+                 
+                 
+                        </div>
+                        <div id="thumbs" class="owl-carousel owl-theme">
+    
+                  
+                        </div>
+                        </div>
+
+                        </div>
+    
+                        <div class="col-lg-6 col-md-12">
+                            <div class="product-details-desc">
+                                <h3> </h3>
+                                <div class="price">
+                                    <span class="new-price"></span>
+                                    
+                                </div>
+                       
+                                <p> </p>
+                                <div class="product-add-to-cart">
+                                    <div class="input-counter">
+                                        <span class="minus-btn">
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+    
+
+                                        <input type="text" min="1" value="1" id = 'qty'>
+
+                                        <span class="plus-btn">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                    </div>
+                                    <button type="submit" class="default-btn mt-3" onclick="atc()">
+                                        <i class="fas fa-cart-plus"></i> 
+                                        Adaugă în coș
+                                    </button>
+                                 
+                                </div>
+                                <div class = 'form-group'>
+                                <label for = 'select_wpoint' class = 'mt-3'>Selectează punctul de livrare</label>
+                                <select class="form-control select_wpoint" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <option value = "">Selecteză punct de livrare</option>
+                                   
+                                  </select>
+                                </div>
+                            </div>
+                        </div>
+    
+         </div>
+        </div>
+        </section>
+        </div>
+        </div>
+        
+
+        <!-- Start Page Title Area -->
+        <div class="page-title-area" style = "background-image: {{bg}}; ">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-title-content">
+                            <h2 style = 'text-shadow: 0px 0px 5px black'>{{bis_name}}</h2>
+                          
+                        </div>
+                    </div>
+                    <div class = 'profile_pic' style="z-index: 2;">
+                        <img src = '{{profile_image}}'/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Title Area -->
+        
+        <input type = 'hidden' id = 'farmer_id' value = '{{ farmer_id }}'/>
+
+        <dynamic_content>
+
+        <!-- Start About Section -->
+       <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+
+    </dynamic_content>
+
+
+
+        
+   
+
+        
+
+     <!-- Start Subscribe Area -->
+     <section class="subscribe-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <h3>Abonare newsletter </h3>
+                <p>Pentru a avea acces mai rapid la promoțile fermierilor, știri din agro-business, precum și diferite oferte personalizate .</p>
+            </div>
+
+            <form class="newsletter-form">
+                <input type="email" class="input-newsletter" placeholder="Adresa de e-mail" name="EMAIL" required autocomplete="off">
+                <button type="submit">
+                    Abonare
+                    <i class="flaticon-plus"></i>
+                </button>
+                <div id="validator-newsletter" class="form-result"></div>
+            </form>
+        </div>
+
+        <div class="default-shape">
+            <div class="default-shape-one">
+                <img src="assets/img/default-shape/shape.png" alt="image">
+            </div>
+
+            <div class="default-shape-two">
+                <img src="assets/img/default-shape/shape-2.png" alt="image">
+            </div>
+        </div>
+    </section>
+    <!-- End Subscribe Area -->
+
+         <!-- Start Footer Section -->
+         <section class="footer-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-heading">
+                                <h3>Despre farmvio</h3>
+                            </div>
+
+                            <p>Povestea Farmvio a luat naștere din dorința de a crea o adevărată comunitate de fermieri, dar și din dorința de a revoluționa modul în care îți faci cumpărăturile, astfel încât să ai toate produsele preferate la doar un click distanță, în secțiunea Marketplace.
+                            </p>
+                            <ul class="footer-social">
+                                <li>
+                                    <a href="https://www.facebook.com/Farmvio/">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+
+
+                                <!-- <li>
+                                    <a href="#">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li> -->
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-heading">
+                                <h3>Link-uri utile</h3>
+                            </div>
+
+                            <ul class="footer-quick-links">
+                                <li>
+                                    <a href = '/index'>
+                                    Home
+                                    </a>
+                                </li>
+                                <li>
+                                   <a href = '/marketplace'>
+                                    Marketplace    
+                                </a>
+                                </li>
+                                <li>
+                                    <a href = '/register'>
+                                        Creează cont
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/login">
+                                       Login
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/fermier-farmvio">
+                                   Fermier Farmvio
+                                </a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+             
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <div class="footer-heading">
+                                <h3>Contact</h3>
+                            </div>
+
+                            <div class="footer-info-contact">
+                                <i class="flaticon-pin"></i>
+                                <h3>Locație</h3>
+                                <span>Strada Splaiul Unirii nr. 313, <br> București</span>
+                            </div>
+
+                            <div class="footer-info-contact">
+                                <i class="flaticon-call"></i>
+                                <h3>Telefon</h3>
+                                <span><a href="tel:0771-189-311">0771-189-311</a></span>
+                            </div>
+
+                            <div class="footer-info-contact">
+                                <i class="flaticon-envelope"></i>
+                                <h3>Email</h3>
+                                <span><a href="mailto:office@farmvio.com">office@farmvio.com</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright-area">
+                <div class="container">
+                    <div class="copyright-area-content">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <p>
+                                    <i class="far fa-copyright"></i> 
+                                    2021 Farmvio. Toate drepturile rezervate
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <ul>
+                                    <li>
+                                        <a href="terms-condition.html">Terms & Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a href="/privacy">Politică de confidențialitate</a>
+                                    </li>
+                                    <li>
+                                        <a href="/cookies">Politică de cookie-uri</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Footer Section -->
+
+        <div class = 'cart_container'>
+            <div class = 'up_arrow'>
+                
+            </div>
+            <div class = 'cart_content'>
+                
+            </div>
+            <div class = 'bottom'>
+                <button class = 'special2' onclick="window.location.href = '/order'">Detalii coș</button>
+            </div>
+        </div>
+
+        <!-- Start Go Top Section -->
+        <div class="go-top">
+            <i class="fas fa-chevron-up"></i>
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <!-- End Go Top Section -->
+    <!-- jQuery Min JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Popper Min JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <!-- Bootstrap Min JS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Owl Carousel Min JS -->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- MeanMenu JS -->
+    <script src="assets/js/jquery.meanmenu.js"></script>
+    <!-- Popup JS -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Appear JS -->
+    <script src="assets/js/jquery.appear.min.js"></script>
+    <!-- Odometer JS -->
+    <script src="assets/js/odometer.min.js"></script>
+    <!-- Image LightBox Min JS -->
+    <script src="assets/js/imagelightbox.min.js"></script>
+    <!-- Nice Selects Min JS -->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!-- AjaxChimp Min JS -->
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <!-- Form Validator Min JS -->
+    <script src="assets/js/form-validator.min.js"></script>
+    <!-- Contact Form Min JS -->
+    <script src="assets/js/contact-form-script.js"></script>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+
+    <link rel='stylesheet' href='/assets/css/pre_order.css'>
+    <script src ='/assets/scripts/pre_order.js'></script>
+    <script src = '/assets/scripts/profile_wanted.js'></script>
+
+    <script src = '/notify/index.js'></script>
+
+    <template id = 'product_template'>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+
+            <div class="shop-item">
+                <div class="shop-image">
+                    <img src="assets/img/shop/cauliflower.png" alt="image">
+                </div>
+
+                <ul class="shop-list">
+                    <li>
+                        <i class="fas fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                    </li>
+                </ul>
+
+                <div class="shop-content">
+                    <h3><a href = ''></a></h3>
+                    <span></span>
+
+                    <div class="shop-btn">
+                        <span class="shop-btn-one" style="cursor: pointer;">
+                            Adaugă în coș
+                            <i class="flaticon-plus"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id = 'about_slide'>
+        <div class="about-item" style="height: 280px;">
+            <div class="about-slide-image" style="text-align: center;height: 200px;display: flex;justify-content: center;">
+                <img src="assets/img/about/1.png" alt="image" style="max-height: 200px;width: auto">
+            </div>
+            <div class="about-text">
+                <h3></h3>
+            </div>
+        </div>
+    </template>
+    <template id = 'test'>
+        <div class="testimonials-item">
+            <div class="testimonials-content">
+                <h3></h3>
+                <p></p>
+
+                <div class="testimonials-info">
+                    <img src="/assets/images/apppictures/3.jpg" alt="image">
+                    <div class="icon">
+                        <i class="flaticon-quote"></i>
+                    </div>
+                    <ul class="star-list">
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    {{#b2b}}
+    <script src = '/assets/scripts/b2b_cart.js'></script>
+    <link rel = 'stylesheet' href = '/assets/css/b2b_cart.css'>
+    <template id = 'cart_temp'>
+        <div class = 'b2b_item'>
+            <img src = '/assets/images/icons/no_image.png'/>
+            <span class = 'name'></span>
+            <input type = 'number' min = 1 max= 999>
+            <p class = 'sold_by'><strong>Vandut de: </strong></p>
+            <p class="del_from"><Strong>Livrat din: </Strong></p>
+        </div>
+    </template>
+
+
+    <template id = 'cart_temp_special'>
+        <div class = 'b2b_item'>
+            <h6 style="width: 100%">Special order</h6><br>
+            <div class = 'old_tags' style="width: 100%;padding-left: 5px;">
+           
+        </div>
+            <input type = 'number' value = '2' style="margin: 10px auto;">
+        </div>
+    </template>
+    {{/b2b}}
+    {{^b2b}}
+    <script src = '/assets/scripts/cart.js'></script>
+    <link rel = 'stylesheet' href = '/assets/css/cart.css'>
+    {{/b2b}}
+    </body>
+</html>

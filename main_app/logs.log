@@ -1,0 +1,277 @@
+[2021-11-02T13:28:01.247] [DEBUG] default - sess
+[2021-11-02T13:29:01.850] [DEBUG] default - { message: 'Order could not be activated', code: 10, errors: [] }
+[2021-11-02T13:29:29.351] [DEBUG] default - sess
+[2021-11-02T13:29:29.380] [DEBUG] default - {
+  sender: {
+    contact: { name: 'Fermierul vasii Dan SRL', phone: '0723539553' },
+    address: {
+      countryCode: 'RO',
+      postalCode: '800143',
+      city: 'Galati',
+      county: 'Galati',
+      street: 'Allea albinei',
+      number: '1'
+    },
+    validationStrategy: 'minimal'
+  },
+  recipient: {
+    contact: { name: 'Andrei Mihaita', phone: '0754067223' },
+    address: {
+      countryCode: 'RO',
+      postalCode: '030611',
+      city: 'Bucuresti',
+      county: 'Sectorul 3',
+      street: 'Calea Calarasi',
+      number: '179'
+    },
+    validationStrategy: 'minimal'
+  },
+  packages: { type: 2, content: 'test', list: [ [Object] ] },
+  service: { selectionType: 'directId', serviceIds: [ 3 ] },
+  extraOptions: [ { id: 1, url: 'https://wwww.farmvio.com/change_status' } ]
+}
+[2021-11-02T13:30:30.660] [DEBUG] default - { message: 'Order could not be activated', code: 10, errors: [] }
+[2021-11-02T18:31:35.117] [DEBUG] default - primi 
+[2021-11-02T18:31:35.119] [DEBUG] default - {
+  summary: { uniqueId: 'U78KN5LX750S', awb: '' },
+  history: [
+    {
+      dateTime: '2021-11-02T11:29:29.000Z',
+      unixDateTime: 1635852569,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9001
+    },
+    {
+      dateTime: '2021-11-02T12:41:42.000Z',
+      unixDateTime: 1635856902,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:51:29.000Z',
+      unixDateTime: 1635861089,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:55:32.000Z',
+      unixDateTime: 1635861332,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:56:54.000Z',
+      unixDateTime: 1635861414,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:31:19.000Z',
+      unixDateTime: 1635870679,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    }
+  ]
+}
+[2021-11-02T18:45:30.218] [DEBUG] default - primi 
+[2021-11-02T18:45:30.220] [DEBUG] default - {
+  summary: { uniqueId: 'U78KN5LX750S', awb: '' },
+  history: [
+    {
+      dateTime: '2021-11-02T11:29:29.000Z',
+      unixDateTime: 1635852569,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9001
+    },
+    {
+      dateTime: '2021-11-02T12:41:42.000Z',
+      unixDateTime: 1635856902,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:51:29.000Z',
+      unixDateTime: 1635861089,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:55:32.000Z',
+      unixDateTime: 1635861332,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:56:54.000Z',
+      unixDateTime: 1635861414,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:31:19.000Z',
+      unixDateTime: 1635870679,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:45:12.000Z',
+      unixDateTime: 1635871512,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    }
+  ]
+}
+[2021-11-02T18:45:30.221] [DEBUG] default - { uniqueId: 'U78KN5LX750S', awb: '' }
+[2021-11-02T18:46:58.051] [DEBUG] default - primi 
+[2021-11-02T18:46:58.053] [DEBUG] default - {
+  summary: { uniqueId: 'U78KN5LX750S', awb: '' },
+  history: [
+    {
+      dateTime: '2021-11-02T11:29:29.000Z',
+      unixDateTime: 1635852569,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9001
+    },
+    {
+      dateTime: '2021-11-02T12:41:42.000Z',
+      unixDateTime: 1635856902,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:51:29.000Z',
+      unixDateTime: 1635861089,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:55:32.000Z',
+      unixDateTime: 1635861332,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:56:54.000Z',
+      unixDateTime: 1635861414,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:31:19.000Z',
+      unixDateTime: 1635870679,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:45:12.000Z',
+      unixDateTime: 1635871512,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:46:39.000Z',
+      unixDateTime: 1635871599,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    }
+  ]
+}
+[2021-11-02T18:46:58.055] [DEBUG] default - { uniqueId: 'U78KN5LX750S', awb: '' }
+[2021-11-02T18:47:59.237] [DEBUG] default - primi 
+[2021-11-02T18:47:59.237] [DEBUG] default - {
+  summary: { uniqueId: 'U78KN5LX750S', awb: '' },
+  history: [
+    {
+      dateTime: '2021-11-02T11:29:29.000Z',
+      unixDateTime: 1635852569,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9001
+    },
+    {
+      dateTime: '2021-11-02T12:41:42.000Z',
+      unixDateTime: 1635856902,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:51:29.000Z',
+      unixDateTime: 1635861089,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:55:32.000Z',
+      unixDateTime: 1635861332,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T13:56:54.000Z',
+      unixDateTime: 1635861414,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:31:19.000Z',
+      unixDateTime: 1635870679,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:45:12.000Z',
+      unixDateTime: 1635871512,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:46:39.000Z',
+      unixDateTime: 1635871599,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:47:21.000Z',
+      unixDateTime: 1635871641,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    },
+    {
+      dateTime: '2021-11-02T16:47:43.000Z',
+      unixDateTime: 1635871663,
+      statusTextParts: [Object],
+      comment: '',
+      code: 9200
+    }
+  ]
+}
+[2021-11-02T18:47:59.238] [DEBUG] default - { uniqueId: 'U78KN5LX750S', awb: '' }

@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="zxx">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <base href = '/views/'>
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <!-- FontAwesome Min CSS -->
+        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <!-- FlatIcon CSS -->
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <!-- Popup CSS -->
+        <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+        <!-- Owl Carousel Min CSS -->
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <!-- Image LightBox Min CSS -->
+        <link rel="stylesheet" href="assets/css/imagelightbox.min.css">
+        <!-- Nice Select Min CSS -->
+        <link rel="stylesheet" href="assets/css/nice-select.min.css">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="assets/css/meanmenu.css">
+        <!-- Odometer CSS -->
+        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+
+        <link rel = 'stylesheet' href=  '/notify/index.css'>
+        <script src = '/notify/index.js'></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-HLL969JFNJ');
+        </script>
+
+        <title>Farmvio - Recuperare parolă</title>
+
+        <link rel="icon" 
+        type="image/png" 
+        href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+        <style>
+            input{
+                color: black !important;
+            }
+            .err
+            {
+                color: red;
+                text-align: center;
+                overflow: hidden;
+                transition: opacity .4s;
+                margin: 10px 0px 10px 0px !important;
+                padding: 0px;
+                
+            }
+            .wrapper{
+                background-color: rgb(233,245,234);
+                color: rgb(45,136,34);
+                margin: auto;
+                border-radius: 50%;
+                border: 2px  rgb(45,136,34) dashed;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 70px;
+                height: 70px;
+                font-size: 25px;
+            }
+
+            .main_slider{
+                width: 100%;
+                max-width: 600px;
+                margin: auto;
+                box-shadow: 0 2px 48px 0 rgb(0 0 0 / 8%);
+                overflow: hidden;
+            }
+            .slide_view
+            {
+                display: flex;
+                {{^from_link}}
+                width: 400%;
+                {{/from_link}}
+
+                {{#from_link}}
+                width: 200%;
+                {{/from_link}}
+                flex-direction: row;
+                box-shadow: 0 2px 48px 0 rgb(0 0 0 / 8%);
+                left: 0px;
+                position: relative;
+                transition: left .8s;
+            }
+
+            .login-form
+            {
+                width: 100% ;
+                max-width: auto !important;
+                box-shadow: none;
+            }
+
+           
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Start Preloader Area -->
+		<div class="preloader">
+			<div class="lds-ripple">
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+        <!-- End Preloader Area --> 
+
+       <!-- Start Navbar Area -->
+  <div class="navbar-area">
+    <div class="trifles-responsive-nav">
+        <div class="container">
+            <div class="trifles-responsive-menu">
+                <div class="logo">
+                    <a href="/index">
+                        <img src="assets/img/Logo+FARMVIO12.png" width="200px" alt="logo">
+                    </a>
+                    <div class="cart-btn phone">
+                        <a  onmouseover="show_cart()">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trifles-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="/index">
+                    <img src="assets/img/Logo+FARMVIO12.png"  alt="logo">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/index" class="nav-link ">
+                                Home 
+                            </a>
+                            
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/story" class="nav-link">
+                                Povestea
+                            </a>
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/marketplace" class="nav-link">
+                                Marketplace 
+                            </a>
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/b2b" class="nav-link">
+                                B2B 
+                            </a>
+                            
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/contact" class="nav-link">
+                                Contact 
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            {{#login}}
+                            <a href="/login" class="nav-link">
+                                Login
+                            </a>
+                            {{/login}}
+                            {{^login}}
+                            <a href="/dashboard" class="nav-link">
+                              Contul meu
+                          </a>
+                            {{/login}}
+                        </li>
+  
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">
+                                Creează cont
+                            </a>
+                        </li>
+                    </ul>
+  
+
+                    <div class="others-options">
+         
+
+
+                        <div class="cart-btn">
+                            <a  onmouseover="show_cart()">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>0</span>
+                            </a>
+                        </div>
+
+           
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- End Navbar Area -->
+        <!-- Sidebar Modal -->
+        <di
+
+        <!-- Start Page Title Area -->
+        <div class="page-title-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-title-content">
+                            <h2>Recuperare parolă</h2>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Title Area -->
+
+        <!-- Start reset pass -->
+        <div class="login-section ptb-100">
+           <div class = 'container'>
+            <div class ='main_slider'>
+                <div class = 'slide_view'>
+                    {{^from_link}}
+                    <div class="login-form">
+                        <div class="login-title">
+                            <span class = 'wrapper'><i class="fas fa-key"></i></span>
+                            <p class = 'mt-5'>Te rugăm să introduci emailul contului tău. Vei primi instrucțiunile de resetare pe adresa ta de email.</p>
+                            <div class ='row'>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input type = 'email' id = 'reset_mail' placeholder="E-mail" class="form-control" />
+                                 
+                                </div>
+                                <p class ='err invis' id = 'reset_mail_err'>
+                                
+                                </p>
+                            </div>
+                            <div class = 'col-12'>
+                                <div class = 'row'>
+                                    <div class = 'col'>
+        
+                                    </div>
+                                    <div class = 'col-auto'>
+                                        <button class = 'special2' onclick="send_mail()">Trimite email</button>
+                                    </div>
+                                </div>
+                         
+                            </div>
+                        </div>
+        
+                        </div>
+                        </div>
+        
+                         <div class="login-form">
+                        <div class="login-title">
+                           <span class = 'wrapper'><i class="fas fa-lock"></i></span>
+                            <p class = 'mt-5'>Te rugăm să introduci codul de 6 cifre primit prin email.</p>
+                            <div class ='row'>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input type = 'text' style="width: 133px;font-size: 25px;" placeholder="___-___" id='code'/>
+                                </div>
+                                <p class ='err invis' id = 'code_err'>
+                                
+                                </p>
+                            </div>
+                            <div class = 'col-12'>
+                                <div class = 'row'>
+                                    <div class = 'col'>
+        
+                                    </div>
+                                    <div class = 'col-auto'>
+                                        <button class = 'special2' onclick="check_code()">Verifică codul</button>
+                                    </div>
+                                </div>
+                         
+                            </div>
+                        </div>
+        
+                        </div>
+                        </div>
+                        {{/from_link}}
+
+                        <div class="login-form">
+                            <div class="login-title">
+                               <span class = 'wrapper'><i class="fas fa-shield-alt"></i></span>
+                                <p class = 'mt-5'>Te rugăm să introduci parola nouă pentru contul tău.</p>
+                                <div class ='row'>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type = 'text' class="form-control" placeholder="Parolă" id='pass'/>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <input type = 'text' class="form-control" placeholder="Repetă parola" id='rep_pass'/>
+                                    </div>
+                                    <p class ='err invis' id = 'pass_err'>
+                                    
+                                    </p>
+                                </div>
+                                <div class = 'col-12'>
+                                    <div class = 'row'>
+                                        <div class = 'col'>
+            
+                                        </div>
+                                        <div class = 'col-auto'>
+                                            <button class = 'special2' onclick="change_pass()">Schimbă parola</button>
+                                        </div>
+                                    </div>
+                             
+                                </div>
+                            </div>
+            
+                            </div>
+                            </div>
+                            <div class="login-form">
+                                <div class = 'row justify-content-center align-items-center h-100'>
+                                    <div class = 'col-12' style="text-align: center;">
+                                    <i class="far fa-check-circle" style="font-size: 120px; color: #2C8A24"></i>
+                                </div>
+                                <div class = 'col-12 mt-3'>
+                                    <p style="text-align: center; color:#2C8A24;font-size: 20px;">Felicitări! Parola a fost schimbată cu succes!</p>
+                                </div>
+                                <div class = 'col-auto'>
+                                <button class="default-btn" onclick="window.location.href='/login'">
+                                    Autentificare
+                                    <span style="top: -1.59375px; left: 109.766px;"></span>
+                                </button>
+                            </div>
+
+                                </div>
+                                
+                                </div>
+        
+                </div>
+            </div>
+        </div>
+           </div>
+        </div>
+        <!-- End reset pass -->
+
+       <!-- Start Footer Section -->
+   <section class="footer-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Despre farmvio</h3>
+                    </div>
+
+                    <p>Povestea Farmvio a luat naștere din dorința de a crea o adevărată comunitate de fermieri, dar și din dorința de a revoluționa modul în care îți faci cumpărăturile, astfel încât să ai toate produsele preferate la doar un click distanță, în secțiunea Marketplace.
+                    </p>
+                    <ul class="footer-social">
+                        <li>
+                            <a href="https://www.facebook.com/Farmvio/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+
+
+                        <!-- <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Link-uri utile</h3>
+                    </div>
+
+                    <ul class="footer-quick-links">
+                        <li>
+                            <a href = '/index'>
+                            Home
+                            </a>
+                        </li>
+                        <li>
+                           <a href = '/marketplace'>
+                            Marketplace    
+                        </a>
+                        </li>
+                        <li>
+                            <a href = '/register'>
+                                Creează cont
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/login">
+                               Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/fermier-farmvio">
+                           Fermier Farmvio
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+     
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="footer-heading">
+                        <h3>Contact</h3>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-pin"></i>
+                        <h3>Locație</h3>
+                        <span>Strada Splaiul Unirii nr. 313, <br> București</span>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-call"></i>
+                        <h3>Telefon</h3>
+                        <span><a href="tel:0771-189-311">0771-189-311</a></span>
+                    </div>
+
+                    <div class="footer-info-contact">
+                        <i class="flaticon-envelope"></i>
+                        <h3>Email</h3>
+                        <span><a href="mailto:office@farmvio.com">office@farmvio.com</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copyright-area-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <p>
+                            <i class="far fa-copyright"></i> 
+                            2021 Farmvio. Toate drepturile rezervate
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <ul>
+                          
+                            <li>
+                                <a href="/privacy">Politică de confidențialitate</a>
+                            </li>
+                            <li>
+                                <a href="/cookies">Politică de cookie-uri</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Footer Section -->
+        <div class = 'cart_container'>
+            <div class = 'up_arrow'>
+                
+            </div>
+            <div class = 'cart_content'>
+                
+            </div>
+            <div class = 'bottom'>
+                <button class = 'special2' onclick="window.location.href = '/order'">Detalii coș</button>
+            </div>
+        </div>
+        <!-- Start Go Top Section -->
+        <div class="go-top">
+            <i class="fas fa-chevron-up"></i>
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <!-- End Go Top Section -->
+
+        <!-- jQuery Min JS -->
+        <script src="assets/js/jquery.min.js"></script>
+        <!-- Popper Min JS -->
+        <script src="assets/js/popper.min.js"></script>
+        <!-- Bootstrap Min JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <!-- Owl Carousel Min JS -->
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <!-- MeanMenu JS -->
+        <script src="assets/js/jquery.meanmenu.js"></script>
+        <!-- Popup JS -->
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <!-- Appear JS -->
+        <script src="assets/js/jquery.appear.min.js"></script>
+        <!-- Odometer JS -->
+        <script src="assets/js/odometer.min.js"></script>
+        <!-- Image LightBox Min JS -->
+        <script src="assets/js/imagelightbox.min.js"></script>
+        <!-- Nice Selects Min JS -->
+        <script src="assets/js/jquery.nice-select.min.js"></script>
+        <!-- AjaxChimp Min JS -->
+        <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+        <!-- Form Validator Min JS -->
+        <script src="assets/js/form-validator.min.js"></script>
+        <!-- Contact Form Min JS -->
+        <script src="assets/js/contact-form-script.js"></script>
+        <!-- Main JS -->
+        <script src="assets/js/main.js"></script>
+
+        <script src = '/assets/scripts/forgot_pass.js'></script>
+        {{#b2b}}
+        <script src = '/assets/scripts/b2b_cart.js'></script>
+        <link rel = 'stylesheet' href = '/assets/css/b2b_cart.css'>
+        <template id = 'cart_temp'>
+            <div class = 'b2b_item'>
+                <img src = '/assets/images/icons/no_image.png'/>
+                <span class = 'name'></span>
+                <input type = 'number' min = 1 max= 999>
+                <p class = 'sold_by'><strong>Vandut de: </strong></p>
+                <p class="del_from"><Strong>Livrat din: </Strong></p>
+            </div>
+        </template>
+
+
+        <template id = 'cart_temp_special'>
+            <div class = 'b2b_item'>
+                <h6 style="width: 100%">Special order</h6><br>
+                <div class = 'old_tags' style="width: 100%;padding-left: 5px;">
+               
+            </div>
+                <input type = 'number' value = '2' style="margin: 10px auto;">
+            </div>
+        </template>
+        {{/b2b}}
+        {{^b2b}}
+        <script src = '/assets/scripts/cart.js'></script>
+        <link rel = 'stylesheet' href = '/assets/css/cart.css'>
+        {{/b2b}}
+    </body>
+</html>

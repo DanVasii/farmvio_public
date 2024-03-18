@@ -1,0 +1,35 @@
+.top_content img{
+    max-height: 300px;
+ 
+}
+.top_content{
+    background-color: white;
+    height: 300px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product_card
+{
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.bottom_content
+{
+    display: flex;
+    justify-content: center;
+}
+.btn-danger{
+    background-color: #cb4b18 !important;
+}
+.title
+{
+    font-size: 18px;
+   display: block;
+}
+.middle_content
+{
+    padding-left: 20px;
+    margin-bottom: 10px;
+}

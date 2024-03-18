@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" 
+  type="image/png" 
+  href="/assets/images/apppictures/Logo FARMVIO14.png">
+  <title>Marketplace - FarmVio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap Min CSS -->
+        <link rel="stylesheet" href="/views/assets/css/bootstrap.min.css">
+        <!-- Animate Min CSS -->
+        <link rel="stylesheet" href="/views/assets/css/animate.min.css">
+        <!-- FontAwesome Min CSS -->
+        <link rel="stylesheet" href="/views/assets/css/fontawesome.min.css">
+        <!-- FlatIcon CSS -->
+        <link rel="stylesheet" href="/views/assets/css/flaticon.css">
+        <!-- Popup CSS -->
+        <link rel="stylesheet" href="/views/assets/css/magnific-popup.min.css">
+        <!-- Nice Select Min CSS -->
+        <link rel="stylesheet" href="/views/assets/css/nice-select.min.css">
+        <!-- MeanMenu CSS -->
+        <link rel="stylesheet" href="/views/assets/css/meanmenu.css">
+        <!-- Style CSS -->
+        <link rel="stylesheet" href="/views/assets/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="/views/assets/css/responsive.css">
+        <script>
+          console.log(window);
+              if (window.location.href.includes("views"))
+               window.location.href = '/index';
+      </script>
+        <style>
+          .full-height
+          {
+            clear: both;
+          }
+          .button-filters
+          {
+            width: auto !important;
+            padding-right: 20px !important;
+          }
+          .prom
+          {
+            padding: 2px 15px;
+            box-shadow: 0px 0px 2px black;
+            margin-left: 20px;
+            background-color: white;
+            transition: background-color .3s;
+          }
+          .prom:hover{
+            background-color: #e4e6ef;
+          }
+          .prom img{
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+          #promovati
+          {
+            background-color: #e3defe !important;
+    width: 100%;
+    margin-left: 0px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+          
+        </style>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src = '/assets/scripts/MathUtils.js'></script>
+<script src = '/assets/scripts/MapUtils.js'></script>
+<script src="/assets/scripts/topmenu.js"></script>
+<script src="/assets/scripts/index.js"></script>
+<script src = '/assets/scripts/cart.js'></script>
+<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+<script>
+  let map, infoWindow;
+var map_utils,live_sc_timeout;
+function initMap() {
+  
+  map = new google.maps.Map(document.getElementById("map"), {
+    panControl: false,
+    center: { 
+      lat: 44.933334, lng: 26.033333
+    },
+    zoom: 15,
+    disableDefaultUI: true,
+    mapTypeId: "roadmap",
+    maxZoom: 17
+  });
+  //we have the map, now init mapUtils 
+  map_utils = new mapUtils(map);
+        
+        $("#live_chb").prop("checked",true);
+
+
+  google.maps.event.addListener(map, 'bounds_changed', function(){
+    
+   map_utils.update_bounds(this.getBounds());
+   //we should update the raidus to if we are live searching 
+   if ($("#live_chb").prop("checked"))
+   {
+     map_utils.update_radius(map_utils.calc_radius())
+     
+     if (live_sc_timeout)
+    clearTimeout(live_sc_timeout)
+    live_sc_timeout = setTimeout(function(){
+        //update the center 
+        map_utils.update_center(map.getCenter());
+
+        map_utils.load_farms();
+    },500)
+   }
+    
+});
+
+  map.addListener("drag",function(){
+    //only if live sc is enabled 
+    if ($("#live_chb").prop("checked")){
+    if (live_sc_timeout)
+    clearTimeout(live_sc_timeout)
+    live_sc_timeout = setTimeout(function(){
+        //update the center 
+        map_utils.update_center(map.getCenter());
+
+        map_utils.load_farms();
+    },500)
+  }
+  })
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          
+          map.setCenter(pos);
+          
+        },
+        () => {
+          handleLocationError(true, infoWindow, map.getCenter());
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+
+  map_utils.update_center(map.getCenter());
+  
+  
+  map_utils.circle(map_utils.calc_radius() || "2KM");
+  map_utils.load_farms();
+  
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+
+}
+
+</script>
+</head>
+<body>
+
+
+  <div class = 'show_map_phone' onclick = 'show_map()'>
+    <i class="fas fa-map-marked-alt"></i> Arată mapa
+  </div>
+
+<div class="navbar-area-three">
+  <div class="trifles-responsive-nav">
+      <div class="container">
+          <div class="trifles-responsive-menu">
+              <div class="logo">
+                  <a href="/index">
+                      <img src="/views/assets/img/logo-two.jpg" alt="logo">
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="trifles-nav">
+      <div class="container">
+          <nav class="navbar navbar-expand-md navbar-light">
+              <a class="navbar-brand" href="/index">
+                  <img src="/views/assets/img/logo-two.jpg" alt="logo">
+              </a>
+
+              <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a href="/index" class="nav-link ">
+                              Home 
+                          </a>
+                          
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/story" class="nav-link">
+                              Povestea
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/marketplace" class="nav-link active">
+                              Marketplace 
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/b2b" class="nav-link">
+                              B2B 
+                          </a>
+                          
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="/contact" class="nav-link">
+                          Contact 
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/login" class="nav-link">
+                              Login
+                          </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <a href="/register" class="nav-link">
+                              Register
+                          </a>
+                      </li>
+                  </ul>
+
+                  <div class="others-options">
+                      <div class="option-item"><i class="search-btn fa fa-search"></i>
+                          <i class="close-btn fa fa-times"></i>
+                          <div class="search-overlay search-popup">
+                              <div class='search-box'>
+                                  <form class="search-form">
+                                      <input class="search-input" name="search" placeholder="Search" type="text">
+
+                                      <button class="search-button" type="submit">
+                                          <i class="fas fa-search"></i>
+                                      </button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="cart-btn">
+                        <a href='' onclick="return false" onmouseover = "show_cart()">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>0</span>
+                        </a>
+                    </div>
+
+ 
+                  </div>
+              </div>
+          </nav>
+      </div>
+  
+</div>
+</div>
+<div class = 'cart_container'>
+  <div class = 'up_arrow'>
+      
+  </div>
+  <div class = 'cart_content'>
+      
+  </div>
+</div>
+
+<!-- End Navbar Area -->
+<div class = 'filters_bg'></div>
+<div class = 'filters_container'>
+  <i class="far fa-times-circle close_window" onclick="close_window()"></i>
+  <div class = 'row' style="width: 100%;padding-left: 15px;">
+    <div class = 'col-12 mt-5' id = 'cats_list'>
+      <h3>Categorii</h3>
+      <button class = 'btn btn-primary mb-3'  id = 'back_cat' onclick = "back_cat()" disabled><i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Înapoi</button><br>
+      
+    </div>
+
+    <div class = 'col-6 mt-5' style="position: relative;" >
+      <h3>Locație</h3>
+      <input type = 'text' id = 'city_input' placeholder="Caută oraș"/>
+      <div class = 'list' id = 'city_list'>
+
+      </div>
+    </div>
+
+    <div class = 'col-6 mt-5'>
+      <h3>Rază</h3>
+      <select class="form-select" id = 'radius'>
+        <option selected value="20">20 KM</option>
+        <option value="50">50 KM</option>
+  
+      </select>
+    </div>
+
+</div>
+</div>
+
+
+
+     <div class="full-height">
+      <div class="column left" >
+        <div class="grid-container-left">
+
+                
+          <div >
+            <div class = 'filters_test'>
+            <!-- <input type = 'text' id = 'city_input' placeholder="Search location"/> -->
+           <input type = 'text' id = 'prod_search' placeholder="Caută produs"/>
+            <div class = 'filters' onclick="open_filters()">
+              Filtre
+            </div>
+
+            <div class = 'list' id = 'city_list'>
+              
+            </div>
+            <div class = 'list' id = 'radius_list'>
+              <div class = 'item'>1 KM</div>
+              <div class = 'item'>2 KM</div>
+              <div class = 'item'>5 KM</div>
+              <div class = 'item'>10 KM</div>
+              <div class = 'item'>20 KM</div>
+            </div>
+          </div>
+        </div>
+       
+        <div class = 'row' id = 'promovati'>
+          <h3>Fermieri promovați</h3>
+          {{#prom}}
+          <div class = 'col-auto prom mb-3 mt-2'>
+            {{#image_name}}
+            <img src = '/profile_uploads/{{image_name}}'>
+            {{/image_name}}
+
+            {{^image_name}}
+            <img src = '/assets/images/apppictures/3.jpg'>
+            {{/image_name}}
+            <a href = '/profile/{{slug}}'>
+              {{bis_name}}
+            </a>
+            </div>
+          {{/prom}}
+        </div>
+        <div class = 'data_farms'>
+
+        </div>
+        <div class = 'navigation_pages '>
+          <button class = 'nav_arrow' id = 'left_nav'  onclick="prev_page()" disabled>
+            <i class="fas fa-chevron-left" ></i>
+          </button>
+          <span>Sunt afișate 0 din 0</span>
+          <button class = 'nav_arrow' id = 'right_nav' onclick="next_page()" disabled>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+        </div>
+      </div>
+      </div>
+      <div class="column right" >
+        <div class = 'live_search'>
+          <input type = 'checkbox' id = 'live_chb'>
+           <label for = 'live_chb'>Live search</label>
+          
+        </div>
+        <div class = 'map_header'>
+          <i class="fas fa-times" onclick = 'hide_map()'></i>
+        </div>
+
+        <div id = 'map'></div>
+      </div>
+    </div>
+    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsulFOxSCM7O7uc72Sxff6xSuztTkUXhA&callback=initMap&libraries=drawing&v=weekly"
+      async
+    ></script>
+    <script>
+      function headerMenuResponsive() {
+        var x = document.getElementById("header-menu");
+        if (x.className === "header-right") {
+          x.className += " responsive";
+        } else {
+          x.className = "header-right";
+        }
+      }
+      </script>
+
+      <template id = 'no_cat'>
+        
+        <div class = 'point'>
+
+          <div class = 'left_cats'>
+            <p>Acest fermier nu are produse.</p>
+          </div>
+
+          <div class = 'right_c'>
+            <div class = 'top'>
+              <div class = 'left'>
+                <img src = '' style="background-color: white;"/>
+              </div>
+              <div class = 'right'>
+                <span id = 'point_name'><a href = ''></a></span>
+                <span id = 'pers_name'></span>
+                <span id = 'phone_number'></span>
+              </div>
+          </div>
+          <span class = 'desc'>
+
+          </span>
+           
+        </div>     
+        </div>
+      </template>
+
+
+      <template id = 'with_cat'>
+        
+        <div class = 'point'>
+
+          <div class = 'left'>
+            <div class = 'left_arrow'>
+              <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <div class = 'right_arrow' >
+              <i class="fas fa-chevron-right"></i>
+            </div>
+
+       
+          </div>
+
+          <div class = 'right_c'>
+            <div class = 'top'>
+              <div class = 'left'>
+                <img src = ''/>
+              </div>
+              <div class = 'right'>
+                <span id = 'point_name'><a href = ''></a></span>
+                <span id = 'pers_name'></span>
+                <span id = 'phone_number'></span>
+
+              </div>
+          </div>
+          <span class = 'desc'>
+
+          </span> 
+        </div>     
+        </div>
+      </template>
+
+      <script>
+        function move_left(elem){
+          //search for the vis element 
+          let $all_slides = $(elem).parent().find(".slide_element");
+          let vis_elem = 0;
+          $all_slides.each((elem)=>{
+            let slide = $all_slides.eq(elem);
+            if (slide.hasClass("vis"))
+            {
+              vis_elem = elem;
+            }
+          })
+          //now that we have this vis_elem, we should go backwards
+          //so this vis elem will definetly be invis 
+          $all_slides.eq(vis_elem).removeClass("vis").addClass("invis");
+          //now the prev elem
+          if (vis_elem-1 <0){
+            //we then vis the last 
+            $all_slides.eq($all_slides.length-1).removeClass("invis").addClass("vis");
+          }
+          else{
+            $all_slides.eq(vis_elem-1).removeClass("invis").addClass("vis");
+
+          }
+        }
+        function move_right(elem){
+                    //search for the vis element 
+                    let $all_slides = $(elem).parent().find(".slide_element");
+          let vis_elem = 0;
+          $all_slides.each((elem)=>{
+            let slide = $all_slides.eq(elem);
+            if (slide.hasClass("vis"))
+            {
+              vis_elem = elem;
+            }
+          })
+          //now that we have this vis_elem, we should go backwards
+          //so this vis elem will definetly be invis 
+          $all_slides.eq(vis_elem).removeClass("vis").addClass("invis");
+          //now the prev elem
+          if (vis_elem+1 >= $all_slides.length){
+            //we then vis the first 
+            $all_slides.eq(0).removeClass("invis").addClass("vis");
+          }
+          else{
+            $all_slides.eq(vis_elem+1).removeClass("invis").addClass("vis");
+
+          }
+        }
+      </script>
+      
+      <!-- jQuery Min JS -->
+      <script src="/views/assets/js/jquery.min.js"></script>
+      <!-- Popper Min JS -->
+      <script src="/views/assets/js/popper.min.js"></script>
+      <!-- Bootstrap Min JS -->
+      <script src="/views/assets/js/bootstrap.min.js"></script>
+      <!-- Owl Carousel Min JS -->
+      <script src="/views/assets/js/owl.carousel.min.js"></script>
+      <!-- MeanMenu JS -->
+      <script src="/views/assets/js/jquery.meanmenu.js"></script>
+      <!-- Popup JS -->
+      <script src="/views/assets/js/jquery.magnific-popup.min.js"></script>
+      <!-- Appear JS -->
+      <script src="/views/assets/js/jquery.appear.min.js"></script>
+      <!-- Odometer JS -->
+      <script src="/views/assets/js/odometer.min.js"></script>
+      <!-- Image LightBox Min JS -->
+      <script src="/views/assets/js/imagelightbox.min.js"></script>
+      <!-- Nice Selects Min JS -->
+      <script src="/views/assets/js/jquery.nice-select.min.js"></script>
+      <!-- AjaxChimp Min JS -->
+      <script src="/views/assets/js/jquery.ajaxchimp.min.js"></script>
+      <!-- Form Validator Min JS -->
+      <script src="/views/assets/js/form-validator.min.js"></script>
+      <!-- Contact Form Min JS -->
+      <script src="/views/assets/js/contact-form-script.js"></script>
+    </body>
+    </html>

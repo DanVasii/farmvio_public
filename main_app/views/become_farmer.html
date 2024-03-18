@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-HLL969JFNJ');
+	</script>
+
+    <title>FarmVio - Cont fermier</title>
+      <!-- Notify made by dan -->
+      <link rel = 'stylesheet' href = '/notify/index.css'></link>
+      <script src = '/notify/index.js'></script>
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src = '/assets/scripts/cart.js'></script>
+    <link rel = 'stylesheet' href=  '/assets/css/cart.css'>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+
+
+	<script src='/assets/scripts/become_farmer.js'></script>
+	<style>
+		.change_pic
+		{
+			display: none;
+		}
+		.upload_id
+		{
+		height: 400px;
+		width: 100%;
+		background-color: lightgray;
+		border-radius: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		}
+		.upload_id p{
+			font-size: 18px;
+			text-align: center;
+			position: absolute;
+		}
+		.upload_id img{
+			max-height: 100%;
+		}
+		.upload_id label
+		{
+			position: absolute;
+			bottom: 0px;
+		}
+		.auto_complete
+{
+  width: 100%;
+  position: relative;
+  margin-top: 5px;
+  z-index: 9999999;
+}
+.ac_data
+{
+  position: relative;
+  width: 100%;
+  background-color: antiquewhite;
+  box-shadow: 0px 0px 5px black;
+  overflow: auto;
+  max-height: 0px;
+  transition: max-height .4s;
+}
+
+.ac_data ul{
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.ac_data li{
+  padding: 5px 0px 5px 10px;
+  background-color: white;
+  border-top: 2px solid rgba(0,0,0,0.2);
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  margin-top: 5px;
+}
+
+.ac_data li {
+  list-style: none;
+}
+.ac_data li:hover{
+  border-top: 2px solid #4c95dd;
+  border-bottom: 2px solid #4c95dd;
+  box-shadow: inset 0px 0px 5px lightgray;
+}
+
+.ac_data::-webkit-scrollbar{
+  width: 7px;
+  ;
+}
+.ac_data::-webkit-scrollbar-thumb{
+  background-color: black;
+  border-radius: 20px;
+		}
+		.add_aviz
+		{
+			width: 250px;
+			height: 300px;
+			background-color: lightgray;
+			display: flex;
+			border-radius: 20px;
+			transition: box-shadow .4s;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			cursor: pointer;
+		}
+		.add_aviz:hover{
+			box-shadow: inset 0px 0px 5px white;
+		}
+		.add_aviz p{
+			font-size: 18px;
+   			 font-weight: bold;
+		}
+		.add_aviz i{
+			color: white;
+			font-size: 50px;
+			text-shadow: 0px 0px 2px black;
+		}
+		.image_holder
+		{
+			margin-top: 10px;
+			height: 210px;
+			width: 250px;
+			display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+		}
+		#avize .col-auto
+		{
+			position: relative;
+			height: 300px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		#avize button{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			opacity: 0.4;
+			transition: opacity .4s;
+		}
+		#avize textarea{
+			min-height: 75px;
+		}
+		#avize button:hover
+		{
+			opacity: 1;;
+		}
+		.image_holder img{
+			max-height: 100%;
+		}
+		.cover
+		{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;;
+			background-color: #ffb500 !important;
+			--bs-gutter-x: 0px !important;
+			transform: translateX(0px);
+			transition: transform 1s;
+		}
+
+		.slide_to_left
+			{
+				transform: translateX(-100%);
+			}
+			.err
+			{
+				display: none;
+				font-size: 15px;
+				color: black;
+			}
+	</style>
+
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+				<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+			</a>	
+			<div class="app-menu">
+				<ul class="header-megamenu nav">
+					<li class="btn-group nav-item d-md-none">
+						<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+							<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						</a>
+					</li>
+			  
+				</ul> 
+			  </div>
+			<!-- Logo -->
+			<a href="/index" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+				
+			  </div>
+			</a>	
+		</div>  
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="/index">
+			<button type="button" class="waves-effect waves-light btn btn-outline btn-secondary mb-5">Înapoi în site</button>
+		  </a>
+			<div class="navbar-custom-menu r-side">
+			  <ul class="nav navbar-nav">	
+				<li class="btn-group nav-item d-lg-inline-flex cart-btn phone"  onmouseover="show_cart()">
+					<a   class="waves-effect waves-light nav-link full-screen btn-info-light" >
+					  <i class="fas fa-shopping-cart"></i>
+					  </a>
+				  </li>	
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					<a href="/marketplace"  class="waves-effect waves-light nav-link full-screen btn-info-light" title="Marketplace">
+						<i class="fas fa-store-alt" style="margin-left: -3px;"></i>
+					  </a>
+				  </li>	
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="/logout" class="waves-effect waves-light  full-screen btn-info-light" title="Logout">
+						  <i class="fas fa-sign-out-alt" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				<!-- Notifications -->
+				<li class="dropdown notifications-menu">
+				  <span class="label label-primary">5</span>
+				  <a href="#" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications" aria-expanded="false">
+					<i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
+				  </a>
+				  <ul class="dropdown-menu animated bounceIn">
+	  
+					<li class="header">
+					  <div class="p-20">
+						  <div class="flexbox">
+							  <div>
+								  <h4 class="mb-0 mt-0">Notifications</h4>
+							  </div>
+							  <div>
+								  <a href="#" class="text-danger">Clear All</a>
+							  </div>
+						  </div>
+					  </div>
+					</li>
+	  
+					<li>
+					  <!-- inner menu: contains the actual data -->
+					  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><ul class="menu sm-scrol" style="overflow: hidden; width: auto; height: 250px;">
+					  
+					  </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+					</li>
+					<li class="footer">
+						<a href="#">View all</a>
+					</li>
+				  </ul>
+				</li>	
+	  
+				  
+			  </ul>
+			</div>
+		  </nav>
+	  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/dashboard">
+					<i class="icon-Home"></i>
+					<span>Dashboard</span>
+				  </a>
+				</li>
+				<li>
+				  <a href="/security_settings">
+					<i class="fas fa-shield-alt"><span class="path1"></span><span class="path2"></span></i>
+					<span>Setari securitate</span>
+				  </a>
+				</li>	
+
+				<li>
+				  <a href="/my_orders">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Comenzile mele </span>
+				  </a>
+				</li>	
+				<li>
+					<a href = '/become_farmer'>
+						<button type="button" class="waves-effect waves-light btn btn-primary mb-5" style="width: 100%;"><img src='/assets/images/apppictures/farmer_sub.png' style="width: 30px;height: 30px;"> Cont fermier</button>	
+					</a>
+				</li>
+				<li>
+					<a href = '/become_b2b'>
+					<button type="button" class="waves-effect waves-light btn btn-primary mb-5" style="width: 100%;" ><img src='/assets/images/apppictures/businessman.png' style="width: 30px;height: 30px;"> Cont HORECA/Procesator</button>
+				</a>
+				</li>
+
+				<li>
+					<a href = '/become_farmer'>
+					<button type="button" class="waves-effect waves-light btn btn-primary mb-5" style="width: 100%;" ><img src='/assets/images/apppictures/groceries.png' style="width: 30px;height: 30px;"> Cont Producător local</button>
+				</a>
+				</li>
+
+			  </ul>	
+
+
+
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	 
+		<div class = 'row justify-content-center pt-5 d-flex  d-sm-flex d-md-none'>
+			<div class = 'col-auto'>
+				<a href = '/become_farmer'>
+					<button type="button" class="waves-effect waves-light btn btn-primary mb-5" style="width: 100%;"><img src='/assets/images/apppictures/farmer_sub.png' style="width: 30px;height: 30px;"> Cont fermier</button>	
+				</a>
+			</div>
+			<div class = 'col-auto'>
+				<a href = '/become_b2b'>
+					<button type="button" class="waves-effect waves-light btn btn-primary mb-5" style="width: 100%;"><img src='/assets/images/apppictures/businessman.png' style="width: 30px;height: 30px;"> Cont HORECA/Procesator</button>
+				</a>
+			</div>
+
+			<div class = 'col-auto'>
+				<a href = '/become_farmer'>
+					<button type="button" class="waves-effect waves-light btn btn-primary mb-5" style="width: 100%;" ><img src='/assets/images/apppictures/groceries.png' style="width: 30px;height: 30px;"> Cont Producător local</button>
+				</a>
+			</div>
+		</div> 
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Extra</li>
+								<li class="breadcrumb-item active" aria-current="page">Profile</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content">
+		 <!-- Validation wizard -->
+		  <div class="box" style="overflow: hidden;">
+			  <div class = 'cover row bg-brick-dark'>
+				<div class="row " style="height: fit-content">
+					<div class="col-12">
+						<h2>Daca esti persoana juridica, cauta CUI</h2>
+					  
+					  <div class="input-group">
+						  <div class="input-group-addon">
+							  CUI
+							  
+							</div>
+
+							<input type="text" class="form-control" id="cui_search">
+						  
+					</div>
+					<p class="err"></p>
+				</div>
+				<div class="col-12 mt-3">
+					<div class="row justify-content-center">
+					<div class="col-auto">
+				  <button type="button" class="waves-effect waves-light btn btn-primary mb-5" onclick="procees_to_form()">Continuă</button>
+			  </div>
+			  <div class="col-12 mt-3">
+				  <div class="row justify-content-center">
+					  <div class="col-auto">
+						  
+				  <button type="button" class="waves-effect waves-light btn btn-secondary mb-5" onclick="procees_to_form(true)">Sari peste </button>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+				</div>
+			</div>
+			  </div>
+			<div class="box-header with-border">
+			  <h4 class="box-title">Devino fermier</h4>
+			  <h6 class="box-subtitle">Dupa aprobarea cererii vei putea vinde produse pe farmvio</h6>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body wizard-content">
+				<form action="#" class="validation-wizard wizard-circle">
+					<!-- Step 1 -->
+					<h6>Informatii personale</h6>
+					<section>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="wfirstName2" class="form-label"> Nume: <span class="danger">*</span> </label>
+									<input type="text" class="form-control  required" id="wfirstName2" name="firstName"> 
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="wlastName2" class="form-label"> Prenume: <span class="danger">*</span> </label>
+									<input type="text" class="form-control required" id="wlastName2" name="lastName"> 
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="wemailAddress2" class="form-label"> Email: <span class="danger">*</span> </label>
+									<input type="email" class="form-control  required" id="wemailAddress2" name="emailAddress"> 
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="wphoneNumber2" class="form-label">Numar telefon:</label>
+									<input type="tel" class="form-control  required" id="wphoneNumber2" name ='wphoneNumber2'> 
+								</div>
+							</div>
+						</div>
+						<h3> Domiciliu </h3>
+						<div class="row">
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="form-label">Judet</label>
+								
+											<input type="text" id="judet" class="form-control  required" name="judet" >
+					  
+											<div class="auto_complete" id="judet_ac">
+											  <div class="ac_data" style="max-height: 0px;">
+												  <ul>
+												  </ul>
+											  </div>			
+										  </div>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="form-label">Oras</label>
+
+									<input type="text" id="oras" class="form-control  required" name="oras">
+			  
+									<div class="auto_complete" id="oras_ac">
+									  <div class="ac_data" style="max-height: 0px;">
+										  <ul>
+										  </ul>
+									  </div>
+									</div>  
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-12">
+							<label class="form-label">Adresa</label>
+
+							<input type = 'text' class="form-control  required" name='adresa' id = 'adresa' placeholder="Strada, numar, bloc...">
+						</div>
+					</section>
+			
+					<!-- Step 3 -->
+					<h6>Informatii juridice</h6>
+					<section>
+						<div class="row">
+
+							<div class = 'col-md-6'>
+								<div class = 'form-group'>
+									<label class = 'form-label'>CUI / Certificat producator </label>
+									<input type = 'text' class = 'form-control required ' id='cui_cert' name = 'cui_cert'/>
+								</div>
+							</div>
+
+							<div class = 'col-md-6'>
+								<div class = 'form-group'>
+									<label class = 'form-label'>Nume firma</label>
+									<input type = 'text' class = 'form-control  required' id='nume_firma' name = 'nume_firma'/>
+								</div>
+							</div>
+						</div>
+
+						<div class = 'row'>
+							<div class = 'col-12'>
+								<div class ='form-group'>
+									<label class = 'form-label'>Ce categorii vei vinde pe farmvio?<span class="danger">*</span></label>
+										<select class="form-control  select2-hidden-accessible required " name = 'cats_sel' id = 'cats_sel' multiple="" data-placeholder="Selecteaza categorii" style="width: 100%;" tabindex="-1" aria-hidden="true">
+									
+										</select>
+									</div>
+							</div>
+							</div>
+
+							<div class = 'row mt-3'>
+							<div class = 'col-auto change_pic'>
+								<button type="button" class="waves-effect waves-light btn btn-info mb-5" onclick="change_cui_card()">Schimba poza</button>
+							</div>
+							<div class = 'col-12 mt-3'>
+								<label for = 'cui_card' class = 'upload_id'>
+									<p>Incarca poza cu cert. porducator/ CUI</p>
+									<img src = ''/>
+									<input type = 'file' id = 'cui_card' class=" required" name = 'cui_card' >
+								</label>
+							</div>
+						</div>
+
+					</section>
+					<!-- Step 4 -->
+					<h6>Avize</h6>
+					<section class = 'avize_part'>
+						<div class = 'row' id = 'avize'>
+							
+							<div class = 'col-auto'>
+							<label class = 'add_aviz'>
+								<i class="fas fa-plus"></i>
+								<p>Adaugă alte documente (certificate, atestate...)</p>
+								<input type = 'file'/>
+							</label>
+						</div>
+						</div>
+				
+					</section>
+				</form>
+			</div>
+			<!-- /.box-body -->
+		  </div>
+		  <!-- /.box -->
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  <li class="nav-item">
+			<a class="nav-link" href="javascript:void(0)">FAQ</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Purchase Now</a>
+		  </li>
+		</ul>
+    </div>
+	  &copy; 2021 <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+
+	<script src="../assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
+
+    <script src="../assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+    <script src="../assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+	<script src="../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+
+	<!-- Riday Admin App -->
+	<script src="js/template.js"></script>
+	
+    <script src="js/pages/steps.js"></script>
+
+
+	<template id = 'add_aviz_input'>
+		<div class = 'col-auto'>
+		<label class = 'add_aviz'>
+			<i class="fas fa-plus"></i>
+			<p>Adauga aviz</p>
+			<input type = 'file'/>
+		</label>
+	</div>
+	</template>
+
+	<template id = 'preview_img'>
+		<div class = 'col-auto mb-2'>
+			<button type="button" class="waves-effect waves-light btn btn-danger mb-5"><i class="fa fa-trash"></i> Sterge</button>
+			<div class = 'image_holder '>
+			<img src = ''/>
+		</div>
+			<textarea placeholder="Descriere" class="form-control" rows="3"></textarea>
+		</div>
+
+	</template>
+
+	<div class = 'cart_container'>
+		<div class = 'up_arrow'>
+			
+		</div>
+		<div class = 'cart_content'>
+			
+		</div>
+		<div class = 'bottom'>
+			<button class = 'btn btn-primary' onclick="window.location.href = '/order'">Detalii coș</button>
+		</div>
+	  </div>
+</body>
+</html>

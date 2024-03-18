@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+
+    <link rel="stylesheet" href="/assets/css/farm_admin.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src = '/assets/scripts/farm_admin.js'></script>
+    <script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+
+    <title>Adaugă ferma - FarmVio</title>
+
+
+
+
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+	<script src = '/assets/scripts/profilepage.js'></script>
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-danger fixed">
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Add images</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Change color</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+				<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+			</a>	
+			<div class="app-menu">
+				<ul class="header-megamenu nav">
+					<li class="btn-group nav-item d-md-none">
+						<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+							<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						</a>
+					</li>
+			  
+				</ul> 
+			  </div>
+			<!-- Logo -->
+			<a href="/index" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+				
+			  </div>
+			</a>	
+		</div>  
+	
+	  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+					<a href="/dashboard">
+					  <i class="icon-Home"></i>
+					  <span>Dashboard</span>
+					</a>
+				  </li>
+				  <li class="treeview">
+					<a href="#">
+					  <i class="fas fa-cog"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+					  <span>Settings</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="/personal_data"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Personal data </a></li>
+					  <li><a href="/security_settings"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Security</a></li>
+					</ul>
+				  </li>
+				  <li class="treeview">
+					  <a href="#">
+						  <i class="fas fa-tractor"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+						  <span>Ferme</span>
+						  <span class="pull-right-container">
+							<i class="fa fa-angle-right pull-right"></i>
+						  </span>
+						</a>
+					<ul class="treeview-menu">
+					  <li><a href="/view_farms"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi ferme</a></li>
+					  <li><a href="/farm_admin"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adauga ferma</a></li>
+					</ul>
+				  </li>
+				  <li class="treeview">
+					  <a href="#">
+						  <i class="fas fa-truck"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Puncte de lucru</span>
+						  <span class="pull-right-container">
+							<i class="fa fa-angle-right pull-right"></i>
+						  </span>
+						</a>
+						<ul class="treeview-menu">
+						  <li><a href="/view_points"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi puncte de lucru</a></li>
+						  <li><a href="/wpoints"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adauga punct de lucru</a></li>
+						</ul>
+				  </li>
+				  <li>
+					<a href="/orders">
+					  <i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Orders</span>
+					</a>
+				  </li>
+				  <li class="treeview">
+					<a href="#">
+					  <i class="icon-Cart"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Products</span>
+					  <span class="pull-right-container">
+						<i class="fa fa-angle-right pull-right"></i>
+					  </span>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="/view_prods"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>View products</a></li>
+					  <li><a href="/add_prod"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Add product</a></li>
+					</ul>
+				  </li>
+				  <li class="treeview">
+			
+					<a href="/offer_requests">
+					  <i class="fas fa-percent" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Cereri de oferta</span>
+					</a>
+			  </li>				
+				
+			  </ul>	
+			 
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Settings</li>
+								<li class="breadcrumb-item active" aria-current="page">Personal Data </li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content">
+         
+
+            <div class = 'carousel-inner'>
+
+                <div class = 'carousel-item py-5 active' id = 'step1' data-interval="false">
+                <div class = 'input_holder'>
+                    <div style="position: relative;">
+                    <label for = 'farm_name'>Farm name</label>
+                    <input type="text" id = 'farm_name'/>
+                    
+                    <span class = 'line'></span>
+                </div>
+              <p class = 'err' id = 'farm_name_err'>This is an error</p>
+                </div>
+            
+                <div class = 'input_holder'>
+                    <div style="position: relative;">
+                    <label for = 'cui'>CUI</label>
+                    <input type="text" id = 'cui'/>
+                    <span class = 'line'></span>
+                </div>
+                <p class = 'err' id = 'cui_err'>This is an error</p>
+                </div>
+                
+                
+                <div class = 'location_inputs'>
+            
+                    <div class='input_holder'>
+                        <div style = 'position: relative;'>
+                    <label for = 'county'>Farm county</label>
+                    <input type="text" id = 'county'/>
+                    <span class = 'line'></span>
+                    <div class = 'auto_complete' id = 'county_ac'>
+                    </div>
+                    </div>
+                    <p class = 'err' id = 'county_err'>This is an error</p>
+                    </div>
+            
+            
+                    <div class='input_holder'>
+                    <div style="position: relative;">
+                        <label for = 'city'>Farm city</label>
+                        <input type="text" id = 'city'/>
+                        <span class = 'line'></span>
+            
+                        <div class = 'auto_complete' id = 'city_ac'>
+            
+                        </div>
+                    </div>
+            
+                    <p class = 'err' id = 'city_err'>This is an error</p>
+                        
+                </div>
+                </div>
+            
+                <div class = 'input_holder'>
+                    <div style = 'position: relative;'>
+                    <label for = 'address'>Farm address</label>
+                    <input type="text" id = 'address'/>
+                    <span class = 'line'></span>
+                </div>
+            
+                <p class = 'err' id = 'address_err'>This is an error</p>
+                </div>
+                <div class = 'map_holder'>
+                    <div class = 'lock_map'>
+                        <input type = 'checkbox' class="filled-in chk-col-success"  id = 'map_lock'/><label class = "form-check-label" id = 'lcl' for="map_lock">Select on map</label>
+                    </div>
+                <div id = 'map'>
+                    </div>
+                </div>
+                <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsulFOxSCM7O7uc72Sxff6xSuztTkUXhA&callback=initMap&libraries=drawing&v=weekly"
+                async
+              ></script>
+            
+              <div class = 'input_holder' style="width: 400px;">
+                    <p style="margin: 0px">Farm description</p>
+                  <textarea ></textarea>
+              </div>
+              
+              <div class = 'input_holder' style="width: 500px;">
+                <label class = 'holder' for = 'file_inp'>
+                    <input type = 'file' id = 'file_inp' multiple>
+                    <div class = 'add_img'>
+                        <i class="fas fa-plus"></i>
+                        <span>Add images(optional)</span>
+                    </div>
+                </label>
+                <div class = 'uploaded_images'>
+            
+                </div>
+              </div>
+            <button class = 'action' onclick="send()"> Next</button>
+            </div>
+            
+            <div class = 'carousel-item py-5' id = 'step2' data-interval="false">
+            
+            
+                <div class = 'input_holder' style="width: 500px;">
+                    <label class = 'holder' for = 'id_inp' style="height: 250px;">
+                        <input type = 'file' id = 'id_inp'>
+                        <div class = 'add_img'>
+                            <i class="fas fa-plus"></i>
+                            <span>Upload ID</span>
+                        </div>
+                    </label>
+               
+                  </div>
+            
+            
+            
+                  <div class = 'input_holder' style="width: 500px;">
+                    <label class = 'holder' for = 'cui_inp' style="height: 250px;">
+                        <input type = 'file' id = 'cui_inp'>
+                        <div class = 'add_img'>
+                            <i class="fas fa-plus"></i>
+                            <span>Upload farm certificate</span>
+                        </div>
+                    </label>   
+                  </div>
+            
+            
+            
+                  <button class = 'action' onclick="send_pers_info()"> Finish</button>
+            </div>
+            <div class = 'carousel-item py-5 ' id='step3' data-interval="false">
+            
+                <div class = 'points'>
+                    <div class = 'point'>
+                        <div class = 'left_side'>
+                            <div class="round">
+                                <input type="checkbox" id="checkbox" />
+                                <label for="checkbox"></label>
+                              </div>
+                        </div>
+                        <div class = 'right_side'>
+            
+                            <div class = 'input_holder'>
+                                <div style = 'position: relative;'>
+                                <label for = 'point_name'>Point name </label>
+                                <input type="text" id = 'point_name'/>
+                                <span class = 'line'></span>
+                            </div>
+                        </div>
+            
+                        <div class = 'location'>
+                            <span style = 'font-weight: bold;font-size: 18px;'>Location: </span><span class = 'loc_text'></span>
+                        </div>
+            
+                    </div>
+                </div>
+            
+            
+            
+            
+                <div class = 'point'>
+                    <div class = 'left_side'>
+                        <div class="round">
+                            <input type="checkbox" id="checkbox2" />
+                            <label for="checkbox2"></label>
+                          </div>
+                    </div>
+                    <div class = 'right_side' style="min-height: 400px;">
+            
+                        <div class = 'map_holder2'>
+                            <div class = 'lock_map'>
+                                <input type = 'checkbox' id = 'map_lock2'/><label id = 'lcl' for="map_lock2">Select on map</label>
+                            </div>
+                            </div>
+            
+                        <div id = 'map2'></div>
+                        <div class = 'input_holder'>
+                            <div style = 'position: relative;'>
+                            <label for = 'point_name2'>Point name </label>
+                            <input type="text" id = 'point_name2'/>
+                            <span class = 'line'></span>
+                        </div>
+                    </div>
+                    <div class = 'location_inputs'>
+                            <div class = 'input_holder'>
+                                <div style = 'position: relative;'>
+                                <label for = 'point_county'>Point county </label>
+                                <input type="text" id = 'point_county'/>
+                                <span class = 'line'></span>
+                                <div class = 'auto_complete' id = 'point_county_ac'>
+                                </div>
+            
+                            </div>
+                        </div>
+            
+                                <div class = 'input_holder'>
+                                    <div style = 'position: relative;'>
+                                    <label for = 'point_city'>Point city </label>
+                                    <input type="text" id = 'point_city'/>
+                                    <span class = 'line'></span>
+                                    <div class = 'auto_complete' id = 'point_city_ac'>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            <div class = 'input_holder'>
+                                <div style = 'position: relative;'>
+                                <label for = 'point_addr'>Point address </label>
+                                <input type="text" id = 'point_addr'/>
+                                <span class = 'line'></span>
+                            </div>
+                            </div>
+            
+                </div>
+            </div>
+            
+            
+            
+            </div>
+            <button class = 'action' onclick="send_working()" style="margin-top: 10px;"> Finish</button>
+            
+            </div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  <div class="right-bar">
+	  <div id="sidebarRight">
+		  <div class="right-bar-inner">
+			  <div class="text-end position-relative">
+				  <a href="#" class="d-inline-block d-xl-none btn right-bar-btn waves-effect waves-circle btn btn-circle btn-danger btn-sm">
+					<i class="mdi mdi-close"></i>
+				  </a>
+			  </div>
+			  <div class="right-bar-content">
+				  <div class="box no-shadow box-bordered border-light">
+				  	  <div class="box-body">
+					  	  <div class="d-flex justify-content-between align-items-center">
+							  <div>
+								  <h5>Total Sale</h5>
+								  <h2 class="mb-0">$254.90</h2>
+							  </div>
+							  <div class="p-10">
+							  	<div id="chart-spark1"></div>
+							  </div>
+						  </div>
+					  </div>
+					  <div class="box-footer">
+					  	  <div class="d-flex align-items-center justify-content-between">
+						  	  <h5 class="my-0">6 total orders</h5>
+							  <a href="#" class="mb-0">View Report</a>
+						  </div>
+					  </div>
+				  </div>
+				  <div class="box no-shadow box-bordered border-light">
+				  	  <div class="box-body">
+					  	  <div class="d-flex justify-content-between align-items-center">
+							  <div>
+								  <h5>Total Sessions</h5>
+								  <h2 class="mb-0">845</h2>
+							  </div>
+							  <div class="p-10">
+							  	<div id="chart-spark2"></div>
+							  </div>
+						  </div>
+					  </div>
+					  <div class="box-footer">
+					  	  <div class="d-flex align-items-center justify-content-between">						  	  
+							  <a href="#" class="btn btn-primary-light btn-sm">Live</a>						  	  
+							  <a href="#" class="btn btn-info-light btn-sm">4 Visitors</a>						  	  
+							  <a href="#" class="btn btn-success-light btn-sm">See Live View</a>
+						  </div>
+					  </div>
+				  </div>
+				  <div class="box no-shadow box-bordered border-light">
+				  	  <div class="box-body">
+					  	  <div class="d-flex justify-content-between align-items-center">
+							  <div>
+								  <h5>Customer rate</h5>
+								  <h2 class="mb-0">5.12%</h2>
+							  </div>
+							  <div class="p-10">
+							  	<div id="chart3"></div>
+							  </div>
+						  </div>
+					  </div>
+					  <div class="box-footer">
+					  	  <div class="d-flex align-items-center justify-content-between">						  	  
+							  <h5 class="my-0"><span class="badge badge-xl badge-dot badge-primary mr-10"></span>First Time</h5>								  	  
+							  <h5 class="my-0"><span class="badge badge-xl badge-dot badge-danger mr-10"></span>Returning</h5>						  	  		
+						  </div>
+					  </div>
+				  </div>
+				  <div class="box no-shadow box-bordered border-light">
+					  <div class="box-header">
+					  	<h4 class="box-title">Resent Activity</h4>
+					  </div>
+				  	  <div class="box-body p-5">
+					  	  <div class="media-list media-list-hover">
+							<a class="media media-single mb-10 p-0 rounded-0" href="#">
+							  <h4 class="w-50 text-gray font-weight-500">10:10</h4>
+							  <div class="media-body pl-15 bl-5 rounded border-primary">
+								<p>Morbi quis ex eu arcu auctor sagittis.</p>
+								<span class="text-fade">by Johne</span>
+							  </div>
+							</a>
+
+							<a class="media media-single mb-10 p-0 rounded-0" href="#">
+							  <h4 class="w-50 text-gray font-weight-500">08:40</h4>
+							  <div class="media-body pl-15 bl-5 rounded border-success">
+								<p>Proin iaculis eros non odio ornare efficitur.</p>
+								<span class="text-fade">by Amla</span>
+							  </div>
+							</a>
+
+							<a class="media media-single mb-10 p-0 rounded-0" href="#">
+							  <h4 class="w-50 text-gray font-weight-500">07:10</h4>
+							  <div class="media-body pl-15 bl-5 rounded border-info">
+								<p>In mattis mi ut posuere consectetur.</p>
+								<span class="text-fade">by Josef</span>
+							  </div>
+							</a>
+
+							<a class="media media-single mb-10 p-0 rounded-0" href="#">
+							  <h4 class="w-50 text-gray font-weight-500">01:15</h4>
+							  <div class="media-body pl-15 bl-5 rounded border-danger">
+								<p>Morbi quis ex eu arcu auctor sagittis.</p>
+								<span class="text-fade">by Rima</span>
+							  </div>
+							</a>
+
+							<a class="media media-single mb-10 p-0 rounded-0" href="#">
+							  <h4 class="w-50 text-gray font-weight-500">23:12</h4>
+							  <div class="media-body pl-15 bl-5 rounded border-warning">
+								<p>Morbi quis ex eu arcu auctor sagittis.</p>
+								<span class="text-fade">by Alaxa</span>
+							  </div>
+							</a>
+
+						  </div>
+					  </div>
+					  <div class="box-footer">
+					  	  <div class="text-center">						  	  
+							  <a href="#" class="mb-0">Load More</a>					  	  		
+						  </div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+  </div> 
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  <li class="nav-item">
+			<a class="nav-link" href="javascript:void(0)">FAQ</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Purchase Now</a>
+		  </li>
+		</ul>
+    </div>
+	  &copy; 2021 <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar">
+	  
+	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
+    <ul class="nav nav-tabs control-sidebar-tabs">
+      <li class="nav-item"><a href="#control-sidebar-home-tab" data-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
+      <li class="nav-item"><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Users</p>
+			<a href="javascript:void(0)" class="text-right text-grey"><i class="ti-plus"></i></a>
+		  </div>
+		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+			<input type="text" name="s" placeholder="Search" class="w-p100">
+		  </div>
+          <div class="media-list media-list-hover mt-20">
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>			
+			
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="font-size-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+			  
+		  </div>
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Todo List</p>
+			<a href="javascript:void(0)" class="text-right text-grey"><i class="ti-plus"></i></a>
+		  </div>
+        <ul class="todo-list mt-20">
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_1" class="filled-in">
+			  <label for="basic_checkbox_1" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_2" class="filled-in">
+			  <label for="basic_checkbox_2" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_3" class="filled-in">
+			  <label for="basic_checkbox_3" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_4" class="filled-in">
+			  <label for="basic_checkbox_4" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_5" class="filled-in">
+			  <label for="basic_checkbox_5" class="mb-0 h-15"></label>
+			  <span class="text-line">Maecenas scelerisque</span>
+			  <small class="badge bg-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_6" class="filled-in">
+			  <label for="basic_checkbox_6" class="mb-0 h-15"></label>
+			  <span class="text-line">Vivamus nec orci</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 1 month</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_7" class="filled-in">
+			  <label for="basic_checkbox_7" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_8" class="filled-in">
+			  <label for="basic_checkbox_8" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_9" class="filled-in">
+			  <label for="basic_checkbox_9" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_10" class="filled-in">
+			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+		  </ul>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+	<div id="chat-box-body">
+		<div id="chat-circle" class="waves-effect waves-circle btn btn-circle btn-sm btn-warning l-h-45">
+            <div id="chat-overlay"></div>
+            <span class="icon-Group-chat font-size-18"><span class="path1"></span><span class="path2"></span></span>
+		</div>
+
+		<div class="chat-box">
+            <div class="chat-box-header p-15 d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button class="waves-effect waves-circle btn btn-circle btn-primary-light h-40 w-40 rounded-circle l-h-45" type="button" data-toggle="dropdown">
+                      <span class="icon-Add-user font-size-22"><span class="path1"></span><span class="path2"></span></span>
+                  </button>
+                  <div class="dropdown-menu min-w-200">
+                    <a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Color mr-15"></span>
+                        New Group</a>
+                    <a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Clipboard mr-15"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span></span>
+                        Contacts</a>
+                    <a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Group mr-15"><span class="path1"></span><span class="path2"></span></span>
+                        Groups</a>
+                    <a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Active-call mr-15"><span class="path1"></span><span class="path2"></span></span>
+                        Calls</a>
+                    <a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Settings1 mr-15"><span class="path1"></span><span class="path2"></span></span>
+                        Settings</a>
+                    <div class="dropdown-divider"></div>
+					<a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Question-circle mr-15"><span class="path1"></span><span class="path2"></span></span>
+                        Help</a>
+					<a class="dropdown-item font-size-16" href="#">
+                        <span class="icon-Notifications mr-15"><span class="path1"></span><span class="path2"></span></span> 
+                        Privacy</a>
+                  </div>
+                </div>
+                <div class="text-center flex-grow-1">
+                    <div class="text-dark font-size-18">Mayra Sibley</div>
+                    <div>
+                        <span class="badge badge-sm badge-dot badge-primary"></span>
+                        <span class="text-muted font-size-12">Active</span>
+                    </div>
+                </div>
+                <div class="chat-box-toggle">
+                    <button id="chat-box-toggle" class="waves-effect waves-circle btn btn-circle btn-danger-light h-40 w-40 rounded-circle l-h-45" type="button">
+                      <span class="icon-Close font-size-22"><span class="path1"></span><span class="path2"></span></span>
+                    </button>                    
+                </div>
+            </div>
+            <div class="chat-box-body">
+                <div class="chat-box-overlay">   
+                </div>
+                <div class="chat-logs">
+                    <div class="chat-msg user">
+                        <div class="d-flex align-items-center">
+                            <span class="msg-avatar">
+                                <img src="../images/avatar/2.jpg" class="avatar avatar-lg">
+                            </span>
+                            <div class="mx-10">
+                                <a href="#" class="text-dark hover-primary font-weight-bold">Mayra Sibley</a>
+                                <p class="text-muted font-size-12 mb-0">2 Hours</p>
+                            </div>
+                        </div>
+                        <div class="cm-msg-text">
+                            Hi there, I'm Jesse and you?
+                        </div>
+                    </div>
+                    <div class="chat-msg self">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <div class="mx-10">
+                                <a href="#" class="text-dark hover-primary font-weight-bold">You</a>
+                                <p class="text-muted font-size-12 mb-0">3 minutes</p>
+                            </div>
+                            <span class="msg-avatar">
+                                <img src="../images/avatar/3.jpg" class="avatar avatar-lg">
+                            </span>
+                        </div>
+                        <div class="cm-msg-text">
+                           My name is Anne Clarc.         
+                        </div>        
+                    </div>
+                    <div class="chat-msg user">
+                        <div class="d-flex align-items-center">
+                            <span class="msg-avatar">
+                                <img src="../images/avatar/2.jpg" class="avatar avatar-lg">
+                            </span>
+                            <div class="mx-10">
+                                <a href="#" class="text-dark hover-primary font-weight-bold">Mayra Sibley</a>
+                                <p class="text-muted font-size-12 mb-0">40 seconds</p>
+                            </div>
+                        </div>
+                        <div class="cm-msg-text">
+                            Nice to meet you Anne.<br>How can i help you?
+                        </div>
+                    </div>
+                </div><!--chat-log -->
+            </div>
+            <div class="chat-input">      
+                <form>
+                    <input type="text" id="chat-input" placeholder="Send a message..."/>
+                    <button type="submit" class="chat-submit" id="chat-submit">
+                        <span class="icon-Send font-size-22"></span>
+                    </button>
+                </form>      
+            </div>
+		</div>
+	</div>
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	
+	<script src="js/pages/timeline.js"></script>
+	
+	
+</body>
+</html>

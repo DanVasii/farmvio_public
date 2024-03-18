@@ -1,0 +1,71 @@
+.tutorial_background
+{
+    background-color: rgba(0,0,0,0.3) ;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+}
+
+.tutorial_clone{
+    position: absolute;
+    z-index: 1001;
+    background-color: white;    
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.tutorial_clone button {
+    color: white !important;
+    margin-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.tutorial_text{
+    position: absolute;
+    font-size:18px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px black;
+    transition: width 2s;
+}
+.tutorial_text * {
+    color: white;
+    text-shadow: 0px 0px 5px black;
+}
+
+.tutorial_image
+{
+    position: absolute;
+    animation: show_image linear .8s;
+
+}
+
+@keyframes show_image{
+    from{
+        transform: translate(-30px,-30px);
+        opacity: 0;
+    }
+    to{
+        transform: translate(0px,0px);
+        opacity: 1;
+    }
+}
+
+.tut {
+    animation: animateElement linear .3s;
+    animation-iteration-count: 1;
+  }
+
+@keyframes animateElement{
+    0% {
+      opacity:0;
+      transform:  scaleY(0) translateX(-20px);
+    }
+    100% {
+      opacity:1;
+      transform:  scaleY(1) translateX(0px);
+    }
+  }
+  

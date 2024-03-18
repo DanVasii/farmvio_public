@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+  
+  <base href = '/farmVio-node'>
+
+  <style>
+	  
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px 3px 3px 3px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.info-msg {
+  color: #059;
+  background-color: #BEF;
+}
+.success-msg {
+  color: #270;
+  background-color: #DFF2BF;
+}
+.warning-msg {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+.error-msg {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+
+  </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-HLL969JFNJ');
+	</script>
+
+    <title>FarmVio - Adaugă produs </title>
+  
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+     <!-- Notify css - made by Dan -->
+	 <link rel = 'stylesheet' href = '/notify/index.css'> 
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src = '/assets/scripts/cart.js'></script>
+    <link rel = 'stylesheet' href=  '/assets/css/cart.css'>
+
+	
+
+    <script src ='/assets/scripts/add_prod.js'></script>
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+	<style>
+		.big{
+			font-size: 20px !important;
+			display: flex !important;
+			align-items: center;
+			height: 36px !important;
+			padding-left: 40px !important;
+		}
+		.big::before{
+			width: 30px !important;
+			height: 30px !important;
+		}
+		.big::after{
+			width: 30px !important;
+			height: 30px !important;
+		}
+.cover{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    flex-direction: column;
+    display: none;
+}
+	</style>
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Add images</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Change color</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+				<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+			</a>	
+			<div class="app-menu">
+				<ul class="header-megamenu nav">
+					<li class="btn-group nav-item d-md-none">
+						<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+							<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						</a>
+					</li>
+			  
+				</ul> 
+			  </div>
+			<!-- Logo -->
+			<a href="/index" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+				
+			  </div>
+			</a>	
+		</div>  
+		<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="/index">
+			<button type="button" class="waves-effect waves-light btn btn-outline btn-secondary mb-5">Înapoi în site</button>
+		  </a>
+			<div class="navbar-custom-menu r-side">
+			  <ul class="nav navbar-nav">
+				<li class="btn-group nav-item d-lg-inline-flex cart-btn phone"  onmouseover="show_cart()">
+					<a   class="waves-effect waves-light nav-link full-screen btn-info-light" >
+					  <i class="fas fa-shopping-cart"></i>
+					  </a>
+				  </li>		
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-info-light" title="Full Screen">
+						  <i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="/logout" class="waves-effect waves-light  full-screen btn-info-light" title="Logout">
+						  <i class="fas fa-sign-out-alt" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				<!-- Notifications -->
+				<li class="dropdown notifications-menu">
+				  <span class="label label-primary">5</span>
+				  <a href="#" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications" aria-expanded="false">
+					<i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
+				  </a>
+				  <ul class="dropdown-menu animated bounceIn">
+	  
+					<li class="header">
+					  <div class="p-20">
+						  <div class="flexbox">
+							  <div>
+								  <h4 class="mb-0 mt-0">Notifications</h4>
+							  </div>
+							  <div>
+								  <a href="#" class="text-danger">Clear All</a>
+							  </div>
+						  </div>
+					  </div>
+					</li>
+	  
+					<li>
+					  <!-- inner menu: contains the actual data -->
+					  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><ul class="menu sm-scrol" style="overflow: hidden; width: auto; height: 250px;">
+					  
+					  </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+					</li>
+					<li class="footer">
+						<a href="#">View all</a>
+					</li>
+				  </ul>
+				</li>	
+	  
+				  
+			  </ul>
+			</div>
+		  </nav>
+	  </header>
+  
+   <!-- Left side column. contains the logo and sidebar -->
+   <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/dashboard">
+					<i class="icon-Home"></i>
+					<span>Panou de administrare</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="fas fa-cog"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+					<span>Setări</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/personal_data"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări date personale </a></li>
+					<li><a href="/security_settings"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Setări securitate</a></li>
+				  </ul>
+				</li>
+		
+				<li class="treeview">
+					<a href="#">
+						<i class="fas fa-truck"><span class="path1"></span><span class="path2"></span></i>
+						<span>Puncte de lucru</span>
+						<span class="pull-right-container">
+						  <i class="fa fa-angle-right pull-right"></i>
+						</span>
+					  </a>
+					  <ul class="treeview-menu">
+						<li><a href="/view_points"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi puncte de lucru</a></li>
+						<li><a href="/wpoints"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă punct de lucru</a></li>
+					  </ul>
+				</li>
+				<li>
+				  <a href="/orders">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Comenzi</span>
+				  </a>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Cart"><span class="path1"></span><span class="path2"></span></i>
+					<span>Produse</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="/view_prods"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Vezi produse</a></li>
+					<li><a href="/add_prod"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adaugă produs</a></li>
+				  </ul>
+				</li>				
+				<li>
+			
+						<a href="/offer_requests">
+						  <i class="fas fa-percent"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Cereri de ofertă</span>
+						</a>
+				  </li>
+				  <li>
+			
+					<a href="/date_proforma">
+					  <i class="fas fa-file-contract"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Date proforma</span>
+					</a>
+			  </li>
+				  <li>
+					<li class = 'bg-info-light '>
+			
+						<a href="/profile/{{slug}}" class = 'text-primary'>
+						  <i class="far fa-id-badge text-primary"><span class="path1"></span><span class="path2"></span></i>
+						  <span>Vezi profilul tău</span>
+						</a>
+				  </li>
+
+				  <li class = 'bg-success-light'>
+			
+					<a href="/add_prod" class = 'text-primary'>
+					  <i class="fas fa-plus text-primary"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Adaugă produs</span>
+					</a>
+			  </li>
+
+				</li>
+			  </ul>	
+	
+			</div>
+		</div>
+    </section>
+  </aside> 
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+			
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content" style="position: relative;" >
+			
+			<div class = 'cover bg-success-light'>
+				<i class="far fa-check-circle text-success" style="font-size: 150px;"></i>
+				<p style="font-size: 22px;">Felicitări! Produsul a fost adăugat!</p>
+		
+		</div>
+		{{#points}}
+		  <div class="row justify-content-center pt-3 pb-3" style="background-color: white;" id = 'product_row '>
+
+            <div class = 'col-lg-6'>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Caută</span>
+                    </div>
+                    <input type="text" id = 'search_wpoint' class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    
+                  </div>
+            <div class = 'wpoints bg-lightest'>         
+
+            </div>
+			<div id ='chosen_tags' class="mt-3">
+
+
+
+			</div>
+			<div class = 'custom_error' id = 'wpoints_error'></div>
+        </div>
+
+        <div class = 'row justify-content-center mt-3'>
+        <div class = 'col-lg-6'>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Numele produsului</span>
+                </div>
+                <input type="text" class="form-control" id = 'prod_name'>
+
+              </div>
+			  <div class = 'custom_error' id = 'prod_name_error'></div>
+
+
+        </div>
+
+
+
+    </div>
+
+	<div class = 'row justify-content-center mt-3'>
+        <div class = 'col-lg-6'>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Titlul produsului</span>
+                </div>
+                <input type="text" class="form-control" id = 'prod_title'>
+
+              </div>
+			  <div class = 'custom_error' id = 'prod_title_error'></div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <div class = 'row justify-content-center mt-3'>
+        <div class = 'col-lg-6'>
+
+            <div class="form-group">
+                <label class="form-label">Categorie</label>
+
+                <select class="form-control select2 " id='cat_sel' style="width: 100%;" tabindex="-1" aria-hidden="true">
+         
+                </select>
+              </div>
+			  <div class = 'custom_error' id = 'cat_error'></div>
+
+            </div>
+    </div>
+
+	<div class = 'row justify-content-center mt-3'>
+		<div class = 'col-lg-6'>
+			
+			<label for = 'price'>Preț</label>
+			<div class="input-group flex-nowrap">
+				
+				<span class="input-group-text" id="addon-wrapping">RON</span>
+  				<input id = 'price' type="number" class="form-control"  aria-describedby="addon-wrapping">
+				  <span class="input-group-text">/</span>
+
+				<select id = 'unit_sel'>
+					<option value = 'kg'>Kilogram</option>
+					<option value = 'l'>Litru</option>
+					<option value = 'b'>Bucată</option>
+				</select>
+              </div>
+			  <div class = 'custom_error' id = 'price_error'></div>
+
+		</div>
+	</div>
+
+	<div class = 'row justify-content-center mt-3' id = 'unit_weight' style="display: none">
+		<div class = 'col-lg-6'>
+			
+			<label for = 'unit_weight_input'>Greutate per bucată</label>
+			<div class="input-group flex-nowrap">
+				
+			
+  				<input id = 'unit_weight_input' type="number" class="form-control"  aria-describedby="addon-wrapping" value = "1">
+				  <span class="input-group-text">Kilograme</span>
+              </div>
+			  <div class = 'custom_error' id = 'unit_weight_error'></div>
+
+		</div>
+		<div class = 'col-12'>
+			<div class = 'row justify-content-center'>
+				<div class = 'col-6'>
+					Pret per kilogram (optional): 
+					<div class = 'input-group'>
+					<input class = 'form-control' type = 'number' value = "0" id = 'price_per_kg'/>
+					<span class="input-group-text">RON</span>
+				</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class = 'row justify-content-center mt-3'>
+		
+		<div class = 'col-lg-6'>
+			<label>Perioada de disponibilitate</label>
+		<div class="input-group ">
+			<div class="input-group-addon"><i class="far fa-calendar-alt"></i></div>
+			<input type="text"  class = 'month_picker' value="" />
+
+			<div class="input-group-addon">până la</div>
+			<div class="input-group-addon"><i class="far fa-calendar-alt"></i></div>
+			<input type = 'text' class="month_picker" value ="">
+		</div>
+
+		<div class = 'custom_error' id = 'months_error'></div>
+	</div>
+
+	</div>
+
+
+
+        <div class = 'row justify-content-center mt-3'>
+            <div class = 'col-lg-6'>
+                <div class="md-form">
+                    <label for = 'desc'>Descriere</label>
+                    <textarea id="desc" class="md-textarea form-control" rows="3"></textarea>
+                  </div>
+				  <div class = 'custom_error' id = 'desc_error'></div>
+
+            </div>
+
+        </div>
+
+		<div class = 'row justify-content-center mt-3'>
+			<div class = 'col-lg-6' id = 'stocks'>
+			<h3>Stoc</h3>
+
+
+	
+
+		</div>
+		</div>
+
+		<div class = 'row justify-content-around mt-3'>
+			<div class = 'col-lg-6' style="font-size: 20px">
+			
+				<div class = 'row'>
+					<div class = 'col-6'>
+						<input name="group4" type="radio" id="radio_12" class="radio-col-warning">
+						<label for="radio_12" class="big">Neperisabil</label>
+			</div>
+				<div class ='col-6'>
+					<input name="group4" type="radio" id="radio_13" class="radio-col-warning">
+					<label for="radio_13" class="big">Perisabil</label>
+			</div>
+			</div>
+			<div class = 'custom_error' id = 'perisabil_error'></div>
+			</div>
+		</div>
+
+		<div class = 'row justify-content-center mt-3' style="display: none;" id = 'del_types'>
+			<div class = 'col-lg-6'>
+				<h3>Metoda de livrare a produsului</h3>
+				<div class = 'row'>
+					<div class = 'col-auto'>
+						<input name="group5" type="radio" id="radio_1" class="radio-col-success" data-type='1'>
+						<label for="radio_1" class = 'big'>Transport propriu în responsabilitatea fermierului  </label>
+					</div>
+
+					<div class = 'col-auto'>
+						<input name="group5" type="radio" id="radio_2" class="radio-col-success" data-type='2'>
+						<label for="radio_2" class = 'big'>Ridicare colet de către client de la punctul de livrare </label>
+					</div>
+
+					<div class = 'col-auto'>
+						<input name="group5" type="radio" id="radio_3" class="radio-col-success" data-type='3'>
+						<label for="radio_3" class = 'big'>Ambele </label>
+					</div>
+				</div>
+				<div class = 'custom_error' id = 'trans_type_error'></div>
+
+			</div>
+		</div>
+
+	
+
+		<div class = 'row justify-content-center mt-3'>
+
+			<div class = 'col-lg-6 '>
+				
+				<label for = 'file_upload' class = 'upload bg-primary'>
+					<p>Încarcă imagini</p>
+					<input type="file" id = 'file_upload' multiple>
+				</label>
+<button type="button" class="waves-effect waves-light btn btn-outline btn-rounded btn-info-light mb-5 mt-3" id = 'order' onclick="toggle()">Rearanjează imagini </button>
+				<div class = 'upload_area'>
+
+				</div>
+				<div class = 'custom_error' id = 'image_order_error'></div>
+			</div>
+
+
+		</div>
+		<div class = 'row justify-content-center mt-3'>
+			<div class = 'col-lg-6'>
+			<h3>Metoda de vânzare</h3>
+				<div class = 'col-12'>
+					<input name="sell_group" type="radio" id="sell_1" class="radio-col-warning">
+					<label for="sell_1" class="big">Comandă prin platforma Farmvio</label>
+				</div>
+			<div class = 'col-12'>
+				<input name="sell_group" type="radio" id="sel_2" class="radio-col-warning">
+				<label for="sel_2" class="big">Rezervare prin platforma Farmvio</label>
+			</div>
+			<!-- <div class = 'col-12'>
+				<input name="sell_group" type="radio" id="sel_3" class="radio-col-warning">
+				<label for="sel_3" class="big">Ambele metode</label>
+			</div> -->
+
+	
+
+		</div>
+		</div>
+
+		<div id = 'reservation_form' style="display: none;">
+
+		<div class = 'row justify-content-center mt-3' id = 'rez_form'>
+			<div class = 'col-lg-6 mt-3' >
+				<h3>Formular rezervare</h3>
+				
+			<div class="warning-msg">
+				<i class="fa fa-warning"></i>
+				Pentru a putea accepta rezervari va trebui sa completezi acest formular. Rezervarea unui produs reprezinta pre-comanda acestuia.
+			</div>
+			<div class = 'col-12'>
+			</div>
+			</div>
+		</div>
+
+
+		<div class = 'row justify-content-center mt-3'>
+			<div class = 'col-lg-6'>
+
+				<div class="row">
+					<div class = 'col-6'>
+						<h4>Data de început pentru rezervari</h4>
+					<div  id='calendar_start'  >
+		
+					</div>
+				</div>
+				<div class = 'col-6'>
+					<h4>Data de final pentru rezervari</h4>
+					<div  id='calendar_end'  >
+		
+					</div>
+				</div>
+
+
+				 </div>		
+
+					</div>
+		</div>
+
+
+		<div class = 'row justify-content-center'>
+			<div class = 'col-lg-6'>
+				<h3>Perioada de livrare - cand se vor livra produsele</h3>
+				<div class = 'row'>
+					<div class = 'col-auto'>
+						<button type="button" class="waves-effect waves-light btn btn-primary mb-5" onclick="add_delivery_date()">Adauga data</button>
+					</div>
+					<!-- <div class = 'col-auto'>
+					  SAU	
+					</div>
+					<div class = 'col-auto'>
+						<button type="button" class="waves-effect waves-light btn btn-primary mb-5" onclick="add_int_data()">Adauga interval de asteptare</button>
+					</div> 
+
+				</div> -->
+				</div>
+				</div>
+				<div class = 'col-12'>
+				<div class = 'row ' style="justify-content: space-evenly;" id = 'reservation_delivery_dates'>
+
+		
+
+				</div>
+			</div>
+		</div>
+
+		<div class = 'row justify-content-center'>
+			<div class = 'col-lg-6'>
+				<h3>Conditii de livrare</h3>
+				<div class="btn-group">
+					<button type="button" class="waves-effect waves-light btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Adauga conditie
+					</button>
+					<div class="dropdown-menu">
+					  <a class="dropdown-item"  onclick="add_cond(1)">Sa fie din judetul</a>
+					  <a class="dropdown-item" onclick="add_cond(2)">Plasarea comenzii</a>
+				
+				
+					</div>
+				  </div>
+				  
+			</div>
+			<div class = 'col-12'>
+				<div class = 'row justify-content-center' id = 'conds'>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class = 'row justify-content-center'>
+			<div class = 'col-lg-6'>
+				<h3>Preturi de livrare</h3>
+				<div class="btn-group">
+					<button type="button" class="waves-effect waves-light btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Adauga pret
+					</button>
+					<div class="dropdown-menu">
+					  <a class="dropdown-item"  onclick="add_price_cond(1)">In functie de judet</a>
+				
+		
+					</div>
+				  </div>
+				  <div class = 'row' id = 'price_conds'>
+			
+				  </div>
+			</div>
+		</div>
+
+		<div class = 'row justify-content-center mt-3'>
+			<div class = 'col-6'>
+				<input type="checkbox" id="need_pay" class="filled-in chk-col-success" >
+				<label for="need_pay" style="font-size: 16px;">Cere plata dupa confirmarea rezervarii</label>
+				
+			</div>
+			<div class = 'col-12 mt-3'>
+				
+				<div class = 'row justify-content-center ' id = 'proforma_data'>
+					<div class = 'col-lg-6'>
+						<h3>Date proformă</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+		<div class="row justify-content-center mt-3">
+			<div class="col-lg-6">
+			<button type="button" id="ins_data" onclick="send_prod()" style="margin: auto; display: block; background: linear-gradient(1deg, #01b075, #01e397) !important;text-shadow: 0 0 3px black;" class="waves-effect waves-light btn mb-5 bg-gradient-success">Finalizează produs</button>
+			</div>
+			</div>
+
+      
+		{{/points}}
+		{{^points}}
+		<div class = 'cover bg-danger-light' style="display: flex;">
+			<i class="far fa-times-circle text-danger" style="font-size: 150px;"></i>
+			<p style="font-size: 22px;">Nu ai puncte de lucru! Te rugăm să adaugi puncte de lucru!</p>
+	
+	</div>
+		{{/points}}
+			</div>
+		  </div>
+		  <!-- /.row -->
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+   
+    </div>
+	&copy; 2021 Farmvio. Toate drepturile rezervate.
+  </footer>
+
+  <div class = 'month_picker_temp'>
+
+  </div>
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+
+	<script src="../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+
+	<script src = '/notify/index.js'></script>
+	<script src = '/assets/scripts/month_picker.js'></script>
+	<link rel = 'stylesheet' href = '/assets/css/month_picker.css'>
+
+	<div class = 'cart_container'>
+		<div class = 'up_arrow'>
+			
+		</div>
+		<div class = 'cart_content'>
+			
+		</div>
+		<div class = 'bottom'>
+			<button class = 'btn btn-primary' onclick="window.location.href = '/order'">Detalii coș</button>
+		</div>
+	  </div>
+
+	  <template id = 'cal_when'>
+		<div class = 'col-auto when_data bg-secondary-light ms-2 mt-2'>
+			<div class = 'calendar_area' >
+
+			</div>
+			<button type="button" style = 'display: block;width:100%;' class="waves-effect waves-light btn btn-danger mb-5">Sterge data</button>
+
+		</div>
+	  </template>
+
+	  <template id = 'int_when'>
+	
+		<div class = 'col-auto when_data bg-secondary-light ms-2 mt-2' >
+			Interval de <input type="number" value='2'/> zile de la plasarea rezervarii
+		</div>
+	  </template>
+
+	  <template id = 'del_cond'>
+		<div class = 'col-lg-6 mt-3 del_cond bg-primary-light pt-2 pb-2' data-type="1">
+			<p>Conditie ca user-ul sa fie din: </p>
+			<select class="form-control select2 select_judete" multiple="multiple" style="width: 100%;">
+		
+			</select>
+		</div>
+	  </template>
+
+	  <template id = 'del_cond_date'>
+		<div class = 'col-lg-6 mt-3 del_cond bg-primary-light pt-2 pb-2' data-type="2">
+			Comanda sa fie plasata inainte cu <input type = 'number' value = '1'/> zile pana in ora 
+
+				  <input type="text" class="form-control timepicker">
+			
+			
+		</div>
+	  </template>
+
+	  <template id = 'del_price_case'>
+		<div class = 'col-12 price_case bg-secondary-light pt-3 pb-3 mt-3'>
+			Pretul de transport este <input type = 'number' value = '1'/> daca judetul de livrare este: 
+			<br>
+			<select class="form-control select2 select_judete_price mt-3" multiple="multiple" style="width: 100%;">
+
+			</select>
+		</div>
+	  </template>
+
+	  <template  id = 'proforma_temp'>
+		  
+		<div class = 'col-6 me-1 bg-secondary-light p-3'>
+			<div class = 'row '>
+			<div class = 'col-auto'>
+				<input name="proforma_selected" type="radio" id="" class="radio-col-info">
+				<label  class='big'></label>
+			</div>
+			<div class = 'col'>
+				<label  style="cursor: pointer;">
+					<div class = 'row'>
+						<div class="col-12 bg-white pt-2 pb-2" style="border-radius: 10px;">
+							<h4>Date proforma</h4>
+							<div class="row">
+								<div class="col-6">
+									<b>Judet: </b><span></span>
+								</div>
+								<div class="col-6">
+									<b>Oras: </b><span></span>
+								</div>
+								<div class="col-12">
+									<b>Adresa: </b><span></span>
+								</div>
+								<div class="col-6">
+									<b>Nume firma: </b><span> </span>
+								</div>
+								<div class="col-6">
+									<b>CUI: </b><span></span>
+								</div>
+								<div class="col-12">
+									<b>Cont bancar: </b><span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</label>
+			</div>
+		</div>
+		</div>
+	  </template>
+
+
+	  <link href="https://cdn.jsdelivr.net/bootstrap.timepicker/0.2.6/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+	  <script src="https://cdn.jsdelivr.net/bootstrap.timepicker/0.2.6/js/bootstrap-timepicker.min.js"></script>
+
+	  <link rel="stylesheet" href ='/assets/css/bootstrap-datepicker.css'>
+	  <script src = '/assets/scripts/bootstrap-datepicker.min.js'></script>
+	  <script>
+		$.fn.datepicker.dates['ro'] = {
+			days: ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sămbătă"],
+			daysShort: ["Dum", "Lu", "Ma", "Mie", "Joi", "Vi", "Sâ"],
+			daysMin: ["Dum", "Lu", "Ma", "Mie", "Joi", "Vi", "Sâ"],
+			months: ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"],
+			monthsShort: ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Noi", "Dec"],
+			today: "Azi",
+			clear: "Șterge",
+			format: "dd/mm/yyyy",
+			titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+			weekStart: 0
+			};
+
+					</script>
+	  <script>
+		  
+		  $('#calendar_start').datepicker({
+							language: "ro",
+							inline: "true"
+						});
+						
+						$('#calendar_end').datepicker({
+							language: "ro",
+							inline: "true"
+
+						});
+
+	  </script>
+
+</body>
+</html>

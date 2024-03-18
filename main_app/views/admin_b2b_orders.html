@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>FarmVio - Admin </title>
+      <!-- Notify made by dan -->
+      <link rel = 'stylesheet' href = '/notify/index.css'></link>
+      <script src = '/notify/index.js'></script>
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+	<script src='/assets/scripts/admin_b2b_orders.js'></script>
+
+	<script src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.min.js'></script>
+<style>
+  .old_tag
+{
+  padding: 5px 10px;
+  background-color: palegreen;
+  border-radius: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  margin-left: 7px;
+  display: inline-block;
+  margin-top: 10px;
+}
+.order_content 
+{
+  overflow: hidden;
+  width: 100%;
+}
+ .row[data-role="support"]
+{
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.order_content .row{
+  padding-top: 5px;
+}
+.product_searcher
+{
+  position: absolute;
+  overflow: auto;
+  width: 70%;
+  left: 15%;
+  height: 70%;
+  top: 15%;
+  z-index: 9999;
+  border-radius: 20px;
+  background-color: white;
+  transform: scale(0);
+  transition: transform .4s;
+}
+
+.product_offers
+{
+  position: absolute;
+  overflow: auto;
+  width: 70%;
+  left: 15%;
+  height: 70%;
+  top: 15%;
+  z-index: 9999;
+  border-radius: 20px;
+  background-color: white;
+  transform: scale(0);
+  transition: transform .4s;
+}
+
+.offers_sent_cid{
+  position: absolute;
+  overflow: auto;
+  width: 70%;
+  left: 15%;
+  height: 70%;
+  top: 15%;
+  z-index: 9999;
+  border-radius: 20px;
+  background-color: white;
+  transform: scale(0);
+  transition: transform .4s;
+}
+
+.product_searcher_bg
+{
+  background-color: rgba(0,0,0,0.3);
+  z-index: 9998;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s,opacity .4s;
+}
+
+
+.exit_product_searcher
+{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 9999;
+  transition: color .2s;
+}
+.exit_product_searcher:hover{
+  color: red;
+}
+#words
+{
+  margin: 40px;
+}
+
+#words,tr,td
+{
+  border: 2px solid black;
+  text-align: center;
+  padding: 5px;
+}
+#words td{
+  cursor: pointer;
+}
+.active_word
+{
+  background-color: palegreen;
+}
+
+.banned_word
+{
+  background-color: rgba(255,0,0,0.4);
+}
+.top_content{
+  background-color: white;
+    height: 300px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top_content img{
+  max-height: 300px;
+  max-width: 100%;
+}
+#found_prods
+{
+  padding: 10px 10px;
+  max-width: 100%;
+}
+
+.top_content img{
+  max-height: 300px;
+
+}
+.top_content{
+  background-color: white;
+  height: 300px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product_card
+{
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+.bottom_content
+{
+  display: flex;
+  justify-content: center;
+}
+.btn-danger{
+  background-color: #cb4b18 !important;
+}
+.title
+{
+  font-size: 18px;
+ display: block;
+}
+.middle_content
+{
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+input[type=number]:not(.direct)
+{
+  color: white;;
+}
+
+input[type=number]:not(.direct):focus{
+  color: white;
+}
+.offer_body
+{
+  max-height: 0px;
+  transition: max-height 2s;
+  overflow: hidden;
+}
+.offer_body_sent
+{
+  max-width: calc(100% - 30px);
+  margin-left: 5px;
+}
+.offer_body_sent .row{
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+.date_offer
+{
+  background-color: paleturquoise;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 20px;
+    width: max-content;
+}
+
+.direct_offer_inputs{
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 2s;
+}
+.final_prod_bid
+{
+  background-color: rgba(0,0,0,0.05);
+  padding: 15px 10px;
+  border-radius: 20px;
+  margin-left: 25px;
+  max-width: calc(100% - 20px);
+}
+
+.final_prod_bid:not(:first-child){
+  margin-top: 15px;
+}
+.bid_parent:not(:first-child){
+  margin-top: 10px;
+}
+.bids input[type='checkbox']
+{
+  transform: scale(2.5);
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.avize 
+{
+  list-style-type: none;
+  margin-top: 40px;
+
+}
+
+.avize li{
+  position: relative;
+  width: max-content;
+  padding-right: 40px;
+}
+
+.avize i{
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+}
+
+.avize i:hover 
+{
+  color: red;
+}
+</style>
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Add images</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Change color</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+			<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+		</a>	
+		<!-- Logo -->
+		<a href="/index" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+
+		
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+				  <a href="/admin_b2b_orders">
+					<i class="icon-Home"></i>
+					<span>Comenzi b2b</span>
+				  </a>
+				</li>
+				<li>
+				  <a href="/avize">
+					<i class="fas fa-shield-alt"><span class="path1"></span><span class="path2"></span></i>
+					<span>Avize</span>
+				  </a>
+				</li>	
+
+				<li>
+				  <a href="/farmer_requests">
+					<i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					<span>Cereri fermier </span>
+				  </a>
+				</li>	
+
+        <li>
+          <a href="/b2b_requests">
+            <i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+            <span>Cereri B2B </span>
+          </a>
+        </li>	
+        <li>
+          <a href="/admin_users">
+            <i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+            <span>Useri </span>
+          </a>
+        </li>	
+			  </ul>	
+
+
+
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Extra</li>
+								<li class="breadcrumb-item active" aria-current="page">Profile</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content" id = 'main_content' >
+      <div class = 'row' id = 'orders'>
+
+      </div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+        <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+		  <li class="nav-item">
+			<a class="nav-link" href="javascript:void(0)">FAQ</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Purchase Now</a>
+		  </li>
+		</ul>
+    </div>
+	  &copy; 2021 <a href="https://www.multipurposethemes.com/">Multipurpose Themes</a>. All Rights Reserved.
+  </footer>
+
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+
+<div class = 'product_searcher_bg'>
+
+</div>
+<div class = 'product_searcher'>
+  <i class="fas fa-times-circle exit_product_searcher" onclick="exit_product_searcher()"></i>
+  <div class ='row align-items-center' style="max-width: 100%">
+    <div class = 'col-6' style="overflow: auto;">  
+    <table id = 'words'>
+
+        </table>
+      </div>
+      <div class = 'col product_searcher_qty' > </div>
+      <div class = 'col product_searcher_det'> </div>
+      </div>
+      <div class ='row' style="margin-left: 15px">
+        <div class = 'col-4'>
+          <input type = 'text' placeholder="Cuvant" id = 'new_word' class = 'form-control'>
+        </div>
+        <div class ='col-auto'>
+          <button type="button" class="btn btn-primary" onclick="add_word()" >Adauga cuvant</button>
+
+        </div>
+      </div>
+        <button type="button" class="btn btn-primary" onclick="search_prods()" >Cauta produse</button>
+
+        <div class = 'row' id = 'found_prods' style="max-width: 100%">  
+          
+        </div>
+
+</div>
+
+<div class = 'offers_sent_cid'>
+  <i class="fas fa-times-circle exit_product_searcher" onclick="exit_sent_offers_cid()"></i>
+  <div class = 'cid_offers' style="margin-top: 50px;">
+
+  </div>
+</div>
+
+
+<div class = 'product_offers' id = 'all_offers_sent'>
+  <div class = 'row mt-3 ml-3' style="max-width: 100%;">
+    <div class = 'col-12'>
+    <button type="button" class="btn btn-primary"  onclick="close_offers()"><i class="fas fa-arrow-left"></i> Inapoi la cautare</button>				
+  </div>
+  </div>
+</div>
+
+
+<div class = 'product_offers' id = 'final_bids'>
+  
+
+      <i class="fas fa-times-circle exit_product_searcher" onclick="close_final_bids()"></i>			
+      <div class = 'row mt-5' style="max-width: 100%;">
+      
+  </div>
+  <div class = 'row' style="max-width: 95%;margin-left:2.5%;">
+    <div class = 'col-12' style="padding: 10px">
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group ">
+            <label for="pret_comanda">Pret comanda</label>
+            <input type="text" class="form-control" id="pret_comanda">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group ">
+            <label for="pret_t">Pret transport</label>
+            <input type="text" class="form-control" id="pret_t">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group ">
+            <label for="comision">Comision farmVio</label>
+            <input type="text" class="form-control" id="comision">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class = 'col-12'>
+      <button type="button" class="btn btn-primary" style="margin: 15px auto;display:block;" onclick="send_final_bid()"> Trimite oferta catre client</button>				
+    </div>
+  </div>
+</div>
+
+
+
+<div class = 'product_searcher_bg'>
+
+</div>
+<div class = 'product_searcher'>
+  <i class="fas fa-times-circle exit_product_searcher" onclick="exit_product_searcher()"></i>
+  <div class ='row align-items-center' style="max-width: 100%">
+    <div class = 'col-6' style="overflow: auto;">  
+    <table id = 'words'>
+
+        </table>
+      </div>
+      <div class = 'col product_searcher_qty' > </div>
+      <div class = 'col product_searcher_det'> </div>
+      </div>
+      <div class ='row' style="margin-left: 15px">
+        <div class = 'col-4'>
+          <input type = 'text' placeholder="Cuvant" id = 'new_word' class = 'form-control'>
+        </div>
+        <div class ='col-auto'>
+          <button type="button" class="btn btn-primary" onclick="add_word()" >Adauga cuvant</button>
+
+        </div>
+      </div>
+        <button type="button" class="btn btn-primary" onclick="search_prods()" >Cauta produse</button>
+
+        <div class = 'row' id = 'found_prods' style="max-width: 100%">  
+          
+        </div>
+
+</div>
+
+<div class = 'offers_sent_cid'>
+  <i class="fas fa-times-circle exit_product_searcher" onclick="exit_sent_offers_cid()"></i>
+  <div class = 'cid_offers' style="margin-top: 50px;">
+
+  </div>
+</div>
+
+
+<div class = 'product_offers' id = 'all_offers_sent'>
+  <div class = 'row mt-3 ml-3' style="max-width: 100%;">
+    <div class = 'col-12'>
+    <button type="button" class="btn btn-primary"  onclick="close_offers()"><i class="fas fa-arrow-left"></i> Inapoi la cautare</button>				
+  </div>
+  </div>
+</div>
+
+
+<div class = 'product_offers' id = 'final_bids'>
+  
+
+      <i class="fas fa-times-circle exit_product_searcher" onclick="close_final_bids()"></i>			
+      <div class = 'row mt-5' style="max-width: 100%;">
+      
+  </div>
+  <div class = 'row' style="max-width: 95%;margin-left:2.5%;">
+    <div class = 'col-12' style="padding: 10px">
+      <div class="form-row">
+        <div class="col">
+          <div class="form-group ">
+            <label for="pret_comanda">Pret comanda</label>
+            <input type="text" class="form-control" id="pret_comanda">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group ">
+            <label for="pret_t">Pret transport</label>
+            <input type="text" class="form-control" id="pret_t">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group ">
+            <label for="comision">Comision farmVio</label>
+            <input type="text" class="form-control" id="comision">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class = 'col-12'>
+      <button type="button" class="btn btn-primary" style="margin: 15px auto;display:block;" onclick="send_final_bid()"> Trimite oferta catre client</button>				
+    </div>
+  </div>
+</div>
+
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	
+	<script src="js/pages/timeline.js"></script>
+
+
+
+
+
+  <template id = 'order_temp'>
+    <div class = 'col-12' style="background-color: white;border-radius: 20px;padding: 10px;margin-top: 10px;">
+      <Strong>Order id: </Strong><span class = 'order_id'></span><br>
+
+      <div class = 'order_content'>
+
+      </div>
+      <button type="button" class="btn btn-primary" style="margin: 15px auto;display:block;"> Trimite oferta catre client</button>				
+
+    </div>
+  </template>
+
+	<template id = 'product_template'>
+		
+		<div class = 'col-4'>
+
+			<div class = 'product_card bg-dark'>
+				<div class = 'top_content'>
+					<img src =''/>
+				</div>
+				<div class = 'middle_content'>
+					<span class = 'title prod_name' style="color: white;font-size: 20px;">  </span>
+					<span class = 'title' style="color: rgb(25, 190, 25);font-size: 20px;"><i class="far fa-money-bill-alt"></i> <span id ='price'> </span></span>
+					<div id="read-only-stars" title="regular"><img alt="1" src="../images/rating/star-on.png" title="regular">&nbsp;<img alt="2" src="../images/rating/star-on.png" title="regular">&nbsp;<img alt="3" src="../images/rating/star-on.png" title="regular">&nbsp;<img alt="4" src="../images/rating/star-off.png" title="regular">&nbsp;<img alt="5" src="../images/rating/star-off.png" title="regular"><input name="score" type="hidden" value="3" readonly=""></div>
+				</div>
+
+        <div class = 'distance' style="width: 100%;padding: 5px 10px;color: white"></div>
+        <button type="button" class="btn btn-primary see_all_offers" style="margin: 15px auto;display:block;" onclick="see_all_offers(this)"></button>				
+
+        <button type="button" class="btn btn-primary" style="width: 80%;display:block;margin:auto" onclick="create_offer(this)">Creeaza cerere oferta</button>				
+        <div class = 'offer_body' style="margin-top: 30px; width: 90%;
+        display: block;margin:auto;">
+          <div class ='form-row'>
+            <div class = 'col'>
+            <label for="offer_qty">Cantitate</label>
+            <input type="number" class="form-control" id="offer_qty" placeholder="Cantitate">
+          </div>
+          <div class = 'col'>
+
+            <label for="offer_price">Pret oferit total</label>
+            <input type="number" class="form-control" id="offer_price" placeholder="Pret">
+            
+          </div>
+        </div>
+			</div>
+		</div>
+	</template>
+
+
+  <template id = 'custom_order_temp'>
+    
+    <div class ='row' data-role="support">
+      <div class = 'col-12' style="margin-left: -7px;">
+        <div class = 'row align-items-center'>
+        <div class = 'col-4 tags_col' >
+        </div>
+
+        <div class = 'col-4 details_col'>
+        </div>
+        <div class = 'col qty_col'>
+          
+        </div>
+        <div class = 'col'>
+          <button type="button" class="btn btn-primary cauta_produs" >Cauta produs</button>
+        </div>
+        <div class = 'col'>
+          <button type="button" class="btn btn-primary vezi_oferte">Vezi oferte trimise</button>
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </template>
+
+  <template id = 'normal_prod'>
+    <div class = 'row ' data-role="support">
+      <div class = 'col-12'>
+        <div class = 'row align-items-center order_content_row'>
+        <div class = 'col image_col'>
+          <img src = '/assets/images/icons/no_image.png' style="max-width: 120px"/>
+        </div>
+        <div class = 'col name_col'>
+        </div>
+        <div class = 'col qty_col'>
+        </div>
+
+        <div class = 'col price_col'>
+        </div>
+        <div class = 'col adresa_col'>
+        </div>
+        <div class = 'col'>
+          <button type="button" class="btn btn-primary">Vezi detalii fermier</button>
+        </div>
+        <div class = 'col'>
+          <button type="button" class="btn btn-primary direct_offer">Trimite cerere oferta</button>
+        </div>
+        <div class = 'col'>
+          <button type="button" class="btn btn-primary see_direct_offers">Vezi cereri oferta trimise</button>
+        </div>
+      </div>
+      </div>
+      <div class = 'col-12 direct_offer_inputs'>
+        <div class = 'row'>
+        <div class = 'col'>
+          <label for="direct_offer_price" class="form-label">Pret</label>
+          <input type="number" id="direct_offer_price" class="form-control direct" >
+        </div>
+
+        <div class = 'col'>
+          <label for="direct_offer_price" class="form-label">Cantitate</label>
+          <input type="number" id="direct_offer_qty" class="form-control direct" >
+        </div>
+      </div>
+      <div class = 'row'>
+        <div class = 'col-auto'>
+          <button class = 'btn btn-success'>Trimite cererea</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </template>
+
+
+  <template id = 'offer_head'>
+    <div class="row offer_body_sent" style="background-color: aliceblue;padding: 10px 10px;border-radius: 20px;margin: 10px auto;">
+            
+        <div class = 'row'>
+            <div class = 'col-12'>
+                Offer details: 
+            </div>
+
+            <div class = 'row'>
+                <div class = 'col-12 offer_del'>Livrare din punctul: </div>
+            </div>
+            <div class = 'row' style="margin-bottom: 15px;">
+                <div class = 'col-auto product_infos'>Produsul: </div>
+                
+            </div>
+        </div>
+        <div class = 'row the_request'>
+
+  
+        
+        
+    </div>
+</div>
+</template>
+
+<template id = 'offer_body'>
+    <div class = 'row align-items-center'>
+        <div class='col-auto date_offer' ></div><div class = 'col offer_title' style="font-size: 16px;"></div>
+     </div>
+
+        <div class = 'col-12 mt-3 ml-3 mb-3 offer_content' style="font-size: 16px;">
+             
+         </div>
+         <div class = 'row extra'></div>
+</template>
+
+
+<template id = 'action_buttons'>
+    <div class = 'col-12'>
+        <div class = 'row'>
+        <div class='col-auto'>
+            <button type="button" class="waves-effect waves-light btn btn-success mb-5"> Accept </button>
+        </div>
+
+        <div class='col-auto'>
+            <button type="button" class="waves-effect waves-light btn btn-primary mb-5">Trimite contra-oferta</button>
+
+        </div>
+
+        <div class='col-auto'>
+            <button type="button" class="waves-effect waves-light btn btn-danger mb-5"> Respinge cererea </button>
+        </div>
+    </div>
+    <div class = 'row show_offer_data' style="max-height: 0px;overflow: hidden;transition: max-height 2s;padding-top: 10px">
+            <div class = 'col'>
+                <div class="form-group">
+                    <label class="form-label">Pret </label>
+                    <input type="text" class="form-control new_price" placeholder="Pret" >
+                  </div>
+            </div>
+            <div class = 'col'>
+                <div class="form-group">
+                    <label class="form-label">Cantitate </label>
+                    <input type="text" class="form-control new_qty" placeholder="Cantitate">
+                  </div>
+            </div>
+    </div>
+    </div>
+</template>
+
+<template id = 'prod_bids'>
+  <div class = 'col-12 final_prod_bid'>
+    <strong> Pentru produsul:  </strong>
+    <div class = 'row align-items-center'>
+
+      <div class = 'col-auto prod_image'>
+        <img src = '/assets/images/icons/no_image.png' style="max-width: 75px;max-height: 75px;"/>
+      </div>
+
+     <div class = 'col-auto prod_name'>
+
+      </div>  
+
+      <div class = 'col-auto prod_keyw' >
+
+      </div>  
+
+      <div class = 'col-auto prod_details' style="padding-top: 10px;" >
+
+      </div>  
+
+      <div class = 'col-auto del_from'>
+
+      </div>  
+
+      <div class = 'col-auto sold_by'>
+
+      </div>
+
+      <div class = 'col-auto original_qty' >
+
+      </div>
+    </div>
+
+    <div class = 'row mt-5 bids'>
+
+    </div>
+  </div>
+</template>
+
+<template id ='bid_container'>
+  <div class = 'col-12 bid_parent'>
+    <div class ='row align-items-center'>
+      <div class = 'col-auto'>
+        <input type="checkbox" id="md_checkbox_23" class="filled-in chk-col-success" checked="">
+        <label for="md_checkbox_23">Success<input type="checkbox" id="md_checkbox_23" class="filled-in chk-col-success" checked=""></label>
+      </div>
+      <div class = 'col-auto prod_image'>
+        <img src = '/assets/images/icons/no_image.png' style="max-width: 75px;max-height:75px;"/>
+      </div>
+
+      <div class = 'col-auto prod_name'>
+
+      </div>
+
+      <div class = 'col-auto del_from'>
+
+      </div>
+
+      <div class = 'col-auto sold_by'>
+
+      </div>
+
+      <div class = 'col-auto new_price'>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</template>
+
+</body>
+</html>

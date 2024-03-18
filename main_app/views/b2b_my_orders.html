@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" 
+	type="image/png" 
+	href="/assets/images/apppictures/Logo FARMVIO14.png">
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+	<script src = '/notify/index.js'></script>
+
+	<link rel = 'stylesheet' href = '/notify/index.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src = '/assets/scripts/b2b_cart.js'></script>
+    <link rel = 'stylesheet' href=  '/assets/css/b2b_cart.css'>
+
+    <script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLL969JFNJ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-HLL969JFNJ');
+	</script>
+
+    <title>Farmvio - Comenzile mele </title>
+
+
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src = '/assets/scripts/b2b_my_orders.js'></script>
+
+	<script src="https://kit.fontawesome.com/27746bdcf7.js" crossorigin="anonymous"></script>
+	
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	<div class = 'black_panel'>
+		<div class = 'image_content'>
+		  <i id = 'close' class="far fa-times-circle" onclick="closee()"></i>
+	
+		  <div class = 'image_tray'>
+	
+			<div class = 'add_image'>          
+			  <label for = 'file_inp'>
+				<input type = 'file' id = 'file_inp'/>
+				<div class = 'add_img'>
+				  <i class="fas fa-plus"></i>
+				  <span>Add images</span>
+			  </div>
+	
+			  </label>
+			</div>
+			<div class = 'add_color'>
+			  <label for = 'colors'>
+				<input type = 'color' id = 'colors'/>
+				<span>Change color</span>
+			  </label>
+			</div>
+	
+		  </div>
+		</div>
+	  </div>
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent hover-primary" data-toggle="push-menu" role="button">
+				<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+			</a>	
+			<div class="app-menu">
+				<ul class="header-megamenu nav">
+					<li class="btn-group nav-item d-md-none">
+						<a href="#" class="waves-effect waves-light nav-link push-btn btn-info-light" data-toggle="push-menu" role="button">
+							<span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						</a>
+					</li>
+			  
+				</ul> 
+			  </div>
+			<!-- Logo -->
+			<a href="/index" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="/assets/images/icons/Logo FARMVIO11.jpg" alt="logo"></span>
+				
+			  </div>
+			</a>	
+		</div>  
+			<nav class="navbar navbar-static-top">
+			<!-- Sidebar toggle button-->
+			<a href="/index">
+			<button type="button" class="waves-effect waves-light btn btn-outline btn-secondary mb-5">Înapoi în site</button>
+		  </a>
+			<div class="navbar-custom-menu r-side">
+			  <ul class="nav navbar-nav">
+				<li class="btn-group nav-item d-lg-inline-flex cart-btn phone"  onmouseover="show_cart()">
+					<a   class="waves-effect waves-light nav-link full-screen btn-info-light" >
+					  <i class="fas fa-shopping-cart"></i>
+					  </a>
+				  </li>		
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-info-light" title="Full Screen">
+						  <i class="icon-Expand-arrows"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				  <li class="btn-group nav-item d-lg-inline-flex ">
+					  <a href="/logout" class="waves-effect waves-light  full-screen btn-info-light" title="Logout">
+						  <i class="fas fa-sign-out-alt" aria-hidden="true"><span class="path1"></span><span class="path2"></span></i>
+					  </a>
+				  </li>	
+				<!-- Notifications -->
+				<li class="dropdown notifications-menu">
+				  <span class="label label-primary">5</span>
+				  <a href="#" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications" aria-expanded="false">
+					<i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
+				  </a>
+				  <ul class="dropdown-menu animated bounceIn">
+	  
+					<li class="header">
+					  <div class="p-20">
+						  <div class="flexbox">
+							  <div>
+								  <h4 class="mb-0 mt-0">Notifications</h4>
+							  </div>
+							  <div>
+								  <a href="#" class="text-danger">Clear All</a>
+							  </div>
+						  </div>
+					  </div>
+					</li>
+	  
+					<li>
+					  <!-- inner menu: contains the actual data -->
+					  <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 250px;"><ul class="menu sm-scrol" style="overflow: hidden; width: auto; height: 250px;">
+					  
+					  </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+					</li>
+					<li class="footer">
+						<a href="#">View all</a>
+					</li>
+				  </ul>
+				</li>	
+	  
+				  
+			  </ul>
+			</div>
+		  </nav>
+	  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  <div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">
+				<li>
+					<a href="/dashboard">
+					  <i class="icon-Home"></i>
+					  <span>Profilul meu</span>
+					</a>
+				  </li>
+				  <li>
+					<a href="/security_settings">
+					  <i class="fas fa-shield-alt"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Setări securitate</span>
+					</a>
+				  </li>	
+    
+				  <li>
+					<a href="/my_orders">
+					  <i class="icon-Chart-line"><span class="path1"></span><span class="path2"></span></i>
+					  <span>Comenzile mele </span>
+					</a>
+				  </li>	
+		   
+			  </ul>	
+
+
+
+			</div>
+		</div>
+    </section>
+  </aside> 
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">Profile</h3>
+					<div class="d-inline-block align-items-center">
+			
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content">
+            <div class = 'row' id = 'orders'>   
+     
+            </div>
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  <!-- Content Right Sidebar -->
+  
+  <!-- /.Content Right Sidebar -->
+	
+  <footer class="main-footer">
+    <div class="pull-right d-none d-sm-inline-block">
+  
+    </div>
+	&copy; 2021 Farmvio. Toate drepturile rezervate.
+  </footer>
+
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.min.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<!-- Riday App -->
+	<script src="js/template.js"></script>
+	
+	<script src="js/pages/timeline.js"></script>   
+
+	<div class = 'product_searcher_bg'>
+
+	</div>
+
+	<div class = 'product_searcher'>
+		<i class="fas fa-times-circle exit_product_searcher" onclick="exit_final_offer()"></i>
+
+		<div class = 'row  bids' style="margin-top: 50px;max-width: calc(100% - 20px);">
+	
+		</div>
+		<div class = 'row' style="padding-left: 10px;max-width: calc(100% - 20px);">
+			<div class = 'col-12 price_comanda'>
+
+			</div>
+
+			<div class = 'col-12 price_transport'>
+				
+			</div>
+
+			<div class = 'col-12 comision_final'>
+				
+			</div>
+			<div class = 'col-12 total_final'>
+				
+			</div>
+		</div>
+		<div class = 'row actions'  style="margin-top: 10px;max-width: calc(100% - 20px);margin-bottom: 15px;margin-left: 10px;">
+			<div class = 'col-auto'>
+				<button class = 'btn btn-success' onclick="accept_order()">Acceptă comanda </button>
+
+			</div>
+			<div class = 'col-auto'>
+				<button class = 'btn btn-danger' onclick="decline_order()">Refuză comanda </button>
+				
+			</div>
+		</div>
+
+
+	  </div>
+
+	<template id = 'order_temp'>
+		<div class = 'col-12 order_datas' style="background-color: white;border-radius: 20px;padding: 10px;margin-top: 10px;">
+		  <Strong>ID comandă: </Strong><span class = 'order_id'></span><br>
+			<strong>Status: </strong><span class ='order_status'> </span><br>
+			<strong>Data plasării: </strong><span class ='order_date'> </span><br>
+		  <div class = 'order_content'>
+	
+		  </div>
+	
+		  <div class = 'row mt-3 justify-content-center'>
+			<div class = 'col-12'>
+				<button class = 'btn btn-primary see_final'>Vezi oferta finală</button>
+			</div>
+		</div>
+		</div>
+	  </template>
+
+
+  <template id = 'custom_order_temp'>
+    
+    <div class ='row' data-role="support">
+      <div class = 'col-12' style="margin-left: -7px;">
+        <div class = 'row align-items-center'>
+        <div class = 'col-4 tags_col' >
+        </div>
+
+        <div class = 'col-4 details_col'>
+        </div>
+        <div class = 'col qty_col'>
+          
+        </div>
+     
+
+      </div>
+      </div>
+    </div>
+  </template>
+
+  <template id = 'normal_prod'>
+    <div class = 'row ' data-role="support">
+      <div class = 'col-12'>
+        <div class = 'row align-items-center order_content_row'>
+        <div class = 'col image_col'>
+          <img src = '/assets/images/icons/no_image.png' style="max-width: 120px"/>
+        </div>
+        <div class = 'col name_col'>
+        </div>
+        <div class = 'col qty_col'>
+        </div>
+        <div class = 'col adresa_col'>
+        </div>
+    
+      </div>
+      </div>
+  
+    </div>
+  </template>
+
+
+  <template id = 'offer_head'>
+    <div class="row offer_body_sent" style="background-color: aliceblue;padding: 10px 10px;border-radius: 20px;margin: 10px auto;">
+            
+        <div class = 'row'>
+            <div class = 'col-12'>
+                Detalii ofertă: 
+            </div>
+
+            <div class = 'row'>
+                <div class = 'col-12 offer_del'>Livrare din punctul: </div>
+            </div>
+            <div class = 'row' style="margin-bottom: 15px;">
+                <div class = 'col-auto product_infos'>Produsul: </div>
+                
+            </div>
+        </div>
+        <div class = 'row the_request'>
+        
+        
+    </div>
+</div>
+</template>
+
+<template id = 'offer_body'>
+    <div class = 'row align-items-center'>
+        <div class='col-auto date_offer' ></div><div class = 'col offer_title' style="font-size: 16px;"></div>
+     </div>
+
+        <div class = 'col-12 mt-3 ml-3 mb-3 offer_content' style="font-size: 16px;">
+             
+         </div>
+</template>
+
+
+<template id = 'prod_bids'>
+	<div class = 'col-12 final_prod_bid'>
+	  <strong> Pentru produsul:  </strong>
+	  <div class = 'row align-items-center'>
+  
+		<div class = 'col-auto prod_image'>
+		  <img src = '/assets/images/icons/no_image.png' style="max-width: 75px;max-height: 75px;"/>
+		</div>
+  
+	   <div class = 'col-auto prod_name'>
+  
+		</div>  
+  
+		<div class = 'col-auto prod_keyw' >
+  
+		</div>  
+  
+		<div class = 'col-auto prod_details' style="padding-top: 10px;" >
+  
+		</div>  
+  
+		<div class = 'col-auto del_from'>
+  
+		</div>  
+  
+		<div class = 'col-auto sold_by'>
+  
+		</div>
+  
+		<div class = 'col-auto original_qty' >
+  
+		</div>
+	  </div>
+  
+	  <div class = 'row mt-5 bids'>
+  
+	  </div>
+	</div>
+  </template>
+  
+  <template id ='bid_container'>
+	<div class = 'col-12 bid_parent'>
+	  <div class ='row align-items-center'>
+		<div class = 'col-auto'>
+		  <input type = 'checkbox'>
+		</div>
+		<div class = 'col-auto prod_image'>
+		  <img src = '/assets/images/icons/no_image.png' style="max-width: 75px;max-height:75px;"/>
+		</div>
+  
+		<div class = 'col-auto prod_name'>
+  
+		</div>
+  
+		<div class = 'col-auto del_from'>
+  
+		</div>
+  
+		<div class = 'col-auto sold_by'>
+  
+		</div>
+  
+		<div class = 'col-auto new_price'>
+  
+		</div>
+  
+  
+  
+	  </div>
+	</div>
+  </template>
+  <template id = 'cart_temp'>
+	<div class = 'b2b_item'>
+		<img src = '/assets/images/icons/no_image.png'/>
+		<span class = 'name'></span>
+		<input type = 'number' min = 1 max= 999><br>
+		<p class = 'sold_by'><strong>Vandut de: </strong></p>
+		<p class="del_from"><Strong>Livrat din: </Strong></p>
+	</div>
+</template>
+
+
+<template id = 'cart_temp_special'>
+	<div class = 'b2b_item'>
+		<h6 style="width: 100%">Special order</h6><br>
+		<div class = 'old_tags' style="width: 100%;padding-left: 5px;">
+	   
+	</div>
+		<input type = 'number' value = '2' style="margin: 10px auto;">
+	</div>
+</template>
+  <div class = 'cart_container'>
+	<div class = 'up_arrow'>
+		
+	</div>
+	<div class = 'cart_content'>
+		
+	</div>
+	<div class = 'bottom'>
+		<button class = 'btn btn-primary' onclick="window.location.href = '/order'">Detalii coș</button>
+	</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+.msg{
+    font-weight: bold;
+}
+#prev_chats{
+    background-color: aliceblue;
+    padding: 15px 5px;
+    border-radius: 10px;
+}
+.from
+{
+    background-color: paleturquoise;
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+.chat_container
+{
+    overflow: hidden;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(to right, #ffe259, #ffa751); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 50%;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: width .6s,height .6s,border-radius .6s ease-in-out;
+    
+}
+.fa-comment-alt
+{
+    font-size: 45px;;
+    color: white;
+    text-shadow: 0px 0px 2px black;
+}
+.active_chat
+{
+    border-radius: 20px;
+    width: 300px;
+    height: 400px;
+}
+.chat_body{
+    position: relative;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+     backdrop-filter: blur(5px);
+}
+.fa-times-circle
+{
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: black;
+    font-size: 25px;
+    z-index: 9999;
+}
+.fa-times-circle:hover{
+    color: red;
+}
+.conversation{
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px black;
+    width: calc(100% - 40px);
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    transition: background-color .4s;
+    border-radius: 5px;
+}
+
+.conversation:not(:first-child){
+    margin-top: 20px
+}
+
+
+.chat_conv{
+    height: 83%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    overflow: auto;
+}
+
+.chat_conv::-webkit-scrollbar
+{
+    width: 7px;
+    
+}
+
+.chat_conv::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background-color: white;
+}
+
+
+.conversation:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.user_from{
+    margin-bottom: 5px;
+    font-size: 18px;
+    margin-top: 0px;
+    font-weight: bold;
+    }
+.last_message{
+    max-width: 100%;
+    display: block;
+    overflow: hidden;
+    max-height: 20px;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;;
+}
+.conv_body
+{
+    width: 0px;
+    height: 0px;
+    position: relative;
+    overflow: hidden;
+}
+.top_conv
+{
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2px 15px;
+    display: flex;
+    align-items: center;
+}
+.top_conv i{
+    font-size: 22px;
+    padding: 9px;
+}
+.username
+{
+    margin-left: 10px;
+    font-size: 20px;
+    ;
+}
+.body_content
+{
+    width: 0px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    left: 0px;
+    position: relative;
+    transition: left .4s;
+}
+
+.bottom_conv{
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 5px 5px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+.bottom_conv input
+{
+    border: 0px;
+    font-size: 16px;
+    padding: 7px;
+    border-radius: 20px;
+    width: calc(100% - 80px);
+    border: 2px solid white;
+    transition: border .5s;
+}
+.bottom_conv input:focus{
+    outline: none;
+    border: 2px solid #0A6EBD;
+}
+.fa-paper-plane{
+    margin-left: 10px;
+    font-size: 22px;
+    color: black;
+    transition: color .2s;
+}
+.fa-image
+{
+    margin-left: 10px;
+    font-size: 22px;
+    color: black;
+    transition: color .2s; 
+    cursor: pointer;
+}
+.fa-image:hover{
+    color: #0A6EBD;
+}
+.fa-paper-plane:hover
+{
+    color: #0A6EBD;
+}
+
+.middle_conv
+{
+    height: calc(100% - 100px);
+    width: 100%;
+    overflow: auto;
+    padding: 0px 5px;
+}
+.middle_conv::-webkit-scrollbar{
+    width: 7px;;
+}
+.middle_conv::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 20px;
+}
+.message_wraper
+{
+    width: 100%;
+    height: max-content;
+    margin: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.message_received
+{
+    max-width: 70%;
+    background-color: rgba(255,255,255,0.6);
+    box-shadow: inset 0px 0px 17px white;
+    padding: 6px 10px 6px 10px;
+    border-radius: 20px;
+
+}
+.message_sent
+{
+    max-width: 70%;
+    background-color: white;
+    padding: 6px 10px 6px 10px;
+    border-radius: 20px;
+}
+.sent 
+{
+    justify-content: flex-end;
+}
+.message_received ~ .sns
+{
+    display: none;
+}
+.sns{
+    flex-basis: 100%;
+    text-align: end;
+}
+.fa-check-double
+{
+    color: #0A6EBD;
+}
+
+.message_wraper img
+{
+    max-height: 200px;
+    max-width: 100%;;
+}
+
+.message_received.image {
+    background-color: transparent;
+    box-shadow: none;
+}
+.message_sent.image {
+    background-color: transparent;
+    box-shadow: none;
+}

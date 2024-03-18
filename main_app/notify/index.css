@@ -1,0 +1,109 @@
+
+.notify_parent .not_container
+{
+	width: 100%;
+	position: relative;
+
+	max-height: 0px;  
+	cursor: pointer;
+	overflow: hidden;
+	transition: max-height .4s,opacity .7s;
+}
+
+
+.notify_parent .fade_out_notification
+{
+	opacity: 0;
+	max-height: 0px !important;
+}
+
+
+.notify_parent
+{
+	position: fixed;
+	z-index: 9999;
+
+	bottom: 20px;
+
+	right:  20px;
+
+	width: 400px;
+
+	height: 0px;
+	background-color: transparent;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-end;
+
+	padding-bottom: 0px;
+	overflow: hidden;
+}
+
+.notify_parent .notification_notify
+{
+	width: calc(100% - 40px);
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	margin:auto;
+	margin-top: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+	left:  100%;
+	transition: left .4s;
+
+}
+
+
+
+.notify_parent .notification_notify .icon_notify {
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+	margin-right: 10px;
+}
+.notify_parent .notification_notify .icon_notify i {
+	font-size: 80px !important;
+	color:  white;
+}
+.notify_parent .notification_notify p{
+	margin:  0px;
+	font-size: 18px;
+}
+
+.notify_parent .notification_notify .title
+{
+	font-size: 21px;
+}
+
+.notify_parent .notification_notify .content_notify
+{
+	    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.notify_parent .notification_notify.success
+{
+	background-color: #01b075;
+}
+
+.notify_parent .notification_notify.success p {
+	color:  white;
+	text-shadow: 0px 0px 3px black;
+
+}
+
+
+.notify_parent .notification_notify.error
+{
+	background-color:  #e66430;
+}
+.notify_parent .notification_notify.error p{
+	color:  white;
+	text-shadow: 0px 0px 3px black;
+
+}
+

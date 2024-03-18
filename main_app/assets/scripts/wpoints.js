@@ -1,0 +1,385 @@
+var mouse_over = false;
+var city_timeout = null,county_timeout = null,chosen_loc_timeout=null,addr_timeout = null,work_timeout = null;
+var map,marker = null,geocoder,marker_follow = false;
+var notify;
+var lat,lng;
+$(document).ready(function(){
+
+    notify = new Notify();
+    $("#nr").on("keyup",function(){
+        if (addr_timeout!=null)
+        {
+            clearTimeout(addr_timeout);
+        }
+        addr_timeout = setTimeout(get_location,1500);
+    })
+
+    $("#city").on("input",function(){
+        if (city_timeout!=null){
+            clearTimeout(city_timeout);
+        }
+   
+        city_timeout = setTimeout(get_city("city_ac"),500);
+    })
+
+    $("#city_ac").on("click",".complete_item",function(){
+        $("#city").val($(this).text());
+        $("#city_ac").css({"opacity":"0","max-height":"0px"});
+    })
+
+
+
+
+    $("#county").on("input",function(){
+        if (county_timeout!=null){
+            clearTimeout(county_timeout);
+        }
+        county_timeout = setTimeout(get_county("county_ac"),500);
+    })
+
+    $("#county_ac").on("click",".complete_item",function(){
+        //set the clicked text to the input
+        
+        $("#county").val($(this).clone().children().remove().end().text());
+        $("#county_ac").css({"opacity":"0","max-height":"0px"});
+    })
+
+
+
+
+
+
+    $("#city").on("focus",function(){
+        if ($(this).val().trim()!="")
+        get_city("city_ac");
+    })
+
+    $("#city").on("focusout",function(){
+        
+        $("#city_ac").css({"opacity":"0","max-height":"0px"});
+    })
+
+
+
+
+
+    $("#county").on("focus",function(){
+        if ($(this).val().trim()!="")
+            get_county("county_ac");
+    })
+
+    $("#county").on("focusout",function(){
+        $("#county_ac").css({"opacity":"0","max-height":"0px"});
+
+    })
+ 
+
+
+
+    $("#map_lock").on("change",function(){
+        //if the locker is set to on
+        if ($(this).prop("checked")){
+            
+            marker_follow = true;
+            //remove the prev marker 
+            if (marker!=null){
+                marker.setPosition(map.getCenter());
+          }
+            else{
+                marker = new google.maps.Marker({
+                    position: map.getCenter(),
+                    map: map
+                })
+            }
+
+        }
+        else{
+            marker_follow = false;
+        }
+    })
+})
+
+
+
+function get_coords(){
+    let addr = $("#address").val();
+    geocoder.geocode({'address':addr},function(results, status){
+        if (status == 'OK'){
+            map.setCenter(results[0].geometry.location);
+        }
+        else{
+            console.log(status);
+        }
+    })
+}
+
+function get_city(who){
+    let input_id = who.replace("_ac","");
+    let county_id;
+    if (input_id.startsWith("point"))
+    {
+        county_id = "point_county";
+    }
+    else{
+        county_id = "county"
+    }
+    $.ajax({
+        url: "/search_city",
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({"city":$("#"+input_id+"").val(),"county":$("#"+county_id+"").val()}),
+        success: function(data){
+            console.log(data);
+            //first remove the previous 
+            $("#"+who+" .complete_item").remove();
+            let parent = document.getElementById(who);
+            let item;
+            //now add 
+            if (data!=null && data.length>0){
+                let ac = document.querySelector("#city_ac");
+                ac.style.opacity = 1;
+                ac.style.maxHeight = "200px";
+
+                for (let i=0;i<data.length;i++){
+                    if (data[i].upLocality)
+                    {
+                        //treat as group
+                        for (let j=0;j<=data[i].list.length;j++)
+                        {
+                            item = document.createElement("div");
+                            item.className = "complete_item";
+                            item.textContent = data[i].list[j].localityName;
+                            parent.appendChild(item);
+                        }
+                    }
+                    else{
+                 item = document.createElement("div");
+                 item.className = "complete_item";
+                 item.textContent = data[i].localityName;
+                 parent.appendChild(item);
+                    }
+
+
+                }
+
+            }
+            else{
+                item = document.createElement("div");
+                item.className = "complete_item";
+                item.textContent = "Nu au fost găsite rezultate";
+                parent.appendChild(item);
+            }
+        }    
+    })
+}
+function get_county(who){
+
+    //get input from who 
+    let input_id = who.replace("_ac","");
+    $.ajax({
+        url: "/search_county",
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({'search':$("#"+input_id+"").val()}),
+        success: function(data){
+     
+            //remove the data inside
+            let parent = document.getElementById(who);
+            $("#"+who+" .complete_item").remove();
+            //now populate 
+            let item,sc;
+            if (data!=null && data.length>0){
+                let ac = document.querySelector("#county_ac");
+                ac.style.opacity = 1;
+                ac.style.maxHeight = "200px";
+                for (let i = 0;i<data.length;i++){
+                    item = document.createElement("div");
+                    item.className = "complete_item";
+                    
+                    //append the short_code 
+                    sc = document.createElement("span");
+                    sc.className = "short_code bg-info";
+                    sc.textContent = data[i].code.trim();
+                    item.appendChild(sc);
+                    item.appendChild(document.createTextNode(data[i].name))
+                    parent.appendChild(item);
+                }
+            }
+            else if (data.length==0 || data.length == undefined){
+                item = document.createElement("div");
+                item.className = "complete_item";
+                item.textContent = "Nu au fost găsite rezultate";
+                parent.appendChild(item);
+            }
+        }
+    })
+}
+function get_location(){
+    let county = $("#county").val()+" ";
+    let city = $("#city").val()+" ";
+    let address = $("#address").val()+" ";
+    let nr = $("#nr").val();
+    //now geocode 
+    marker_follow = false;
+    if ($("#map_lock").prop("checked"))
+    $("#map_lock").prop("checked","false");
+    geocoder.geocode({'address':county+city+address+nr},function(results,status){
+        if (status=="OK"){
+                console.log(results);
+            let pos = results[0].geometry.location;
+            //we not set the marker and center the map
+            if (marker!=null){
+                marker.setPosition(pos);
+            }
+            else{
+                marker = new google.maps.Marker({
+                    position: pos,
+                    map,
+                    title: "My farm"
+                })
+            }
+                map.setZoom(16);
+                map.setCenter(pos);
+            
+        }
+        else{
+            console.log(status);
+        }
+    })
+}
+
+
+function initMap(){
+    
+    geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 16,
+        center: { lat: lat ? parseFloat(lat) : 40.731, lng: lng? parseFloat(lng) :-73.997 },
+      });
+
+      if (lat && lng)
+      {
+          marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map
+        })
+      }
+
+      map.addListener("center_changed",function(){
+            console.log(marker_follow);  
+        if (marker_follow){
+              //now move the marker 
+              marker.setPosition(map.getCenter());
+                
+              if (chosen_loc_timeout!=null){
+                    clearTimeout(chosen_loc_timeout);
+              }
+              chosen_loc_timeout = setTimeout(function(){
+                  $("#address").focus();
+                  $("#address").val(Number.parseFloat(marker.getPosition().lat()).toFixed(6)+","+Number.parseFloat(marker.getPosition().lng()).toFixed(6));
+                  $("#address").focusout();
+                },1000);
+
+            }
+            else{
+                
+            }
+      })
+}
+function send_point(){
+    let point_info =  new FormData();
+
+    point_info.append("point_name",document.getElementById("name").value);
+    point_info.append("county",document.getElementById("county").value);
+    point_info.append("city",document.getElementById("city").value);
+    point_info.append("address",document.getElementById("address").value);
+    point_info.append("nr",document.getElementById("nr").value);
+    point_info.append("cod",document.getElementById("cod").value);
+
+    document.querySelector("#ins_data").disabled = true;
+
+    $.ajax({
+        url: '/add_point',
+        type: 'POST',
+        contentType: false,
+        cache: false,
+        processData: false,
+        data: point_info,
+        success: function (data){
+            document.querySelector("#ins_data").disabled = false;
+            Array.from(document.querySelectorAll(".custom_error")).forEach(elem=>{
+                elem.style.maxHeight = "0px";
+            })
+            if (Object.keys(data).length==0 || data.redirect){
+                
+                if (data.redirect)
+                {
+                    window.location.href = "/add_prod";
+                }
+                else{
+                    //show msg 
+                    document.querySelector(".cover").style.display = "flex";
+                    document.querySelector("#ins_data").remove();
+                }
+            }
+            else{
+                for (let key in data){
+                    console.log(key);
+                    if (key=='g_address')
+                    {
+                        key = "address";
+                    }
+                    let err = document.querySelector("#"+key.trim()+"_error");
+                    err.style.maxHeight = "160px";
+                    err.textContent = data[key];
+                }
+            }
+        }
+    })
+}
+
+
+function update_point(point_id)
+{
+    let point_info =  new FormData();
+    point_info.append("id",point_id);
+    point_info.append("point_name",document.getElementById("name").value);
+    point_info.append("county",document.getElementById("county").value);
+    point_info.append("city",document.getElementById("city").value);
+    point_info.append("address",document.getElementById("address").value);
+    point_info.append("nr",document.getElementById("nr").value);
+    point_info.append("cod",document.getElementById("cod").value);
+
+    
+    $.ajax({
+        url: "/update_point",
+        type: "POST",
+        contentType: false,
+        cache: false,
+        processData: false,
+        data: point_info,
+        success: function (data){
+            console.log(data);
+            Array.from(document.querySelectorAll(".custom_error")).forEach(elem=>{
+                elem.style.maxHeight = "0px";
+            })
+            if (data == "OK"){
+                notify.show_success("Succes!","Punctul a fost modificat!");
+            }
+            else{
+                for (let key in data){
+                    console.log(key);
+                    if (key=='g_address')
+                    {
+                        key = "address";
+                    }
+                    let err = document.querySelector("#"+key.trim()+"_error");
+                    err.style.maxHeight = "160px";
+                    err.textContent = data[key];
+                }
+            }
+        }
+    })
+}
